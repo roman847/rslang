@@ -38,20 +38,17 @@ export const Footer = () => {
             </li>
             <li>
               <a href='https://github.com/roman847'>
-                <img src='images/github.png' width='15px' height='15px' />
-                <> </> Roman
+                <img src='images/github.png' width='15px' height='15px' /> <span> Roman</span>
               </a>
             </li>
             <li>
               <a href='https://github.com/DittmerOk'>
-                <img src='images/github.png' width='15px' height='15px' />
-                <> </>Andrey
+                <img src='images/github.png' width='15px' height='15px' /> <span> Andrey</span>
               </a>
             </li>
             <li>
               <a href='https://github.com/limhill'>
-                <img src='images/github.png' width='15px' height='15px' />
-                <> </>Alibek
+                <img src='images/github.png' width='15px' height='15px' /> <span> Alibek</span>
               </a>
             </li>
           </ul>

@@ -1,8 +1,6 @@
 @import '/src/styles/main.scss';
 
 .footer {
-  //position: relative;
-  //top: $topFooter;
   background-color: $colorFooter;
   width: $maxWidth;
   .container {
@@ -22,9 +20,6 @@
       line-height: 35px;
       letter-spacing: 0.07em;
       color: #000000;
-      span:first-child {
-        color: #f06a33;
-      }
     }
     div:last-child {
       font-family: 'Montserrat';
@@ -37,6 +32,10 @@
   }
   &__menu,
   &__team {
+     span:first-child  {
+        font-weight: 600;
+        line-height: 24px;
+      }
     li {
       list-style-type: none;
       font-family: 'Montserrat';
@@ -45,10 +44,7 @@
       font-size: 16px;
       line-height: 25px;
       color: #1d1d1d;
-      span {
-        font-weight: 600;
-        line-height: 24px;
-      }
+     
     }
     a {
       text-decoration: none;
