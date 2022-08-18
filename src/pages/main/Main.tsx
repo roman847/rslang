@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Footer from './components/Footer'
-import Header from './components/Header'
+import Header from './components/header/Header'
 import MainContent from './components/MainContent'
 import Opportunities from './components/Opportunities'
 import Team from './components/Team'
