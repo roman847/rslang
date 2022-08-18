@@ -1,0 +1,58 @@
+@import '/src/styles/main.scss';
+
+.footer {
+  //position: relative;
+  //top: $topFooter;
+  background-color: $colorFooter;
+  width: $maxWidth;
+  .container {
+    padding: 60px 0;
+    max-width: $maxWidthContainer;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__logo {
+    div:first-child {
+      font-family: 'Mulish';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 35px;
+      letter-spacing: 0.07em;
+      color: #000000;
+      span:first-child {
+        color: #f06a33;
+      }
+    }
+    div:last-child {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      color: #1d1d1d;
+    }
+  }
+  &__menu,
+  &__team {
+    li {
+      list-style-type: none;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 25px;
+      color: #1d1d1d;
+      span {
+        font-weight: 600;
+        line-height: 24px;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: #1d1d1d;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@import '/src/styles/main.scss';
+
+.container {
+  max-width: $maxWidthContainer;
+  margin: 0 auto;
+  border: 1px solid gray; //удалить!!
+}
