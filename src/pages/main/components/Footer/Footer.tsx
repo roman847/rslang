@@ -2,11 +2,12 @@ import React from 'react'
 import style from './Footer.module.scss'
 import Logo from '../Logo/Logo'
 import { RomanGit, AndreyGit, AlibekGit } from '../../../../core/variables/constansts'
+import clsx from 'clsx'
 
 const Footer: React.FC = () => {
   return (
     <div className={style.footer}>
-      <div className={style.container}>
+      <div className={clsx('container', style.containerFooter)}>
         <div className={style.footer__logo}>
           <Logo />
           <div>2022</div>
