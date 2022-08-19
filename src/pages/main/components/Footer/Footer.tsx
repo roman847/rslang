@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Footer.module.scss'
 import Logo from '../Logo/Logo'
-import { RomanGit, AndreyGit, AlibekGit } from '../../../../core/variables/constansts'
+import { RomanGit, AndreyGit, AlibekGit, SchoolGit } from '../../../../core/variables/constansts'
 
 const Footer: React.FC = () => {
   return (
@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
           </ul>
         </div>
         <div>
-          <a href='https://app.rs.school'>
+          <a href={SchoolGit} target='_blank' rel='noopener noreferrer'>
             <img src='images/school.png'></img>
           </a>
         </div>
