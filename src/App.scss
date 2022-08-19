@@ -1,7 +1,6 @@
 @import './styles/main.scss';
 
-.wrapper {
-  width: $maxWidth;
-  background-color: $color;
-  margin: 0 auto;
+.container {
+  width: 100vw;
+  padding: 0% 9%;
 }

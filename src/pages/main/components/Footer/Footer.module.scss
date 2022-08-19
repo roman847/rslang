@@ -1,11 +1,12 @@
 @import '/src/styles/main.scss';
+@import '/src/styles/abstracts/variables';
 
 .footer {
-  background-color: $colorFooter;
-  width: $maxWidth;
-  .container {
-    padding: 60px 0;
-    max-width: $maxWidthContainer;
+  background-color: $footerColor;
+  width: 100%;
+  .containerFooter {
+    padding-top: 60px;
+    padding-bottom: 60px;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -45,7 +46,7 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 25px;
-      color: #1d1d1d;
+      color: $blackColor;
     }
     a {
       text-decoration: none;
