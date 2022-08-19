@@ -1,13 +1,4 @@
-import {
-  AppBar,
-  FormControl,
-  InputLabel,
-  Link,
-  MenuItem,
-  Select,
-  Toolbar,
-  Typography,
-} from '@mui/material'
+import { AppBar, Link, Toolbar, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { Component } from 'react'
 import classes from './header.module.scss'
@@ -25,7 +16,7 @@ export function Header() {
           <Box className={classes.nav__list}>
             <Link className={classes.list__link}>Главная</Link>
             <Link className={classes.list__link}>Учебник</Link>
-            <SelectElement />
+            <SelectElement fields={['Игры']} />
             <Link className={classes.list__link}>Статистика</Link>
             <button>Click</button>
           </Box>
