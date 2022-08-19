@@ -1,15 +1,14 @@
 import React from 'react'
 import style from './Footer.module.scss'
+import Logo from '../Logo/Logo'
+import { RomanGit, AndreyGit, AlibekGit } from '../../../../core/variables/constansts'
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <div className={style.footer}>
       <div className={style.container}>
         <div className={style.footer__logo}>
-          <div>
-            <span>RS</span>
-            <span>LANG</span>
-          </div>
+          <Logo />
           <div>2022</div>
         </div>
         <div className={style.footer__menu}>
@@ -37,20 +36,20 @@ const Footer = () => {
               <span>Разработчики</span>
             </li>
             <li>
-              <a href='https://github.com/roman847'>
-                <img src='images/github.png' width='15px' height='15px' />
+              <a href={RomanGit} target='_blank' rel='noopener noreferrer'>
+                <img src='images/github.png' alt='logo_github' />
                 <span> Roman</span>
               </a>
             </li>
             <li>
-              <a href='https://github.com/DittmerOk'>
-                <img src='images/github.png' width='15px' height='15px' />
+              <a href={AndreyGit} target='_blank' rel='noopener noreferrer'>
+                <img src='images/github.png' alt='logo_github' />
                 <span> Andrey</span>
               </a>
             </li>
             <li>
-              <a href='https://github.com/limhill'>
-                <img src='images/github.png' width='15px' height='15px' />
+              <a href={AlibekGit} target='_blank' rel='noopener noreferrer'>
+                <img src='images/github.png' alt='logo_github' />
                 <span> Alibek</span>
               </a>
             </li>
