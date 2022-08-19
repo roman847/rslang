@@ -1,13 +1,4 @@
-@mixin font18px {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: right;
-  color: #1d1d1d;
-  text-decoration: none;
-}
+@import '../../../../core/variables/commonStyles/variables.scss';
 
 .games__list {
   width: 61px;
