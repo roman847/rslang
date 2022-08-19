@@ -1,12 +1,12 @@
 import React from 'react'
 import Main from './pages/main/Main'
 
-import './App.css'
+import './App.scss'
 
-function App() {
+export const App = () => {
   return (
-    <div className='App'>
-      <Main></Main>
+    <div className='wrapper'>
+      <Main />
     </div>
   )
 }
