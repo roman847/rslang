@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Footer.module.scss'
 import Logo from '../Logo/Logo'
-import { RomanGit, AndreyGit, AlibekGit } from '../../../../core/variables/constansts'
+import { RomanGit, AndreyGit, AlibekGit, SchoolGit } from '../../../../core/variables/constants'
 import clsx from 'clsx'
 
 const Footer: React.FC = () => {
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
               </a>
             </li>
             <li>
-              <a href={AlibekGit} target='_blank' rel='noopener noreferrer'>
+              <a href={AlibekGit}>
                 <img src='images/github.png' alt='logo_github' />
                 <span> Alibek</span>
               </a>
@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
           </ul>
         </div>
         <div>
-          <a href='https://app.rs.school'>
+          <a href={SchoolGit} target='_blank' rel='noopener noreferrer'>
             <img src='images/school.png'></img>
           </a>
         </div>
