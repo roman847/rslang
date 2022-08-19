@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Footer.module.scss'
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <div className={style.footer}>
       <div className={style.container}>
@@ -39,19 +39,19 @@ export const Footer = () => {
             <li>
               <a href='https://github.com/roman847'>
                 <img src='images/github.png' width='15px' height='15px' />
-                <> </> Roman
+                <span> Roman</span>
               </a>
             </li>
             <li>
               <a href='https://github.com/DittmerOk'>
                 <img src='images/github.png' width='15px' height='15px' />
-                <> </>Andrey
+                <span> Andrey</span>
               </a>
             </li>
             <li>
               <a href='https://github.com/limhill'>
                 <img src='images/github.png' width='15px' height='15px' />
-                <> </>Alibek
+                <span> Alibek</span>
               </a>
             </li>
           </ul>
