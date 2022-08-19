@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+$color-gray: #ccc;
+@mixin font18px {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #1d1d1d;
+  text-decoration: none;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+}
+
+.container {
+  .header {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    background-color: $color-gray;
+
+    .header__nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100vh;
+      margin: 0 auto;
+      background-color: $color-gray;
+      .logo {
+        width: 126px;
+        display: flex;
+        justify-content: space-between;
+
+        .logo__title {
+          font-family: 'Mulish';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 28px;
+          line-height: 35px;
+          letter-spacing: 0.07em;
+        }
+      }
+      .nav__list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 671px;
+        .list__link {
+          @include font18px;
+        }
+      }
+    }
+  }
+}
