@@ -3,7 +3,7 @@ import Main from './pages/main/Main'
 
 import './App.scss'
 
-export const App = () => {
+const App = () => {
   return (
     <div className='wrapper'>
       <Main />
