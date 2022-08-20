@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import classes from './select.module.scss'
+import { IPropsSelectElement } from '../../../../core/interfaces/propsInterfaces'
 
-const SelectElement = ({ fields }: { fields: string[] }) => {
+const SelectElement = ({ fields }: IPropsSelectElement) => {
   return (
     <div className='App'>
-      {' '}
       <div className={classes.games__list}>
         <select name='games' id='games-select' className={classes.list__games}>
           {fields.map((item, index) => {

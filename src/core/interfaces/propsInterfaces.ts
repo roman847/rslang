@@ -1,3 +1,3 @@
-export interface IInit {
-  a: string
+export interface IPropsSelectElement {
+  fields: string[]
 }

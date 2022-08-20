@@ -1,12 +1,12 @@
 import { AppBar, Link, Toolbar } from '@mui/material'
 import { Box } from '@mui/system'
-import React, { Component } from 'react'
+import React from 'react'
 import style from './header.module.scss'
 import SelectElement from '../select/Select'
 import clsx from 'clsx'
 import Logo from '../Logo/Logo'
 
-export function Header() {
+const Header = () => {
   return (
     <div className={style.wrapper}>
       <AppBar className={style.header}>

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Footer from './components/Footer/Footer'
-import Header from './components/header/Header'
+import Header from './components/Header/Header'
 import MainContent from './components/MainContent'
 import Opportunities from './components/Opportunities'
 import Team from './components/Team'

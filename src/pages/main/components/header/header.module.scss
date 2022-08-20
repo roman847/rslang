@@ -1,19 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import '../../../../styles/base/fonts';
 @import '../../../../styles/abstracts/variables';
 .wrapper {
   .header {
     position: static;
     width: 100%;
     box-shadow: none;
-    background-color: $colorGray;
-
+    background-color: $bgColor;
     .header__nav {
       display: flex;
       justify-content: space-between;
       width: 100vw;
       padding-left: 9%;
       padding-right: 9%;
-      background-color: $colorGray;
+      background-color: $bgColor;
       .logo {
         width: 126px;
         display: flex;
