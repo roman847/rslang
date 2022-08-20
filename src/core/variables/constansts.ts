@@ -13,4 +13,5 @@ export enum Color {
   secondary = '#3E92A3',
   lightText = '#F0F0F0',
   blackText = '#1D1D1D',
+  disabledButton = '#DBC7BF',
 }

@@ -12,6 +12,7 @@ const ProjectButton = ({
   height,
   width,
   fontSize,
+  disabled,
   lineHeight,
   borderColor = Color.secondary,
   action,
@@ -19,6 +20,7 @@ const ProjectButton = ({
   const BasicButton = styled(Button)({
     height,
     width,
+    disabled,
     background,
     fontSize,
     lineHeight,
@@ -31,7 +33,7 @@ const ProjectButton = ({
   })
 
   const PrimaryButton = styled(BasicButton)({
-    background: Color.primary,
+    background: disabled ? Color.disabledButton : Color.primary,
     color: Color.lightText,
     '&:hover, &:active': {
       background: '#B9410D',
@@ -48,9 +50,13 @@ const ProjectButton = ({
   })
 
   if (variant === ButtonVariants.primary || !variant) {
-    return <PrimaryButton onClick={action}>{children}</PrimaryButton>
+    return (
+      <PrimaryButton disabled={disabled} onClick={action}>
+        {children}
+      </PrimaryButton>
+    )
   } else {
-    return <SecondaryButton>{children}</SecondaryButton>
+    return <SecondaryButton onClick={action}>{children}</SecondaryButton>
   }
 }
 

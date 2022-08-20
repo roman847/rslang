@@ -7,6 +7,7 @@ export interface IButtonProps {
   width?: number
   height?: number
   fontSize?: number
+  disabled?: boolean
   lineHeight?: number
   borderColor?: Color
   action?: () => void
