@@ -1,8 +1,56 @@
-.card__container {
-  padding: 0;
-  .card__avatar {
-    width: 164px;
-    height: 238px;
-    border-radius: 56px;
+@import '../../../../../src/styles/abstracts/variables';
+@import '../../../../../src/styles/abstracts/mixins';
+
+.card {
+  width: 100%;
+  height: auto;
+  padding-bottom: 130px;
+  .card__container {
+    display: flex;
+    justify-content: left;
+    background-color: $bgColor;
+    gap: 0px 33px;
+    max-width: 770px;
+    box-shadow: 5px 4px 30px rgba(62, 146, 163, 0.15);
+    border-radius: 70px;
+    padding: 33px 35px;
+    box-sizing: border-box;
+    .card__avatar {
+      width: 164px;
+      height: 238px;
+      border-radius: 56px;
+    }
+    .card__text {
+      display: flex;
+      flex-direction: column;
+      gap: 5px 0px;
+      width: 490px;
+      padding: 0;
+      margin: 0;
+    }
+    h3 {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 34px;
+      color: $secondaryColor;
+    }
+    a {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 25px;
+      color: $linkGithubColor;
+      text-decoration: none;
+      transition: 0.7s;
+      &:hover {
+        opacity: 0.4;
+      }
+    }
+    p {
+      @include fontSizet18;
+    }
   }
 }

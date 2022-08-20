@@ -5,13 +5,15 @@ import { IPropsCard } from '../../../../core/interfaces/propsInterfaces'
 
 const Card = ({ name, avatar, text, github }: IPropsCard) => {
   return (
-    <div className='Card'>
-      <Container className={style.card__container}>
+    <div className={style.card}>
+      <div className={style.card__container}>
         <Avatar alt='roman-avatar' src={avatar} className={style.card__avatar} />
-        <h3>{name}</h3>
-        <a href={github}>github</a>
-        <p>{text}</p>
-      </Container>
+        <Container className={style.card__text}>
+          <h3>{name}</h3>
+          <a href={github}>github</a>
+          <p>{text}</p>
+        </Container>
+      </div>
     </div>
   )
 }
