@@ -2,15 +2,15 @@
 @import '../../../../../src/styles/abstracts/mixins';
 
 .card {
-  width: 100%;
+  width: 770px;
   height: auto;
-  padding-bottom: 130px;
+
   .card__container {
     display: flex;
     justify-content: left;
     background-color: $bgColor;
     gap: 0px 33px;
-    max-width: 770px;
+    width: 100%;
     box-shadow: 5px 4px 30px rgba(62, 146, 163, 0.15);
     border-radius: 70px;
     padding: 33px 35px;

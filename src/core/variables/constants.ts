@@ -12,8 +12,8 @@ export enum aboutTeam {
 
 export enum avatarsTeam {
   Roman = 'images/roman-avatar.jpg',
-  Alibek = 'images/roman-avatar.jpg',
-  Andrey = 'images/roman-avatar.jpg',
+  Alibek = 'images/alibek.jpg',
+  Andrey = 'images/andrey.jpg',
 }
 
 export enum teamGithub {
