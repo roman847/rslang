@@ -1,21 +1,21 @@
 import React from 'react'
 import { Button, styled } from '@mui/material'
-import { ButtonVariants, Color, IButtonProps } from '../../core/interfaces/propsInterfaces'
+
 import '../../styles/main.scss'
+import { ButtonVariants, Color } from '../../core/variables/constansts'
+import { IButtonProps } from '../../core/interfaces/propsInterfaces'
 
-function ProjectButton(props: IButtonProps) {
-  const {
-    children,
-    variant,
-    background,
-    height,
-    width,
-    fontSize,
-    lineHeight,
-    borderColor,
-    action,
-  } = props
-
+const ProjectButton = ({
+  children,
+  variant,
+  background,
+  height,
+  width,
+  fontSize,
+  lineHeight,
+  borderColor = Color.secondary,
+  action,
+}: IButtonProps) => {
   const BasicButton = styled(Button)({
     height,
     width,

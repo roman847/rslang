@@ -1,9 +1,5 @@
 import React from 'react'
-
-export enum ButtonVariants {
-  primary = 'primary',
-  secondary = 'secondary',
-}
+import { ButtonVariants, Color } from '../variables/constansts'
 
 export interface IButtonProps {
   variant?: ButtonVariants
@@ -15,11 +11,4 @@ export interface IButtonProps {
   borderColor?: Color
   action?: () => void
   children?: React.ReactNode
-}
-
-export enum Color {
-  primary = '#F06A33',
-  secondary = '#3E92A3',
-  lightText = '#F0F0F0',
-  blackText = '#1D1D1D',
 }
