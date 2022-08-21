@@ -7,13 +7,13 @@ import Team from './components/Team'
 
 const Main = () => {
   return (
-    <main>
+    <div>
       <Header />
       <MainContent />
       <Opportunities />
       <Team />
       <Footer />
-    </main>
+    </div>
   )
 }
 export default Main
