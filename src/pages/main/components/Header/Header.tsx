@@ -1,7 +1,7 @@
 import { AppBar, Link, Toolbar } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import style from './header.module.scss'
+import style from './Header.module.scss'
 import SelectElement from '../select/Select'
 import clsx from 'clsx'
 import Logo from '../Logo/Logo'
