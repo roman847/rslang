@@ -1,10 +1,10 @@
-export enum typesInput {
+export enum TypesInput {
   email = 'email',
   password = 'password',
   text = 'text',
 }
 
-export enum placeholdersInput {
+export enum PlaceholdersInput {
   email = 'email*',
   password = 'пароль*',
   name = 'имя*',
