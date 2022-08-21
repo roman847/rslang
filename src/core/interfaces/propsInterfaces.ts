@@ -5,5 +5,6 @@ export interface IPropsCard {
   name: string
   avatar: string
   text: string
-  github: string
+  github?: string
+  githubLink: string
 }

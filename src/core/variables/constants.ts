@@ -1,22 +1,22 @@
-export enum developersNames {
+export enum DevelopersNames {
   Roman = 'Roman',
   Alibek = 'Алибек',
   Andrey = 'Андрей',
 }
 
-export enum aboutTeam {
+export enum AboutTeam {
   Roman = 'Нечем заняться в выходной,придумываю всем девизы',
   Alibek = 'Устал работать в огне, решил стать программистом',
   Andrey = 'Столичный парень, в столице все хотят быть программистами',
 }
 
-export enum avatarsTeam {
+export enum AvatarsTeam {
   Roman = 'images/roman-avatar.jpg',
   Alibek = 'images/alibek.jpg',
   Andrey = 'images/andrey.jpg',
 }
 
-export enum teamGithub {
+export enum TeamGithub {
   Roman = 'https://github.com/roman847',
   Alibek = 'https://github.com/limhill',
   Andrey = 'https://github.com/DittmerOk',
