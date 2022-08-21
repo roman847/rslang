@@ -13,3 +13,7 @@ export interface IButtonProps {
   action?: () => void
   children?: React.ReactNode
 }
+
+export interface IPropsSelectElement {
+  fields: string[]
+}

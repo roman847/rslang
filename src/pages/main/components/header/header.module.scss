@@ -1,0 +1,41 @@
+@import '../../../../styles/base/fonts';
+@import '../../../../styles/abstracts/variables';
+.wrapper {
+  .header {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    background-color: $bgColor;
+    .header__nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100vw;
+      padding-left: 9%;
+      padding-right: 9%;
+      background-color: $bgColor;
+      .logo {
+        width: 126px;
+        display: flex;
+        justify-content: space-between;
+
+        .logo__title {
+          font-family: 'Mulish';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 28px;
+          line-height: 35px;
+          letter-spacing: 0.07em;
+        }
+      }
+      .nav__list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 671px;
+        .list__link {
+          @include font18px;
+        }
+      }
+    }
+  }
+}
