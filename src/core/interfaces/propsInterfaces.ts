@@ -1,10 +1,9 @@
-export interface IInit {
-  a: string
-}
+import { DevelopersNames } from '../variables/constants'
+import { TeamGithub } from '../variables/constants'
+
 export interface IPropsCard {
-  name: string
-  avatar: string
+  name: DevelopersNames
+  teamAvatar: string
   text: string
-  github?: string
-  githubLink: string
+  githubLink: TeamGithub
 }

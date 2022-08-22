@@ -3,14 +3,16 @@ import style from './card.module.scss'
 import { Avatar, Container } from '@mui/material'
 import { IPropsCard } from '../../../../core/interfaces/propsInterfaces'
 
-const Card = ({ name, avatar, text, githubLink }: IPropsCard) => {
+const Card = ({ name, teamAvatar, text, githubLink }: IPropsCard) => {
   return (
     <div className={style.card}>
       <div className={style.card__container}>
-        <Avatar alt='roman-avatar' src={avatar} className={style.card__avatar} />
+        <Avatar alt='roman-avatar' src={teamAvatar} className={style.card__avatar} />
         <Container className={style.card__text}>
           <h3>{name}</h3>
-          <a href={githubLink}>github</a>
+          <a href={githubLink} target='blank'>
+            github
+          </a>
           <p>{text}</p>
         </Container>
       </div>

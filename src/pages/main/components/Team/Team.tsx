@@ -17,21 +17,21 @@ const Team = () => {
       <div className={style.container__cards}>
         <Card
           name={DevelopersNames.Roman}
-          avatar={AvatarsTeam.Roman}
+          teamAvatar={AvatarsTeam.Roman}
           text={AboutTeam.Roman}
           githubLink={TeamGithub.Roman}
         />
         <div style={{ marginLeft: 'auto' }}>
           <Card
             name={DevelopersNames.Alibek}
-            avatar={AvatarsTeam.Alibek}
+            teamAvatar={AvatarsTeam.Alibek}
             text={AboutTeam.Alibek}
             githubLink={TeamGithub.Alibek}
           />
         </div>
         <Card
           name={DevelopersNames.Andrey}
-          avatar={AvatarsTeam.Andrey}
+          teamAvatar={AvatarsTeam.Andrey}
           text={AboutTeam.Andrey}
           githubLink={TeamGithub.Andrey}
         />
