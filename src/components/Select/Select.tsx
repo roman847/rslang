@@ -10,10 +10,10 @@ import {
   Paper,
   Popper,
 } from '@mui/material'
-import { Color } from '../../core/variables/constansts'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import styles from './Select.module.scss'
 
-const SelectElement = ({ fields }: IPropsSelectElement) => {
+const SelectElement = ({ listName, fields }: IPropsSelectElement) => {
   const [open, setOpen] = React.useState(false)
   const anchorRef = React.useRef<HTMLButtonElement>(null)
 
@@ -28,7 +28,7 @@ const SelectElement = ({ fields }: IPropsSelectElement) => {
     setOpen(false)
   }
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
+  const handleListKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Tab') {
       event.preventDefault()
       setOpen(false)
@@ -37,20 +37,10 @@ const SelectElement = ({ fields }: IPropsSelectElement) => {
     }
   }
 
-  const menuButtonStyles = {
-    fontFamily: ['Montserrat', 'sans-serif'].join(','),
-    color: Color.blackText,
-    fontWeight: 500,
-    padding: 0,
-    fontSize: '18px',
-    lineHeight: '22px',
-    textTransform: 'none',
-  }
-
   return (
     <div>
       <Button
-        sx={menuButtonStyles}
+        className={styles.menuButton}
         ref={anchorRef}
         id='composition-button'
         aria-controls={open ? 'composition-menu' : undefined}
@@ -58,7 +48,7 @@ const SelectElement = ({ fields }: IPropsSelectElement) => {
         aria-haspopup='true'
         onClick={handleToggle}
       >
-        <Box>Игры</Box>
+        <Box>{listName}</Box>
         <KeyboardArrowDownIcon />
       </Button>
       <Popper

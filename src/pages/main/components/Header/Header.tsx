@@ -15,7 +15,7 @@ const Header = () => {
           <Box className={style.nav__list}>
             <Link className={style.list__link}>Главная</Link>
             <Link className={style.list__link}>Учебник</Link>
-            <SelectElement fields={['Игра 1', 'Игра 2', 'Игра 3', 'Игра 4']} />
+            <SelectElement listName={'Игры'} fields={['Игра 1', 'Игра 2', 'Игра 3', 'Игра 4']} />
             <Link className={style.list__link}>Статистика</Link>
             <button>Click</button>
           </Box>
