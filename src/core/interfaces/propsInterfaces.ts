@@ -15,5 +15,6 @@ export interface IButtonProps {
 }
 
 export interface IPropsSelectElement {
+  label: string
   fields: string[]
 }

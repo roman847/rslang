@@ -1,4 +1,4 @@
 @function pxToRem($px) {
   $pxInRem: 16;
-   @return $px / $pxInRem + rem;
+   @return calc($px / $pxInRem) + rem;
 }

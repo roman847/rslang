@@ -2,7 +2,7 @@ import { AppBar, Link, Toolbar } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import style from './Header.module.scss'
-import SelectElement from '../select/Select'
+import SelectElement from '../../../../components/Select'
 import clsx from 'clsx'
 import Logo from '../Logo/Logo'
 import ProjectButton from '../../../../components/ProjectButton'
@@ -18,7 +18,7 @@ const Header = () => {
           <Box className={style.nav__list}>
             <Link className={style.list__link}>Главная</Link>
             <Link className={style.list__link}>Учебник</Link>
-            <SelectElement fields={['Игры']} />
+            <SelectElement listName={'Игры'} fields={['Игра 1', 'Игра 2', 'Игра 3', 'Игра 4']} />
             <Link className={style.list__link}>Статистика</Link>
             <ProjectButton
               variant={ButtonVariants.secondary}
