@@ -1,6 +1,6 @@
-@import "src/styles/base/fonts";
-@import "src/styles/abstracts/variables";
-@import "src/styles/abstracts/functions";
+@import 'src/styles/base/fonts';
+@import 'src/styles/abstracts/variables';
+@import 'src/styles/abstracts/functions';
 
 .wrapper {
   padding: pxToRem(100) pxToRem(135) 0;
@@ -37,17 +37,16 @@
   font-weight: 400;
   font-size: pxToRem(16);
   line-height: pxToRem(25);
-
 }
 .firstImg {
-  background-image: url("../../../../assets/images/opportunities-book.png");
+  background-image: url('../../../../assets/images/opportunities-book.png');
 }
 .secondImg {
-  background-image: url("../../../../assets/images/opportunities-vocabulary.png");
+  background-image: url('../../../../assets/images/opportunities-vocabulary.png');
 }
 .thirdImg {
-  background-image: url("../../../../assets/images/opportunities-statistic.png");
+  background-image: url('../../../../assets/images/opportunities-statistic.png');
 }
 .fourthImg {
-  background-image: url("../../../../assets/images/opportunities-games.png");
+  background-image: url('../../../../assets/images/opportunities-games.png');
 }
