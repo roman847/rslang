@@ -1,9 +1,8 @@
 import React from 'react'
-import { Button, styled } from '@mui/material'
-
 import '../../styles/main.scss'
-import { ButtonVariants, Color } from '../../core/variables/constansts'
+import { Button, styled } from '@mui/material'
 import { IButtonProps } from '../../core/interfaces/propsInterfaces'
+import { ButtonVariants, Color } from '../../core/variables/constansts'
 
 const ProjectButton = ({
   children,
@@ -45,7 +44,7 @@ const ProjectButton = ({
     color: Color.blackText,
     fontWeight: 500,
     '&:hover, &:active': {
-      background: '#D5EBF0',
+      background: borderColor,
     },
   })
 
