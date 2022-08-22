@@ -2,6 +2,7 @@ import React from 'react'
 import style from './card.module.scss'
 import { Avatar, Container } from '@mui/material'
 import { IPropsCard } from '../../../../core/interfaces/propsInterfaces'
+import { Typography } from '@mui/material'
 
 const Card = ({ name, teamAvatar, text, githubLink }: IPropsCard) => {
   return (
@@ -9,11 +10,13 @@ const Card = ({ name, teamAvatar, text, githubLink }: IPropsCard) => {
       <div className={style.card__container}>
         <Avatar alt='roman-avatar' src={teamAvatar} className={style.card__avatar} />
         <Container className={style.card__text}>
-          <h3>{name}</h3>
-          <a href={githubLink} target='blank'>
+          <Typography variant='h3' className={style.title__card}>
+            {name}
+          </Typography>
+          <a className={style.card__link} href={githubLink} target='blank'>
             github
           </a>
-          <p>{text}</p>
+          <Typography className={style.card__text}>{text}</Typography>
         </Container>
       </div>
     </div>

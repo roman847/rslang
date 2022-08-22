@@ -1,6 +1,5 @@
 import React from 'react'
 import style from './team.module.scss'
-import { Container } from '@mui/material'
 import {
   AboutTeam,
   DevelopersNames,
@@ -9,11 +8,14 @@ import {
 } from '../../../../core/variables/constants'
 import clsx from 'clsx'
 import Card from '../Card'
+import { Typography } from '@mui/material'
 
 const Team = () => {
   return (
     <div className={clsx('container', style.container__team)}>
-      <h2>О команде</h2>
+      <Typography variant='h2' className='title__accent'>
+        О команде
+      </Typography>
       <div className={style.container__cards}>
         <Card
           name={DevelopersNames.Roman}
