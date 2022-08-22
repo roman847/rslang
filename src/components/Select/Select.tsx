@@ -13,7 +13,7 @@ import {
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import styles from './Select.module.scss'
 
-const SelectElement = ({ listName, fields }: IPropsSelectElement) => {
+const SelectElement = ({ label, fields }: IPropsSelectElement) => {
   const [open, setOpen] = React.useState(false)
   const anchorRef = React.useRef<HTMLButtonElement>(null)
 
@@ -48,7 +48,7 @@ const SelectElement = ({ listName, fields }: IPropsSelectElement) => {
         aria-haspopup='true'
         onClick={handleToggle}
       >
-        <Box>{listName}</Box>
+        <Box>{label}</Box>
         <KeyboardArrowDownIcon />
       </Button>
       <Popper
