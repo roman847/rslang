@@ -1,6 +1,9 @@
 import React from 'react'
 import style from './MainContent.module.scss'
 import clsx from 'clsx'
+import ProjectButton from '../../../../components/ProjectButton'
+import { ButtonVariants } from '../../../../core/variables/constansts'
+import { Color } from '../../../../core/variables/constansts'
 
 const MainContent = () => {
   return (
@@ -15,7 +18,15 @@ const MainContent = () => {
           увлекательно. Для детей и взрослых.
         </div>
         <div>
-          <button>Красивая кнопка</button>
+          <ProjectButton
+            variant={ButtonVariants.primary}
+            width={230}
+            height={50}
+            borderColor={Color.lightText}
+            fontSize={16}
+          >
+            Начать обучение
+          </ProjectButton>
         </div>
       </div>
       <div className={style.wrapper__avatar}>
