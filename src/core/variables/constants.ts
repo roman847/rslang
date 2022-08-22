@@ -1,3 +1,4 @@
+
 export enum DevelopersNames {
   Roman = 'Roman',
   Alibek = 'Алибек',
@@ -21,4 +22,10 @@ export enum TeamGithub {
   Alibek = 'https://github.com/limhill',
   Andrey = 'https://github.com/DittmerOk',
   RsShool = 'https://app.rs.school/',
+  }
+
+export enum TypesInput {
+  email = 'email',
+  password = 'password',
+  text = 'text',
 }

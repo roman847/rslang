@@ -1,0 +1,52 @@
+@import 'src/styles/base/fonts';
+@import 'src/styles/abstracts/variables';
+@import 'src/styles/abstracts/functions';
+
+.wrapper {
+  padding: pxToRem(100) pxToRem(135) 0;
+}
+.section__header {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: pxToRem(46);
+  line-height: pxToRem(70);
+  color: $accentColor;
+  padding-bottom: pxToRem(35);
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
+.card {
+  width: pxToRem(270);
+  height: pxToRem(477);
+}
+.card__img {
+  width: pxToRem(270);
+  height: pxToRem(208);
+}
+.card__header {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: pxToRem(28);
+  line-height: pxToRem(34);
+  color: $secondaryColor;
+}
+.card__description {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: pxToRem(16);
+  line-height: pxToRem(25);
+}
+.firstImg {
+  background-image: url('../../../../assets/images/opportunities-book.png');
+}
+.secondImg {
+  background-image: url('../../../../assets/images/opportunities-vocabulary.png');
+}
+.thirdImg {
+  background-image: url('../../../../assets/images/opportunities-statistic.png');
+}
+.fourthImg {
+  background-image: url('../../../../assets/images/opportunities-games.png');
+}
