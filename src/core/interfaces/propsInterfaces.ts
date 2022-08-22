@@ -11,6 +11,13 @@ export interface IPropsCard {
   githubLink: TeamGithub
 }
 
+export interface IPropsCard {
+  name: DevelopersNames
+  teamAvatar: string
+  text: string
+  githubLink: TeamGithub
+}
+
 export interface IPropsInput {
   id: string
   placeholder: string

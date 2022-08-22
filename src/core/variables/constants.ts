@@ -22,6 +22,7 @@ export enum TeamGithub {
   Andrey = 'https://github.com/DittmerOk',
   RsShool = 'https://app.rs.school/',
 }
+
 export enum TypesInput {
   email = 'email',
   password = 'password',
