@@ -6,7 +6,7 @@ export interface IPropsInput {
   id: string
   placeholder: string
   type: TypesInput
-
+}
 
 export interface IButtonProps {
   variant?: ButtonVariants
@@ -24,5 +24,4 @@ export interface IButtonProps {
 export interface IPropsSelectElement {
   label: string
   fields: string[]
-
 }
