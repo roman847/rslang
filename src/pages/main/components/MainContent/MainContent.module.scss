@@ -1,10 +1,11 @@
 @import '/src/styles/main.scss';
 
 .wrapper {
+  padding: pxToRem(100) pxToRem(135) 0;
   display: flex;
   justify-content: space-between;
   &__content {
-    padding: 125px 200px 0 0;
+    padding: 297px 90px 0 0;
   }
   &__title {
     width: 600px;
@@ -29,8 +30,10 @@
     color: $blackColor;
   }
   &__avatar {
+    position: relative;
+    top: 172px;
     flex: 0 0 514px;
-    border: 1px solid #f06a33;
+    border: 1px solid $nonActiveBtnColor;
     border-radius: 235px;
     img {
       transform: translateX(25px) translateY(-25px);

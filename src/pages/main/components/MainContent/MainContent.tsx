@@ -2,9 +2,9 @@ import React from 'react'
 import style from './MainContent.module.scss'
 import clsx from 'clsx'
 
-function MainContent() {
+const MainContent = () => {
   return (
-    <div className={clsx('container', style.wrapper)}>
+    <section className={clsx('container', style.wrapper)}>
       <div className={style.wrapper__content}>
         <div className={style.wrapper__title}>
           Изучай <span>английский </span>
@@ -21,7 +21,7 @@ function MainContent() {
       <div className={style.wrapper__avatar}>
         <img src='images/woman.png' alt='happyWoman' />
       </div>
-    </div>
+    </section>
   )
 }
 
