@@ -1,6 +1,6 @@
 import React from 'react'
-import style from './Opportunities.module.scss'
 import clsx from 'clsx'
+import style from './Opportunities.module.scss'
 
 const Opportunities = () => {
   return (

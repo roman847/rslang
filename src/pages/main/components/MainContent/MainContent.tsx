@@ -1,9 +1,9 @@
 import React from 'react'
-import style from './MainContent.module.scss'
 import clsx from 'clsx'
 import ProjectButton from '../../../../components/ProjectButton'
-import { ButtonVariants } from '../../../../core/variables/constansts'
-import { Color } from '../../../../core/variables/constansts'
+import { ButtonVariants, Color } from '../../../../core/variables/constansts'
+
+import style from './MainContent.module.scss'
 
 const MainContent = () => {
   return (
