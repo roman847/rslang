@@ -1,14 +1,9 @@
 import React from 'react'
-import style from './team.module.scss'
-import {
-  AboutTeam,
-  DevelopersNames,
-  AvatarsTeam,
-  TeamGithub,
-} from '../../../../core/variables/constants'
 import clsx from 'clsx'
-import Card from '../Card'
 import { Typography } from '@mui/material'
+import { AboutTeam, DevelopersNames, AvatarsTeam, TeamGithub } from 'core/variables/constants'
+import Card from '../Card'
+import style from './team.module.scss'
 
 const Team = () => {
   return (

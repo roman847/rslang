@@ -6,12 +6,14 @@ import Opportunities from 'pages/main/components/Opportunities'
 import Team from 'pages/main/components/Team'
 
 const Main = () => {
-  ;<div>
-    <Header />
-    <MainContent />
-    <Opportunities />
-    <Team />
-    <Footer />
-  </div>
+  return (
+    <div>
+      <Header />
+      <MainContent />
+      <Opportunities />
+      <Team />
+      <Footer />
+    </div>
+  )
 }
 export default Main
