@@ -1,8 +1,7 @@
-export interface IInit {
-  a: string
-}
+import { TypesInput } from '../variables/constants'
+
 export interface IPropsInput {
   id: string
   placeholder: string
-  type: string
+  type: TypesInput
 }
