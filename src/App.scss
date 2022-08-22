@@ -1,7 +1,14 @@
 @import './styles/main.scss';
+
+@import './styles/abstracts/mixins';
+
 @import '../src/styles/abstracts/variables';
 
 .container {
   width: 100vw;
   padding: 0% 9%;
+}
+.title__accent {
+  @include fontSize46;
+  color: #f06a33;
 }
