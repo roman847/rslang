@@ -1,5 +1,8 @@
 @import './styles/main.scss';
+
 @import './styles/abstracts/mixins';
+
+@import '../src/styles/abstracts/variables';
 
 .container {
   width: 100vw;

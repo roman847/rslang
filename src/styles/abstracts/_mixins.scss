@@ -19,3 +19,14 @@
   font-size: 46px;
   line-height: 70px;
 }
+
+@mixin font18px {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #1d1d1d;
+  text-decoration: none;
+}
