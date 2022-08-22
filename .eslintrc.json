@@ -6,7 +6,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["src"]
       }
     }
   },
@@ -34,7 +35,6 @@
 
     "import/order": [
       "error",
-      "import/no-unresolved",
       {
         "groups": [
           "builtin",

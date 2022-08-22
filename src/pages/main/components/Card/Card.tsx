@@ -1,8 +1,7 @@
 import React from 'react'
+import { Avatar, Container, Typography } from '@mui/material'
+import { IPropsCard } from 'core/interfaces/propsInterfaces'
 import style from './card.module.scss'
-import { Avatar, Container } from '@mui/material'
-import { IPropsCard } from '../../../../core/interfaces/propsInterfaces'
-import { Typography } from '@mui/material'
 
 const Card = ({ name, teamAvatar, text, githubLink }: IPropsCard) => {
   return (
