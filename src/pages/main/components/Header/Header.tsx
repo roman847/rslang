@@ -1,13 +1,13 @@
-import { AppBar, Link, Toolbar } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import style from './Header.module.scss'
-import SelectElement from '../../../../components/Select'
 import clsx from 'clsx'
-import Logo from '../Logo/Logo'
-import ProjectButton from '../../../../components/ProjectButton'
-import { Color } from '../../../../core/variables/constansts'
-import { ButtonVariants } from '../../../../core/variables/constansts'
+import { AppBar, Link, Toolbar } from '@mui/material'
+import { Color, ButtonVariants } from 'core/variables/constansts'
+import SelectElement from 'components/Select/Select'
+import ProjectButton from 'components/ProjectButton'
+import Logo from 'pages/main/components/Logo'
+
+import style from './Header.module.scss'
 
 const Header = () => {
   return (

@@ -1,19 +1,17 @@
 import React from 'react'
-import Footer from './components/Footer/Footer'
-import Header from './components/Header'
-import MainContent from './components/MainContent'
-import Opportunities from './components/Opportunities'
-import Team from './components/Team'
+import Footer from 'pages/main/components/Footer'
+import Header from 'pages/main/components/Header'
+import MainContent from 'pages/main/components/MainContent'
+import Opportunities from 'pages/main/components/Opportunities'
+import Team from 'pages/main/components/Team'
 
 const Main = () => {
-  return (
-    <div>
-      <Header />
-      <MainContent />
-      <Opportunities />
-      <Team />
-      <Footer />
-    </div>
-  )
+  ;<div>
+    <Header />
+    <MainContent />
+    <Opportunities />
+    <Team />
+    <Footer />
+  </div>
 }
 export default Main

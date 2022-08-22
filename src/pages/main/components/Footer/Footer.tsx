@@ -1,8 +1,8 @@
 import React from 'react'
-import style from './Footer.module.scss'
-import Logo from '../Logo/Logo'
-import { RomanGit, AndreyGit, AlibekGit, RsShoolGit } from '../../../../core/variables/constansts'
 import clsx from 'clsx'
+import { RomanGit, AndreyGit, AlibekGit, RsShoolGit } from 'core/variables/constansts'
+import Logo from 'pages/main/components/Logo'
+import style from './Footer.module.scss'
 
 const Footer: React.FC = () => {
   return (

@@ -1,5 +1,4 @@
 import React from 'react'
-import { IPropsSelectElement } from '../../core/interfaces/propsInterfaces'
 import {
   Box,
   Button,
@@ -11,6 +10,7 @@ import {
   Popper,
 } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import { IPropsSelectElement } from 'core/interfaces/propsInterfaces'
 import styles from './Select.module.scss'
 
 const SelectElement = ({ label, fields }: IPropsSelectElement) => {
