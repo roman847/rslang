@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
-import ProjectButton from '../../../../components/ProjectButton'
-import { ButtonVariants, Color } from '../../../../core/variables/constansts'
+import ProjectButton from 'components/ProjectButton'
+import { ButtonVariants, Color } from 'core/variables/constansts'
 
 import style from './MainContent.module.scss'
 

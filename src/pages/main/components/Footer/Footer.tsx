@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { RomanGit, AndreyGit, AlibekGit, RsShoolGit } from '../../../../core/variables/constansts'
+import { RomanGit, AndreyGit, AlibekGit, RsShoolGit } from 'core/variables/constansts'
 import Logo from '../Logo/Logo'
 import style from './Footer.module.scss'
 

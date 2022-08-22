@@ -1,13 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "paths": {
-      "@app/*": ["app/*"],
-      "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"],
-      "core*": ["core/*"],
-      "@feature/*": ["feature/*"]
-    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -22,7 +14,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "app": ["app/*"],
+      "assets": ["assets/*"],
+      "components": ["components/*"],
+      "core": ["core/*"],
+      "feature": ["feature/*"]
+    }
   },
   "include": ["src"]
 }
