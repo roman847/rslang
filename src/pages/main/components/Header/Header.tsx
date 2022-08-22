@@ -5,7 +5,7 @@ import { AppBar, Link, Toolbar } from '@mui/material'
 import { Color, ButtonVariants } from 'core/variables/constansts'
 import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
-import Logo from '../Logo/Logo'
+import Logo from 'pages/main/components/Logo'
 
 import style from './Header.module.scss'
 
