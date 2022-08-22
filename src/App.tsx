@@ -1,14 +1,12 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Main from 'pages/main/Main'
-
 import './App.scss'
-
 import Authorization from 'pages/Authorization'
 import AudioCall from 'pages/AudioCall'
 import Sprint from 'pages/Sprint'
 import Statistics from 'pages/Statistics'
 import Textbook from 'pages/Textbook'
+import Main from '../src/pages/main/Main'
 
 const App = () => {
   return (

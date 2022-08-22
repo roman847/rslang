@@ -31,8 +31,10 @@
 
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
+
     "import/order": [
       "error",
+      "import/no-unresolved",
       {
         "groups": [
           "builtin",
