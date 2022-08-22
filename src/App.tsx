@@ -9,7 +9,7 @@ import Sprint from './pages/Sprint'
 import Statistics from './pages/Statistics'
 import Textbook from './pages/Textbook'
 
-export const App = () => {
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
