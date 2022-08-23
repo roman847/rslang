@@ -1,14 +1,12 @@
 import React from 'react'
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import { pxToRem, styles } from './Opportunities.styles'
+import { styles } from './Opportunities.styles'
 
 const Opportunities = () => {
   return (
-    <Box pt={pxToRem(100)} px={pxToRem(135)} pb={pxToRem(135)}>
-      <Typography pb={pxToRem(35)} sx={styles.section__header}>
-        Наши возможности
-      </Typography>
+    <Box sx={styles.wrapper}>
+      <Typography sx={styles.section__header}>Наши возможности</Typography>
       <Box sx={styles.cards}>
         <Box sx={styles.card}>
           <Box sx={{ ...styles.firstImg, ...styles.card__img }}></Box>

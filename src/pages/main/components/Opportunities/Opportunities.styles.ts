@@ -3,12 +3,16 @@ import { Color } from 'core/variables/constansts'
 export const pxToRem = (px: number) => `${px / 16}rem`
 
 export const styles = {
+  wrapper: {
+    padding: `${pxToRem(100)} ${pxToRem(135)}`,
+  },
   section__header: {
     fontFamily: ['Montserrat', 'sans-serif'].join(','),
     fontWeight: 500,
     fontSize: pxToRem(46),
     lineHeight: pxToRem(70),
     color: Color.primary,
+    paddingBottom: pxToRem(35),
   },
   cards: {
     display: 'flex',
