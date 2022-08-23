@@ -1,3 +1,5 @@
+import pxToRem from '../functions/pxToRem'
+
 export enum DevelopersNames {
   Roman = 'Roman',
   Alibek = 'Алибек',
@@ -47,6 +49,34 @@ export enum Color {
   disabledButton = '#DBC7BF',
 }
 
-export enum Fonts {
-  Montserrat = 'Montserrat, sans-serif',
+export const Montserrat16 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 400,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(16)}`,
+  lineHeight: `${pxToRem(25)}`,
+}
+
+export const Montserrat18 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 500,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(18)}`,
+  lineHeight: `${pxToRem(22)}`,
+}
+
+export const Montserrat28 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 500,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(28)}`,
+  lineHeight: `${pxToRem(34)}`,
+}
+
+export const Montserrat46 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 500,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(46)}`,
+  lineHeight: `${pxToRem(70)}`,
 }

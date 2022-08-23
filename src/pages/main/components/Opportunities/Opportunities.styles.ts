@@ -1,4 +1,4 @@
-import { Color, Fonts } from 'core/variables/constants'
+import { Color, Montserrat16, Montserrat28, Montserrat46 } from 'core/variables/constants'
 import pxToRem from 'core/functions/pxToRem'
 
 export const styles = {
@@ -6,12 +6,9 @@ export const styles = {
     padding: `${pxToRem(100)} ${pxToRem(135)}`,
   },
   section__header: {
-    fontFamily: Fonts.Montserrat,
-    fontWeight: 500,
-    fontSize: pxToRem(46),
-    lineHeight: pxToRem(70),
     color: Color.primary,
     paddingBottom: pxToRem(35),
+    ...Montserrat46,
   },
   cards: {
     display: 'flex',
@@ -26,19 +23,13 @@ export const styles = {
     height: pxToRem(208),
   },
   card__header: {
-    fontFamily: Fonts.Montserrat,
-    fontWeight: 500,
-    fontSize: pxToRem(28),
-    lineHeight: pxToRem(34),
     color: Color.secondary,
     paddingTop: pxToRem(25),
     paddingBottom: pxToRem(10),
+    ...Montserrat28,
   },
   card__description: {
-    fontFamily: Fonts.Montserrat,
-    fontWeight: 400,
-    fontSize: pxToRem(16),
-    lineHeight: pxToRem(25),
+    ...Montserrat16,
   },
   firstImg: {
     backgroundImage: "url('images/opportunities-book.png')",
