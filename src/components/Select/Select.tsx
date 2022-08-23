@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { IPropsSelectElement } from 'core/interfaces/propsInterfaces'
-import styles from './Select.module.scss'
+import { styles } from './Select.styles'
 
 const SelectElement = ({ label, fields }: IPropsSelectElement) => {
   const [open, setOpen] = React.useState(false)
@@ -38,9 +38,9 @@ const SelectElement = ({ label, fields }: IPropsSelectElement) => {
   }
 
   return (
-    <div>
+    <Box>
       <Button
-        className={styles.menuButton}
+        sx={styles.select}
         ref={anchorRef}
         id='composition-button'
         aria-controls={open ? 'composition-menu' : undefined}
@@ -85,7 +85,7 @@ const SelectElement = ({ label, fields }: IPropsSelectElement) => {
           </Grow>
         )}
       </Popper>
-    </div>
+    </Box>
   )
 }
 export default SelectElement
