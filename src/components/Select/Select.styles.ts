@@ -1,6 +1,5 @@
-import { Color } from 'core/variables/constansts'
-
-const pxToRem = (px: number) => `${px / 16}rem`
+import { Color } from 'core/variables/constants'
+import pxToRem from 'core/functions/pxToRem'
 
 export const styles = {
   select: {
