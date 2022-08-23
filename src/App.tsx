@@ -15,6 +15,7 @@ const App = () => {
     email: 'romanbogdan147@gmail.com',
     password: '12345678',
   })
+  res.catch((data) => console.log(data))
 
   return (
     <BrowserRouter>

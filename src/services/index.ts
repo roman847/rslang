@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 
 export const getWords = async () => {
   try {
@@ -30,8 +30,8 @@ export const createUser = async ({ name, email, password }: ICreateUser) => {
         },
       },
     )
-    return response.data
-  } catch {
-    console.error('Error')
+  } catch (error) {
+    const err = error as AxiosError
+    console.error(err.response?.data)
   }
 }
