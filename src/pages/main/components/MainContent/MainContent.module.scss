@@ -3,7 +3,6 @@
 .wrapper {
   padding: pxToRem(100) pxToRem(135) 0;
   display: flex;
-  background: $bgColor;
   justify-content: space-between;
   &__content {
     padding: 297px 90px 0 0;

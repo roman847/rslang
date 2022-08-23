@@ -4,10 +4,11 @@ import Header from 'pages/main/components/Header'
 import MainContent from 'pages/main/components/MainContent'
 import Opportunities from 'pages/main/components/Opportunities'
 import Team from 'pages/main/components/Team'
+import style from './Main.module.scss'
 
 const Main = () => {
   return (
-    <div>
+    <div className={style.wrapper}>
       <Header />
       <MainContent />
       <Opportunities />

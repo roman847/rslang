@@ -6,5 +6,5 @@
 }
 .title__accent {
   @include fontSize46;
-  color: #f06a33;
+  color: $nonActiveBtnColor;
 }
