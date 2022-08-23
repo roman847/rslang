@@ -9,7 +9,8 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
         "paths": ["src"]
       }
-    }
+    },
+    "import/ignore": ["node_modules"]
   },
   "extends": [
     "eslint:recommended",
@@ -17,8 +18,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "prettier",
-    "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/recommended",
+    "plugin:import/typescript"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -29,7 +30,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
 
