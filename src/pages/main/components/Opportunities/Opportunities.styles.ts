@@ -1,13 +1,12 @@
-import { Color } from 'core/variables/constansts'
-
-export const pxToRem = (px: number) => `${px / 16}rem`
+import { Color, Fonts } from 'core/variables/constants'
+import pxToRem from 'core/functions/pxToRem'
 
 export const styles = {
   wrapper: {
     padding: `${pxToRem(100)} ${pxToRem(135)}`,
   },
   section__header: {
-    fontFamily: ['Montserrat', 'sans-serif'].join(','),
+    fontFamily: Fonts.Montserrat,
     fontWeight: 500,
     fontSize: pxToRem(46),
     lineHeight: pxToRem(70),
@@ -27,7 +26,7 @@ export const styles = {
     height: pxToRem(208),
   },
   card__header: {
-    fontFamily: ['Montserrat', 'sans-serif'].join(','),
+    fontFamily: Fonts.Montserrat,
     fontWeight: 500,
     fontSize: pxToRem(28),
     lineHeight: pxToRem(34),
@@ -36,7 +35,7 @@ export const styles = {
     paddingBottom: pxToRem(10),
   },
   card__description: {
-    fontFamily: ['Montserrat', 'sans-serif'].join(','),
+    fontFamily: Fonts.Montserrat,
     fontWeight: 400,
     fontSize: pxToRem(16),
     lineHeight: pxToRem(25),

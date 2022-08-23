@@ -1,8 +1,11 @@
-import { DevelopersNames } from '../variables/constants'
-import { TeamGithub } from '../variables/constants'
+import {
+  DevelopersNames,
+  TeamGithub,
+  ButtonVariants,
+  Color,
+  TypesInput,
+} from 'core/variables/constants'
 import React from 'react'
-import { ButtonVariants, Color } from '../variables/constansts'
-import { TypesInput } from '../variables/constants'
 
 export interface IPropsCard {
   name: DevelopersNames
