@@ -1,37 +1,18 @@
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 
-export const getWords = async () => {
-  try {
-    const response = await axios.get('https://react-learn-new-words.herokuapp.com/words')
-    return response.data
-  } catch {
-    console.error('Error')
-  }
+export const saveToken = (tolken: string): void => {
+  localStorage.setItem('tolken', tolken)
 }
 
-interface ICreateUser {
-  name: string
-  email: string
-  password: string
+export const getToken = () => {
+  return localStorage.getItem('tolken')
 }
-export const createUser = async ({ name, email, password }: ICreateUser) => {
-  try {
-    const response = await axios.post(
-      'https://react-learn-new-words.herokuapp.com/users',
-      {
-        name: name,
-        email: email,
-        password: password,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      },
-    )
-  } catch (error) {
-    const err = error as AxiosError
-    console.error(err.response?.data)
-  }
-}
+
+export const axiosInstance = axios.create({
+  baseURL: 'https://react-learn-new-words.herokuapp.com',
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    Authorization: `Bearer ${getToken()}`,
+  },
+})

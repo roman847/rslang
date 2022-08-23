@@ -6,17 +6,9 @@ import AudioCall from 'pages/AudioCall'
 import Sprint from 'pages/Sprint'
 import Statistics from 'pages/Statistics'
 import Textbook from 'pages/Textbook'
-import { createUser } from 'services'
 import Main from '../src/pages/main/Main'
 
 const App = () => {
-  const res = createUser({
-    name: 'Roman',
-    email: 'romanbogdan147@gmail.com',
-    password: '12345678',
-  })
-  res.catch((data) => console.log(data))
-
   return (
     <BrowserRouter>
       <Routes>
