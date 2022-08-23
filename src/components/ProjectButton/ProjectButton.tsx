@@ -2,7 +2,7 @@ import React from 'react'
 import '../../styles/main.scss'
 import { Button, styled } from '@mui/material'
 import { IButtonProps } from '../../core/interfaces/propsInterfaces'
-import { ButtonVariants, Color } from '../../core/variables/constansts'
+import { ButtonVariants, Color } from '../../core/variables/constants'
 
 const ProjectButton = ({
   children,

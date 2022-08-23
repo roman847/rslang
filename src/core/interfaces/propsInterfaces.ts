@@ -1,7 +1,7 @@
 import { DevelopersNames } from '../variables/constants'
 import { TeamGithub } from '../variables/constants'
 import React from 'react'
-import { ButtonVariants, Color } from '../variables/constansts'
+import { ButtonVariants, Color } from '../variables/constants'
 import { TypesInput } from '../variables/constants'
 
 export interface IPropsCard {
