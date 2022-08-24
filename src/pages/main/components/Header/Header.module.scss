@@ -2,12 +2,10 @@
 
 .wrapper {
   .header {
-    width: 100%;
     box-shadow: none;
     .header__nav {
       display: flex;
       justify-content: space-between;
-      width: 100vw;
       padding-left: 9%;
       padding-right: 9%;
       background-color: $bgColor;
