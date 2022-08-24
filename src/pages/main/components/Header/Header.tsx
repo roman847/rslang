@@ -1,12 +1,12 @@
 import { Box } from '@mui/system'
 import React from 'react'
 import clsx from 'clsx'
-import { AppBar, Link, Toolbar } from '@mui/material'
+import { AppBar, Toolbar } from '@mui/material'
+import { Link } from 'react-router-dom'
 import { Color, ButtonVariants } from 'core/variables/constants'
 import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
 import Logo from 'pages/main/components/Logo'
-
 import style from './Header.module.scss'
 
 const Header = () => {
@@ -16,10 +16,14 @@ const Header = () => {
         <Toolbar className={clsx('container', style.header__nav)}>
           <Logo />
           <Box className={style.nav__list}>
-            <Link className={style.list__link}>Главная</Link>
-            <Link className={style.list__link}>Учебник</Link>
+            <Link to='/'>
+              <div className={style.list__link}>Главная</div>
+            </Link>
+            <a className={style.list__link}>Учебник</a>
             <SelectElement label={'Игры'} fields={['Игра 1', 'Игра 2', 'Игра 3', 'Игра 4']} />
-            <Link className={style.list__link}>Статистика</Link>
+            <Link to='/statistics'>
+              <div className={style.list__link}>Статистика</div>
+            </Link>
             <ProjectButton
               variant={ButtonVariants.secondary}
               width={110}

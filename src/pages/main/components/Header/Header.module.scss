@@ -1,5 +1,7 @@
 @import '/src/styles/main.scss';
-
+a {
+  text-decoration: none;
+}
 .wrapper {
   .header {
     position: static;
