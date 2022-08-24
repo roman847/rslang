@@ -8,6 +8,9 @@
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
         "paths": ["src"]
+      },
+      "typescript": {
+        "alwaysTryTypes": true
       }
     },
     "import/ignore": ["node_modules"]
