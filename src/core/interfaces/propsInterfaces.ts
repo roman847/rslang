@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   DevelopersNames,
   TeamGithub,
@@ -5,14 +6,6 @@ import {
   Color,
   TypesInput,
 } from 'core/variables/constants'
-import React from 'react'
-
-export interface IPropsCard {
-  name: DevelopersNames
-  teamAvatar: string
-  text: string
-  githubLink: TeamGithub
-}
 
 export interface IPropsCard {
   name: DevelopersNames
