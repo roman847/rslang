@@ -1,8 +1,12 @@
-import { AxiosError } from 'axios'
+import axios, { AxiosError } from 'axios'
 import { axiosInstance } from 'services'
 import { IWordsItem, IGetWords } from 'core/interfaces/dataModels'
+import { ServerError } from 'core/interfaces/commonInterfaces'
 
-export const getWords = async ({ page, group }: IGetWords): Promise<Array<IWordsItem> | void> => {
+export const getWords = async ({
+  page,
+  group,
+}: IGetWords): Promise<Array<IWordsItem> | ServerError> => {
   try {
     const response = await axiosInstance.get('/words', {
       params: {
@@ -11,17 +15,28 @@ export const getWords = async ({ page, group }: IGetWords): Promise<Array<IWords
       },
     })
     return response.data
-  } catch {
-    console.error('Error')
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const serverError = error as AxiosError<ServerError>
+      if (serverError && serverError.response) {
+        return serverError.response.data
+      }
+    }
+    return { errorMessage: 'Unknown error' }
   }
 }
 
-export const getWordsAssets = async (id: string): Promise<IWordsItem | void> => {
+export const getWordsAssets = async (id: string): Promise<IWordsItem | ServerError> => {
   try {
     const response = await axiosInstance.get(`/words/${id}`)
     return response.data
   } catch (error) {
-    const err = error as AxiosError
-    console.error(err.response?.data)
+    if (axios.isAxiosError(error)) {
+      const serverError = error as AxiosError<ServerError>
+      if (serverError && serverError.response) {
+        return serverError.response.data
+      }
+    }
+    return { errorMessage: 'Unknown error' }
   }
 }

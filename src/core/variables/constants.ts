@@ -48,6 +48,7 @@ export enum Color {
   blackText = '#1D1D1D',
   disabledButton = '#DBC7BF',
   pageBackground = '#FAF8F5',
+  error = '#B71313',
 }
 
 export const Montserrat16 = {
@@ -97,4 +98,9 @@ export const Mulish36 = {
   fontSize: `${pxToRem(36)}`,
   lineHeight: `${pxToRem(50)}`,
   letterSpacing: '7%',
+}
+
+export const errorMessageText = {
+  passwordLengthIncorrect: 'Пароль должен быть длиннее 8 символов!',
+  emailOrPasswordIncorrect: 'Неверный email или пароль!',
 }

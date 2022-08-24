@@ -34,7 +34,7 @@ const styles = {
     gap: pxToRem(30),
   },
   button: {
-    paddingTop: pxToRem(50),
+    paddingTop: pxToRem(18),
   },
   sign: {
     display: 'flex',
@@ -47,6 +47,16 @@ const styles = {
     ...Montserrat16,
     fontWeight: 500,
     cursor: 'pointer',
+  },
+  errorMessage: {
+    ...Montserrat16,
+    color: Color.error,
+    paddingTop: pxToRem(7),
+    minHeight: pxToRem(32),
+    boxSizing: 'border-box',
+  },
+  content: {
+    maxWidth: pxToRem(470),
   },
 }
 

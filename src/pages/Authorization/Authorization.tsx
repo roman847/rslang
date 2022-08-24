@@ -1,12 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Link, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import Logo from 'pages/main/components/Logo'
 import Input from 'components/Input'
-import { TypesInput } from 'core/variables/constants'
+import { errorMessageText, TypesInput } from 'core/variables/constants'
 import ProjectButton from 'components/ProjectButton'
+import { signIn } from '../../services/signIn'
 import styles from './Authorization.styles'
 
 const Authorization = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const navigate = useNavigate()
+
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.name === TypesInput.email) {
+      setEmail(e.target.value)
+    } else {
+      setPassword(e.target.value)
+    }
+  }
+  const clickHandler = (e?: React.MouseEvent) => {
+    e?.preventDefault()
+    if (password.length < 8) {
+      setErrorMessage(errorMessageText.passwordLengthIncorrect)
+      return
+    } else {
+      signIn({ password, email }).then((data) => {
+        if (Array.isArray(data)) {
+          navigate('/')
+        } else {
+          console.log(data)
+          setErrorMessage(errorMessageText.emailOrPasswordIncorrect)
+        }
+      })
+    }
+  }
   return (
     <Box sx={styles.wrapper}>
       <Logo />
@@ -21,16 +51,35 @@ const Authorization = () => {
             </Box>
           </Typography>
         </Box>
-        <Box sx={styles.inputsContainer}>
-          <Input id='email' placeholder='email*' type={TypesInput.email} />
-          <Input id='password' placeholder='пароль*' type={TypesInput.password} />
-        </Box>
-        <Box sx={styles.button}>
-          <ProjectButton width={470}>Войти</ProjectButton>
-        </Box>
-        <Box sx={styles.sign}>
-          <Typography sx={styles.sign__text}>Нет аккаунта?&nbsp;</Typography>
-          <Link sx={styles.sign__link}>Зарегистрироваться</Link>
+        <Box sx={styles.content}>
+          <form>
+            <Box sx={styles.inputsContainer}>
+              <Input
+                name={TypesInput.email}
+                action={changeHandler}
+                id='email'
+                placeholder='email*'
+                type={TypesInput.email}
+              />
+              <Input
+                name={TypesInput.password}
+                action={changeHandler}
+                id='password'
+                placeholder='пароль*'
+                type={TypesInput.password}
+              />
+            </Box>
+            <Typography sx={styles.errorMessage}>{errorMessage}</Typography>
+            <Box sx={styles.button}>
+              <ProjectButton type='submit' width='100%' action={clickHandler}>
+                Войти
+              </ProjectButton>
+            </Box>
+          </form>
+          <Box sx={styles.sign}>
+            <Typography sx={styles.sign__text}>Нет аккаунта?&nbsp;</Typography>
+            <Link sx={styles.sign__link}>Зарегистрироваться</Link>
+          </Box>
         </Box>
       </Box>
     </Box>

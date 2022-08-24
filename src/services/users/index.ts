@@ -1,12 +1,13 @@
-import { AxiosError } from 'axios'
+import axios, { AxiosError } from 'axios'
 import { axiosInstance } from 'services'
 import { IUser, IUpdateUser } from 'core/interfaces/dataModels'
+import { ServerError } from 'core/interfaces/commonInterfaces'
 
 export const createUser = async ({
   name,
   email,
   password,
-}: IUser): Promise<Array<IUser> | void> => {
+}: IUser): Promise<Array<IUser> | ServerError> => {
   try {
     const response = await axiosInstance.post('/users', {
       name: name,
@@ -15,8 +16,13 @@ export const createUser = async ({
     })
     return response.data
   } catch (error) {
-    const err = error as AxiosError
-    console.error(err.response?.data)
+    if (axios.isAxiosError(error)) {
+      const serverError = error as AxiosError<ServerError>
+      if (serverError && serverError.response) {
+        return serverError.response.data
+      }
+    }
+    return { errorMessage: 'Unknown error' }
   }
 }
 
