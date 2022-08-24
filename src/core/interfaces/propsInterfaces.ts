@@ -37,3 +37,8 @@ export interface IPropsSelectElement {
   label: string
   fields: string[]
 }
+export interface IRadioButton {
+  id: string
+  name: string
+  text: string
+}
