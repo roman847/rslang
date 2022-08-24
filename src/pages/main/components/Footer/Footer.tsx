@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
   return (
     <div className={style.footer}>
       <div className={clsx('container', style.containerFooter)}>
-        <div className={style.footer__logo}>
+        <div>
           <Logo />
           <div>2022</div>
         </div>

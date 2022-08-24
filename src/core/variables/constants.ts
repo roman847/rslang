@@ -29,6 +29,7 @@ export enum TypesInput {
   email = 'email',
   password = 'password',
   text = 'text',
+  name = 'name',
 }
 
 export const AlibekGit = 'https://github.com/limhill'
@@ -47,6 +48,8 @@ export enum Color {
   lightText = '#F0F0F0',
   blackText = '#1D1D1D',
   disabledButton = '#DBC7BF',
+  pageBackground = '#FAF8F5',
+  error = '#B71313',
 }
 
 export const Montserrat16 = {
@@ -73,10 +76,34 @@ export const Montserrat28 = {
   lineHeight: `${pxToRem(34)}`,
 }
 
+export const Montserrat36 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 500,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(36)}`,
+  lineHeight: `${pxToRem(50)}`,
+}
+
 export const Montserrat46 = {
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 500,
   fontStyle: 'normal',
   fontSize: `${pxToRem(46)}`,
   lineHeight: `${pxToRem(70)}`,
+}
+
+export const Mulish36 = {
+  fontFamily: 'Mulish, sans-serif',
+  fontWeight: 700,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(36)}`,
+  lineHeight: `${pxToRem(50)}`,
+  letterSpacing: '7%',
+}
+
+export const errorMessageText = {
+  passwordLengthIncorrect: 'Пароль должен быть длиннее 8 символов!',
+  emailIncorrect: 'Неправильно указан email',
+  nameIncorrect: 'Вы забыли указать имя',
+  emailOrPasswordIncorrect: 'Неверный email или пароль!',
 }
