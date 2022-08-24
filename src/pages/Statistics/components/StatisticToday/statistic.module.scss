@@ -5,7 +5,7 @@
   width: 100%;
   text-align: center;
   background-color: $bgColor;
-  padding-top: 24px;
+  padding-top: 100px;
 }
 .main__content {
   display: flex;
@@ -14,6 +14,19 @@
   gap: 46px;
   width: 100%;
   padding: 64px 0px;
+  .item__progress {
+    @include font100;
+    color: $secondaryColor;
+  }
+  .item__description {
+    @include font24;
+  }
+  .item__title {
+    @include fontSize28;
+    color: $secondaryColor;
+    text-align: left;
+    margin-bottom: 12px;
+  }
 }
 .content__item {
   width: 360px;
@@ -21,17 +34,4 @@
   padding: 43px 63px;
   border: 1px solid $accentColor;
   border-radius: 100px;
-}
-.item__progress {
-  @include font100;
-  color: $secondaryColor;
-}
-.item__description {
-  @include font24;
-}
-.item__title {
-  @include fontSize28;
-  color: $secondaryColor;
-  text-align: left;
-  margin-bottom: 12px;
 }
