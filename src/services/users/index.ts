@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios'
 import { axiosInstance } from 'services'
-import { IUser, IUpdateUser } from './../../core/interfaces/dataModels'
+import { IUser, IUpdateUser } from 'core/interfaces/dataModels'
 
 export const createUser = async ({
   name,

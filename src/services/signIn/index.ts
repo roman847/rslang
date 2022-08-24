@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios'
 
 import { axiosInstance, saveToken } from 'services'
-import { IUserData, IAuthorizingUser } from './../../core/interfaces/dataModels'
+import { IUserData, IAuthorizingUser } from 'core/interfaces/dataModels'
 
 export const signIn = async ({
   password,

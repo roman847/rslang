@@ -4,11 +4,11 @@ export interface IAuthorizingUser {
 }
 
 export interface IUserData {
-  message: 'string'
-  token: 'string'
-  refreshToken: 'string'
-  userId: 'string'
-  name: 'string'
+  message: string
+  token: string
+  refreshToken: string
+  userId: string
+  name: string
 }
 
 export interface IUser {
@@ -24,20 +24,20 @@ export interface IUpdateUser {
 }
 
 export interface IWordsItem {
-  id: 'string'
+  id: string
   group: 0
   page: 0
-  word: 'string'
-  image: 'string'
-  audio: 'string'
-  audioMeaning: 'string'
-  audioExample: 'string'
-  textMeaning: 'string'
-  textExample: 'string'
-  transcription: 'string'
-  wordTranslate: 'string'
-  textMeaningTranslate: 'string'
-  textExampleTranslate: 'string'
+  word: string
+  image: string
+  audio: string
+  audioMeaning: string
+  audioExample: string
+  textMeaning: string
+  textExample: string
+  transcription: string
+  wordTranslate: string
+  textMeaningTranslate: string
+  textExampleTranslate: string
 }
 
 export interface IGetWords {
@@ -46,9 +46,9 @@ export interface IGetWords {
 }
 
 export interface IUserInfo {
-  message: 'string'
-  token: 'string'
-  refreshToken: 'string'
-  userId: 'string'
-  name: 'string'
+  message: string
+  token: string
+  refreshToken: string
+  userId: string
+  name: string
 }

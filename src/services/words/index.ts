@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios'
 import { axiosInstance } from 'services'
-import { IWordsItem, IGetWords } from './../../core/interfaces/dataModels'
+import { IWordsItem, IGetWords } from 'core/interfaces/dataModels'
 
 export const getWords = async ({ page, group }: IGetWords): Promise<Array<IWordsItem> | void> => {
   try {

@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { IUserInfo } from '../core/interfaces/dataModels'
+import { IUserInfo } from 'core/interfaces/dataModels'
 
-export const saveToken = (token: IUserInfo): void => {
-  localStorage.setItem('user', JSON.stringify(token))
+export const saveToken = (userInfo: IUserInfo): void => {
+  localStorage.setItem('user', JSON.stringify(userInfo))
 }
 
 export const getToken = () => {
@@ -18,7 +18,7 @@ export const getId = () => {
 }
 
 export const axiosInstance = axios.create({
-  baseURL: 'https://react-learn-new-words.herokuapp.com',
+  baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
