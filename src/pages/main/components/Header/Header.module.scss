@@ -4,14 +4,10 @@ a {
 }
 .wrapper {
   .header {
-    position: static;
-    width: 100%;
     box-shadow: none;
-    background-color: $bgColor;
     .header__nav {
       display: flex;
       justify-content: space-between;
-      width: 100vw;
       padding-left: 9%;
       padding-right: 9%;
       background-color: $bgColor;

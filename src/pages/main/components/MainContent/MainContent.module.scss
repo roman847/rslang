@@ -1,7 +1,7 @@
 @import '/src/styles/main.scss';
 
 .wrapper {
-  padding: pxToRem(100) pxToRem(135) 0;
+  padding: pxToRem(10) pxToRem(135) 0;
   display: flex;
   justify-content: space-between;
   &__content {
