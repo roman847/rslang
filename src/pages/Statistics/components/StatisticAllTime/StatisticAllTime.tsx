@@ -2,6 +2,7 @@ import React from 'react'
 import { Typography, Box } from '@mui/material'
 import clsx from 'clsx'
 import RadioButton from 'pages/Statistics/components/RadioButton/RadioButtn'
+import Diagram from '../Diagram.tsx'
 import style from './statisticAllTime.module.scss'
 
 const StatisticAllTime = () => {
@@ -14,6 +15,7 @@ const StatisticAllTime = () => {
         <RadioButton id='radioFirst' name='category' text='Количество изученных слов' />
         <RadioButton id='radioSecond' name='category' text='Прогресс' />
       </Box>
+      <Diagram />
     </div>
   )
 }
