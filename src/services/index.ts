@@ -1,11 +1,20 @@
 import axios from 'axios'
+import { IUserInfo } from '../core/interfaces/dataModels'
 
-export const saveToken = (tolken: string): void => {
-  localStorage.setItem('tolken', tolken)
+export const saveToken = (token: IUserInfo): void => {
+  localStorage.setItem('user', JSON.stringify(token))
 }
 
 export const getToken = () => {
-  return localStorage.getItem('tolken')
+  if (localStorage.getItem('user')) {
+    return JSON.parse(localStorage.getItem('user')!).token
+  }
+}
+
+export const getId = () => {
+  if (localStorage.getItem('user')) {
+    return JSON.parse(localStorage.getItem('user')!).userId
+  }
 }
 
 export const axiosInstance = axios.create({

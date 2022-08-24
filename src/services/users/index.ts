@@ -1,12 +1,12 @@
 import { AxiosError } from 'axios'
 import { axiosInstance } from 'services'
-import { IUser, IUpdateUser } from './interfaces'
+import { IUser, IUpdateUser } from './../../core/interfaces/dataModels'
 
 export const createUser = async ({
   name,
   email,
   password,
-}: IUser): Promise<Array<IUser> | undefined> => {
+}: IUser): Promise<Array<IUser> | void> => {
   try {
     const response = await axiosInstance.post('/users', {
       name: name,
@@ -20,7 +20,7 @@ export const createUser = async ({
   }
 }
 
-export const getUser = async (id: string): Promise<IUser | undefined> => {
+export const getUser = async (id: string): Promise<IUser | void> => {
   try {
     const response = await axiosInstance.get(`/users/${id}`)
     return response.data
@@ -30,11 +30,7 @@ export const getUser = async (id: string): Promise<IUser | undefined> => {
   }
 }
 
-export const updateUser = async ({
-  id,
-  email,
-  password,
-}: IUpdateUser): Promise<IUser | undefined> => {
+export const updateUser = async ({ id, email, password }: IUpdateUser): Promise<IUser | void> => {
   try {
     const response = await axiosInstance.put(`/users/${id}`, {
       email: email,
@@ -47,7 +43,7 @@ export const updateUser = async ({
   }
 }
 
-export const deleteUser = async (id: string): Promise<IUser | undefined> => {
+export const deleteUser = async (id: string): Promise<IUser | void> => {
   try {
     const response = await axiosInstance.delete(`/users/${id}`)
     return response.data
