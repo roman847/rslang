@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Link, Typography } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link as RouterLink } from 'react-router-dom'
 import Logo from 'pages/main/components/Logo'
 import Input from 'components/Input'
 import { UserErrorMessage, TypesInput } from 'core/variables/constants'
@@ -36,9 +36,8 @@ const Registration = () => {
     } else {
       createUser({ password, name, email }).then((data) => {
         if (Array.isArray(data)) {
-          navigate('/')
+          navigate('/auth')
         } else {
-          console.log(data)
           setErrorMessage(UserErrorMessage.unexpectedError)
         }
       })
@@ -46,7 +45,9 @@ const Registration = () => {
   }
   return (
     <Box sx={styles.wrapper}>
-      <Logo />
+      <Link sx={styles.link} component={RouterLink} to={'/'}>
+        <Logo />
+      </Link>
       <Box>
         <Box sx={styles.header}>
           <Typography sx={styles.header__text} variant='h1'>
@@ -92,7 +93,9 @@ const Registration = () => {
           </form>
           <Box sx={styles.reg}>
             <Typography sx={styles.reg__text}>Уже есть аккаунт?&nbsp;</Typography>
-            <Link sx={styles.reg__link}>Войти</Link>
+            <Link sx={styles.reg__link} component={RouterLink} to={'/auth'}>
+              Войти
+            </Link>
           </Box>
         </Box>
       </Box>

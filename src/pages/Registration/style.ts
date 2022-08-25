@@ -10,6 +10,9 @@ const styles = {
     backgroundRepeat: 'no-repeat, no-repeat',
     backgroundPosition: `85% 28%, 80% 35%`,
   },
+  link: {
+    textDecoration: 'none',
+  },
   header: {
     paddingTop: pxToRem(125),
     maxWidth: pxToRem(430),
