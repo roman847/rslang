@@ -1,5 +1,9 @@
 @import '/src/styles/main.scss';
 
+.active {
+  border-bottom: 1px solid $nonActiveBtnColor;
+}
+
 .wrapper {
   .header {
     box-shadow: none;
@@ -9,20 +13,6 @@
       padding-left: 9%;
       padding-right: 9%;
       background-color: $bgColor;
-      .logo {
-        width: 126px;
-        display: flex;
-        justify-content: space-between;
-
-        .logo__title {
-          font-family: 'Mulish', sans-serif;
-          font-style: normal;
-          font-weight: 700;
-          font-size: 28px;
-          line-height: 35px;
-          letter-spacing: 0.07em;
-        }
-      }
       .nav__list {
         display: flex;
         justify-content: space-between;
