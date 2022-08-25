@@ -11,23 +11,17 @@ export const saveUserID = (userInfo: IUserInfo): void => {
 }
 
 export const getToken = () => {
-
   return localStorageService.get(BrowserStorageItem.userToken)
 }
 
 export const getUserId = () => {
   return localStorageService.get(BrowserStorageItem.userId)
-
-  if (localStorage.getItem('user')) {
-    return JSON.parse(localStorage.getItem('user') as string).token
-  }
 }
 
 export const getId = () => {
   if (localStorage.getItem('user')) {
     return JSON.parse(localStorage.getItem('user') as string).userId
   }
-
 }
 
 export const axiosInstance = axios.create({

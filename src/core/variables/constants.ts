@@ -109,5 +109,4 @@ export enum ErrorPaths {
   name = 'name',
   email = 'email',
   password = 'password',
-
 }
