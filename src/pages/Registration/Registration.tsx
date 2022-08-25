@@ -3,7 +3,7 @@ import { Box, Link, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import Logo from 'pages/main/components/Logo'
 import Input from 'components/Input'
-import { errorMessageText, TypesInput } from 'core/variables/constants'
+import { UserErrorMessage, TypesInput } from 'core/variables/constants'
 import ProjectButton from 'components/ProjectButton'
 import { createUser } from 'services/users'
 import styles from './style'
@@ -27,19 +27,19 @@ const Registration = () => {
   const clickHandler = (e?: React.MouseEvent) => {
     e?.preventDefault()
     if (password.length < 8) {
-      setErrorMessage(errorMessageText.passwordLengthIncorrect)
+      setErrorMessage(UserErrorMessage.incorrectPasswordLength)
       return
     } else if (!email) {
-      setErrorMessage(errorMessageText.emailIncorrect)
+      setErrorMessage(UserErrorMessage.emptyEmail)
     } else if (!name) {
-      setErrorMessage(errorMessageText.nameIncorrect)
+      setErrorMessage(UserErrorMessage.emptyName)
     } else {
       createUser({ password, name, email }).then((data) => {
         if (Array.isArray(data)) {
           navigate('/')
         } else {
           console.log(data)
-          setErrorMessage(errorMessageText.emailOrPasswordIncorrect)
+          setErrorMessage(UserErrorMessage.unexpectedError)
         }
       })
     }
