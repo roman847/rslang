@@ -1,19 +1,26 @@
 import axios from 'axios'
+import { BrowserStorageItem } from 'core/variables/constants'
 import { IUserInfo } from 'core/interfaces/dataModels'
+import { localStorageService } from './localStorageHelper'
 
 export const saveToken = (userInfo: IUserInfo): void => {
-  localStorage.setItem('user', JSON.stringify(userInfo))
+  localStorageService.set(BrowserStorageItem.userToken, userInfo.token)
+}
+export const saveUserID = (userInfo: IUserInfo): void => {
+  localStorageService.set(BrowserStorageItem.userId, userInfo.userId)
 }
 
 export const getToken = () => {
-  if (localStorage.getItem('user')) {
-    return JSON.parse(localStorage.getItem('user')!).token
-  }
+  return localStorageService.get(BrowserStorageItem.userToken)
+}
+
+export const getUserId = () => {
+  return localStorageService.get(BrowserStorageItem.userId)
 }
 
 export const getId = () => {
   if (localStorage.getItem('user')) {
-    return JSON.parse(localStorage.getItem('user')!).userId
+    return JSON.parse(localStorage.getItem('user') as string).userId
   }
 }
 
