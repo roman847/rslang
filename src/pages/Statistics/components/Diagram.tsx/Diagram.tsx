@@ -1,5 +1,5 @@
 import React from 'react'
-import * as echarts from 'echarts'
+
 import style from './diagram.module.scss'
 
 const Diagram = () => {
