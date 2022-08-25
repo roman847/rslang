@@ -6,7 +6,7 @@ import Input from 'components/Input'
 import { errorMessageText, TypesInput } from 'core/variables/constants'
 import ProjectButton from 'components/ProjectButton'
 import { signIn } from '../../services/signIn'
-import styles from './Authorization.styles'
+import styles from './styles'
 
 const Authorization = () => {
   const [email, setEmail] = useState('')
@@ -21,17 +21,18 @@ const Authorization = () => {
       setPassword(e.target.value)
     }
   }
-  const clickHandler = (e?: React.MouseEvent) => {
-    e?.preventDefault()
+  const submitHandler = (e: React.FormEvent) => {
+    e.preventDefault()
     if (password.length < 8) {
       setErrorMessage(errorMessageText.passwordLengthIncorrect)
       return
     } else {
+      setErrorMessage('')
       signIn({ password, email }).then((data) => {
-        if (Array.isArray(data)) {
+        if (!Object.hasOwn(data, 'errorMessage')) {
           navigate('/')
         } else {
-          console.log(data)
+          console.log(errorMessage)
           setErrorMessage(errorMessageText.emailOrPasswordIncorrect)
         }
       })
@@ -52,7 +53,7 @@ const Authorization = () => {
           </Typography>
         </Box>
         <Box sx={styles.content}>
-          <form>
+          <Box component='form' onSubmit={submitHandler}>
             <Box sx={styles.inputsContainer}>
               <Input
                 name={TypesInput.email}
@@ -71,14 +72,16 @@ const Authorization = () => {
             </Box>
             <Typography sx={styles.errorMessage}>{errorMessage}</Typography>
             <Box sx={styles.button}>
-              <ProjectButton type='submit' width='100%' action={clickHandler}>
+              <ProjectButton type='submit' width='100%'>
                 Войти
               </ProjectButton>
             </Box>
-          </form>
+          </Box>
           <Box sx={styles.sign}>
             <Typography sx={styles.sign__text}>Нет аккаунта?&nbsp;</Typography>
-            <Link sx={styles.sign__link}>Зарегистрироваться</Link>
+            <Link sx={styles.sign__link} href='reg'>
+              Зарегистрироваться
+            </Link>
           </Box>
         </Box>
       </Box>

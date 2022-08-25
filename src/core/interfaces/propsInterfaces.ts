@@ -20,9 +20,10 @@ export interface IPropsInput extends React.InputHTMLAttributes<HTMLInputElement>
   type: TypesInput
   name?: string
   action?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  error?: boolean
 }
 
-export interface IButtonProps extends React.InputHTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariants
   background?: Color
   width?: number | string

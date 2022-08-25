@@ -7,7 +7,7 @@ import { ServerError } from 'core/interfaces/commonInterfaces'
 export const signIn = async ({
   password,
   email,
-}: IAuthorizingUser): Promise<Array<IUserData> | ServerError> => {
+}: IAuthorizingUser): Promise<IUserData | ServerError> => {
   try {
     const response = await axiosInstance.post('/signin', {
       password: password,
