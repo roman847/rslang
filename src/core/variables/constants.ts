@@ -80,3 +80,7 @@ export const Montserrat46 = {
   fontSize: `${pxToRem(46)}`,
   lineHeight: `${pxToRem(70)}`,
 }
+export enum BrowserStorageItem {
+  userToken = 'userToken',
+  userId = 'userId',
+}
