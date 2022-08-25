@@ -6,7 +6,6 @@ import { Color, ButtonVariants } from 'core/variables/constants'
 import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
 import Logo from 'pages/main/components/Logo'
-
 import style from './Header.module.scss'
 
 const Header = () => {

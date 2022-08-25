@@ -1,4 +1,4 @@
-import pxToRem from '../functions/pxToRem'
+import pxToRem from 'core/functions/pxToRem'
 
 export enum DevelopersNames {
   Roman = 'Roman',
@@ -80,7 +80,34 @@ export const Montserrat46 = {
   fontSize: `${pxToRem(46)}`,
   lineHeight: `${pxToRem(70)}`,
 }
+
 export enum BrowserStorageItem {
   userToken = 'userToken',
   userId = 'userId',
+}
+
+export enum ServerErrorMessage {
+  userNotFound = "Couldn't find a(an) user with",
+  forbidden = 'Forbidden',
+  empty = 'is not allowed to be empty',
+  invalidEmail = '"email" must be a valid email',
+  incorrectPasswordLength = '"password" length must be at least 8 characters long',
+}
+
+export enum UserErrorMessage {
+  userNotFound = 'Пользователя с таким email не существует!',
+  forbidden = 'Неверный пароль!',
+  emptyName = 'Введите имя пользователя!',
+  emptyEmail = 'Введите email!',
+  emptyPassword = 'Введите пароль!',
+  invalidEmail = 'Введите корректный почтовый адрес!',
+  incorrectPasswordLength = 'Длина пароля должна быть не менее 8 символов!',
+  unexpectedError = 'Произошла непредвиденная ошибка',
+}
+
+export enum ErrorPaths {
+  name = 'name',
+  email = 'email',
+  password = 'password',
+
 }
