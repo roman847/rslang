@@ -1,3 +1,1 @@
-export interface IInit {
-  a: string
-}
+export type ServerError = { errorMessage: string }
