@@ -1,12 +1,21 @@
-import { AxiosError } from 'axios'
-
+import axios, { AxiosError } from 'axios'
 import { axiosInstance, saveToken } from 'services'
 import { IUserData, IAuthorizingUser } from 'core/interfaces/dataModels'
+import { ServerError } from 'core/interfaces/commonInterfaces'
+import { ServerErrorMessage, UserErrorMessage } from 'core/variables/constants'
+
+export const errorHandler = (err: string) => {
+  if (err === ServerErrorMessage.forbidden) {
+    return UserErrorMessage.forbidden
+  } else {
+    return UserErrorMessage.userNotFound
+  }
+}
 
 export const signIn = async ({
   password,
   email,
-}: IAuthorizingUser): Promise<Array<IUserData> | void> => {
+}: IAuthorizingUser): Promise<IUserData | UserErrorMessage | ServerError> => {
   try {
     const response = await axiosInstance.post('/signin', {
       password: password,
@@ -17,7 +26,12 @@ export const signIn = async ({
 
     return response.data
   } catch (error) {
-    const err = error as AxiosError
-    console.error(err.response?.data)
+    if (axios.isAxiosError(error)) {
+      const serverError = error as AxiosError<string>
+      if (serverError && serverError.response) {
+        return errorHandler(serverError.response.data)
+      }
+    }
+    return { errorMessage: 'Unknown error' }
   }
 }

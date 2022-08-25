@@ -52,3 +52,14 @@ export interface IUserInfo {
   userId: string
   name: string
 }
+
+export interface IErrorInfo {
+  message: string
+  path: string[]
+}
+export interface IError {
+  error: {
+    status: string
+    errors: IErrorInfo[]
+  }
+}

@@ -7,9 +7,14 @@ import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
 import Logo from 'pages/main/components/Logo'
 
+import { signIn } from 'services/signIn'
 import style from './Header.module.scss'
 
 const Header = () => {
+  const clickHandler = () => {
+    signIn({ email: '', password: '' }).then()
+  }
+
   return (
     <div className={style.wrapper}>
       <AppBar className={style.header}>
@@ -26,6 +31,7 @@ const Header = () => {
               height={35}
               borderColor={Color.primary}
               fontSize={18}
+              action={clickHandler}
             >
               Вход
             </ProjectButton>

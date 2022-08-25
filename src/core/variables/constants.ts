@@ -80,3 +80,13 @@ export const Montserrat46 = {
   fontSize: `${pxToRem(46)}`,
   lineHeight: `${pxToRem(70)}`,
 }
+
+export enum ServerErrorMessage {
+  userNotFound = "Couldn't find a(an) user with",
+  forbidden = 'Forbidden',
+}
+
+export enum UserErrorMessage {
+  userNotFound = 'Пользователя с таким email не существует!',
+  forbidden = 'Неверный пароль!',
+}
