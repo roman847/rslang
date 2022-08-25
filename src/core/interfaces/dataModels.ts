@@ -1,3 +1,5 @@
+import { ErrorPaths } from 'core/variables/constants'
+
 export interface IAuthorizingUser {
   password: string
   email: string
@@ -55,7 +57,7 @@ export interface IUserInfo {
 
 export interface IErrorInfo {
   message: string
-  path: string[]
+  path: [ErrorPaths]
 }
 export interface IError {
   error: {

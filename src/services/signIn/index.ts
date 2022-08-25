@@ -2,15 +2,8 @@ import axios, { AxiosError } from 'axios'
 import { axiosInstance, saveToken } from 'services'
 import { IUserData, IAuthorizingUser } from 'core/interfaces/dataModels'
 import { ServerError } from 'core/interfaces/commonInterfaces'
-import { ServerErrorMessage, UserErrorMessage } from 'core/variables/constants'
-
-export const errorHandler = (err: string) => {
-  if (err === ServerErrorMessage.forbidden) {
-    return UserErrorMessage.forbidden
-  } else {
-    return UserErrorMessage.userNotFound
-  }
-}
+import { UserErrorMessage } from 'core/variables/constants'
+import { signInErrHandler } from 'services/errorHandler'
 
 export const signIn = async ({
   password,
@@ -29,7 +22,7 @@ export const signIn = async ({
     if (axios.isAxiosError(error)) {
       const serverError = error as AxiosError<string>
       if (serverError && serverError.response) {
-        return errorHandler(serverError.response.data)
+        return signInErrHandler(serverError.response.data)
       }
     }
     return { errorMessage: 'Unknown error' }

@@ -1,13 +1,15 @@
 import axios, { AxiosError } from 'axios'
 import { axiosInstance } from 'services'
-import { IUser, IUpdateUser } from 'core/interfaces/dataModels'
-import { ServerError } from '../../core/interfaces/commonInterfaces'
+import { IUser, IUpdateUser, IError } from 'core/interfaces/dataModels'
+import { ServerError } from 'core/interfaces/commonInterfaces'
+import { UserErrorMessage } from 'core/variables/constants'
+import { createUserErrHandler } from 'services/errorHandler'
 
 export const createUser = async ({
   name,
   email,
   password,
-}: IUser): Promise<IUser | ServerError> => {
+}: IUser): Promise<IUser | UserErrorMessage | ServerError> => {
   try {
     const response = await axiosInstance.post('/users', {
       name: name,
@@ -17,10 +19,9 @@ export const createUser = async ({
     return response.data
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      const serverError = error as AxiosError<ServerError>
+      const serverError = error as AxiosError<IError>
       if (serverError && serverError.response) {
-        console.log(serverError.response.data)
-        return serverError.response.data
+        return createUserErrHandler(serverError.response.data)
       }
     }
     return { errorMessage: 'Unknown error' }
