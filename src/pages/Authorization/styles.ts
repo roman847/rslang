@@ -10,6 +10,10 @@ const styles = {
     backgroundRepeat: 'no-repeat, no-repeat',
     backgroundPosition: `85% 28%, 80% 35%`,
   },
+  logo: {
+    cursor: 'pointer',
+    textDecoration: 'none',
+  },
   header: {
     paddingTop: pxToRem(125),
     maxWidth: pxToRem(430),
@@ -17,10 +21,10 @@ const styles = {
   header__text: {
     ...Montserrat36,
   },
-  logo: {
+  header__text_extra: {
     ...Mulish36,
   },
-  logo_orange: {
+  header__text_extraOrange: {
     ...Mulish36,
     color: Color.primary,
   },

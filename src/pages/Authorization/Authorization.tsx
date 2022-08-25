@@ -40,15 +40,17 @@ const Authorization = () => {
   }
   return (
     <Box sx={styles.wrapper}>
-      <Logo />
+      <Link href='/' sx={styles.logo}>
+        <Logo />
+      </Link>
       <Box>
         <Box sx={styles.header}>
           <Typography sx={styles.header__text} variant='h1'>
             Войти в свой аккаунт
             <Box sx={styles.logo__container}>
               <Typography sx={styles.header__text}>в&nbsp;</Typography>
-              <Typography sx={styles.logo_orange}>RS</Typography>
-              <Typography sx={styles.logo}>LANG</Typography>
+              <Typography sx={styles.header__text_extraOrange}>RS</Typography>
+              <Typography sx={styles.header__text_extra}>LANG</Typography>
             </Box>
           </Typography>
         </Box>
