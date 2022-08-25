@@ -7,13 +7,13 @@ export const saveToken = (userInfo: IUserInfo): void => {
 
 export const getToken = () => {
   if (localStorage.getItem('user')) {
-    return JSON.parse(localStorage.getItem('user')!).token
+    return JSON.parse(localStorage.getItem('user') as string).token
   }
 }
 
 export const getId = () => {
   if (localStorage.getItem('user')) {
-    return JSON.parse(localStorage.getItem('user')!).userId
+    return JSON.parse(localStorage.getItem('user') as string).userId
   }
 }
 
