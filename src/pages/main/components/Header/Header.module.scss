@@ -28,9 +28,12 @@
         justify-content: space-between;
         align-items: center;
         width: 671px;
-        .list__link {
-          @include font18px;
-        }
+      }
+      .nav__list > *{
+        @include font18px;
+      }
+      .nav__list > *:hover{
+        text-decoration: underline;
       }
     }
   }
