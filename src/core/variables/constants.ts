@@ -81,6 +81,11 @@ export const Montserrat46 = {
   lineHeight: `${pxToRem(70)}`,
 }
 
+export enum BrowserStorageItem {
+  userToken = 'userToken',
+  userId = 'userId',
+}
+
 export enum ServerErrorMessage {
   userNotFound = "Couldn't find a(an) user with",
   forbidden = 'Forbidden',
@@ -104,4 +109,5 @@ export enum ErrorPaths {
   name = 'name',
   email = 'email',
   password = 'password',
+
 }
