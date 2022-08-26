@@ -40,3 +40,7 @@ export interface IPropsSelectElement {
   label: string
   fields: string[]
 }
+
+export interface ILogoProps {
+  isBig?: boolean
+}
