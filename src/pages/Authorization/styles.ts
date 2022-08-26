@@ -2,17 +2,26 @@ import pxToRem from 'core/functions/pxToRem'
 import { Color, Montserrat16, Montserrat36, Mulish36 } from 'core/variables/constants'
 
 const styles = {
+  page: {
+    minHeight: '100vh',
+    margin: '0 auto',
+    backgroundColor: Color.pageBackground,
+  },
   wrapper: {
+    maxWidth: `${pxToRem(1440)}`,
+    margin: '0 auto',
     minHeight: '100vh',
     padding: `${pxToRem(40)} ${pxToRem(135)} 0`,
-    backgroundColor: Color.pageBackground,
     backgroundImage: "url('images/auth_main_img.png'), url('images/secondary_img.png')",
     backgroundRepeat: 'no-repeat, no-repeat',
-    backgroundPosition: `85% 28%, 80% 35%`,
+    backgroundPosition: `${pxToRem(876.5)} ${pxToRem(135)}, ${pxToRem(835)} ${pxToRem(158.5)}`,
   },
-  logo: {
+  link: {
     cursor: 'pointer',
     textDecoration: 'none',
+  },
+  logo: {
+    ...Mulish36,
   },
   header: {
     paddingTop: pxToRem(125),
