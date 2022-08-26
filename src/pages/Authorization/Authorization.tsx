@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Box, Link, Typography } from '@mui/material'
-import { useNavigate, Link as RouterLink } from 'react-router-dom'
-import Logo from 'pages/main/components/Logo'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
+import Logo from 'components/Logo'
 import Input from 'components/Input'
-import { TypesInput, UserErrorMessage } from 'core/variables/constants'
+import { LogoSize, TypesInput, UserErrorMessage } from 'core/variables/constants'
 import ProjectButton from 'components/ProjectButton'
 import { signIn } from 'services/signIn'
 import isServerError from 'core/functions/isServerError'
@@ -52,7 +52,7 @@ const Authorization = () => {
               Войти в свой аккаунт
               <Box sx={styles.logo__container}>
                 <Typography sx={styles.header__text}>в&nbsp;</Typography>
-                <Logo isBig={true} />
+                <Logo size={LogoSize.big} />
               </Box>
             </Typography>
           </Box>

@@ -5,7 +5,7 @@ import { AppBar, Link, Toolbar } from '@mui/material'
 import { Color, ButtonVariants } from 'core/variables/constants'
 import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
-import Logo from 'pages/main/components/Logo'
+import Logo from 'components/Logo'
 import style from './Header.module.scss'
 
 const Header = () => {

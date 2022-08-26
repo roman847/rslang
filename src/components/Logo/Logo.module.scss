@@ -1,4 +1,4 @@
-@import '/src/styles/main.scss';
+@import '../../styles/main';
 
 .logo {
   span:first-child {
@@ -17,6 +17,7 @@
 
 .logo_big {
   @include Mulish36;
+  color: $blackColor;
   span:first-child {
     color: #f06a33;
   }

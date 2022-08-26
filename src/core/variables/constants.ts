@@ -128,3 +128,8 @@ export enum ErrorPaths {
   email = 'email',
   password = 'password',
 }
+
+export enum LogoSize {
+  normal = 'logo',
+  big = 'logo_big',
+}

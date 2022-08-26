@@ -5,6 +5,7 @@ import {
   ButtonVariants,
   Color,
   TypesInput,
+  LogoSize,
 } from 'core/variables/constants'
 
 export interface IPropsCard {
@@ -42,5 +43,5 @@ export interface IPropsSelectElement {
 }
 
 export interface ILogoProps {
-  isBig?: boolean
+  size?: LogoSize
 }
