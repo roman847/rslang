@@ -37,3 +37,13 @@ export interface IPropsSelectElement {
   label: string
   fields: string[]
 }
+
+export interface IconProps {
+  width?: number
+  height?: number
+  fill: string
+  viewBox?: string
+  path: string
+  stroke: string
+  strokeWidth: string
+}

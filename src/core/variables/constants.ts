@@ -47,6 +47,7 @@ export enum Color {
   lightText = '#F0F0F0',
   blackText = '#1D1D1D',
   disabledButton = '#DBC7BF',
+  pageBackground = '#FAF8F5',
 }
 
 export const Montserrat16 = {
