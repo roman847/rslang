@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios'
 import { axiosInstance } from 'services'
 import { IWordsItem, IGetWords } from 'core/interfaces/dataModels'
-import { ServerError } from 'core/interfaces/commonInterfaces'
+import { ServerError } from '../../core/interfaces/commonInterfaces'
 
 export const getWords = async ({
   page,
