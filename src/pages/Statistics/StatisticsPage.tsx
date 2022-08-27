@@ -2,7 +2,7 @@ import React from 'react'
 import Header from 'pages/main/components/Header'
 import Footer from 'pages/main/components/Footer'
 import Diagram from 'pages/Statistics/components/Diagram'
-import StatisticMainContent from './components/StatisticToday/StatisticToday'
+import StatisticMainContent from './components/StatisticToday'
 import StatisticAllTime from './components/StatisticAllTime'
 
 const Statistics = () => {
