@@ -31,6 +31,7 @@ const Header = () => {
               Статистика
             </NavLink>
             <ProjectButton
+              className='button'
               action={loginButtonHandler}
               variant={ButtonVariants.secondary}
               width={110}

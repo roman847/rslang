@@ -19,11 +19,23 @@
         align-items: center;
         width: 671px;
       }
-      .nav__list > *{
+      .nav__list > * {
         @include font18px;
+        position: relative;
       }
-      .nav__list > *:hover{
-        text-decoration: underline;
+      .nav__list > :not(:last-child):after {
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $blackColor;
+        content: '';
+        transition: width 0.3s ease-out;
+      }
+      .nav__list > :not(:last-child):hover:after,
+      .nav__list > :not(:last-child):focus:after {
+        width: 100%;
       }
     }
   }
