@@ -75,14 +75,7 @@ export const Montserrat28 = {
   fontSize: `${pxToRem(28)}`,
   lineHeight: `${pxToRem(34)}`,
 }
-export const Mulish36 = {
-  fontFamily: 'Mulish, sans-serif',
-  fontWeight: 700,
-  fontStyle: 'normal',
-  fontSize: `${pxToRem(36)}`,
-  lineHeight: `${pxToRem(50)}`,
-  letterSpacing: '7%',
-}
+
 export const Montserrat36 = {
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 500,
@@ -90,12 +83,21 @@ export const Montserrat36 = {
   fontSize: `${pxToRem(36)}`,
   lineHeight: `${pxToRem(50)}`,
 }
+
 export const Montserrat46 = {
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 500,
   fontStyle: 'normal',
   fontSize: `${pxToRem(46)}`,
   lineHeight: `${pxToRem(70)}`,
+}
+
+export const Mulish36 = {
+  fontFamily: 'Mulish, sans-serif',
+  fontWeight: 700,
+  fontSize: `${pxToRem(36)}`,
+  lineHeight: `${pxToRem(50)}`,
+  letterSpacing: '0.07em',
 }
 
 export enum BrowserStorageItem {
@@ -109,6 +111,7 @@ export enum ServerErrorMessage {
   empty = 'is not allowed to be empty',
   invalidEmail = '"email" must be a valid email',
   incorrectPasswordLength = '"password" length must be at least 8 characters long',
+  userExists = 'user with this e-mail exists',
 }
 
 export enum UserErrorMessage {
@@ -120,10 +123,16 @@ export enum UserErrorMessage {
   invalidEmail = 'Введите корректный почтовый адрес!',
   incorrectPasswordLength = 'Длина пароля должна быть не менее 8 символов!',
   unexpectedError = 'Произошла непредвиденная ошибка',
+  userExists = 'Пользователь с таким email уже существует!',
 }
 
 export enum ErrorPaths {
   name = 'name',
   email = 'email',
   password = 'password',
+}
+
+export enum LogoSize {
+  normal = 'logo',
+  big = 'logo_big',
 }

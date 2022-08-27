@@ -20,6 +20,9 @@ const styles = {
     cursor: 'pointer',
     textDecoration: 'none',
   },
+  logo: {
+    ...Mulish36,
+  },
   header: {
     paddingTop: pxToRem(125),
     maxWidth: pxToRem(430),
@@ -46,14 +49,14 @@ const styles = {
   button: {
     paddingTop: pxToRem(18),
   },
-  reg: {
+  sign: {
     display: 'flex',
     paddingTop: pxToRem(15),
   },
-  reg__text: {
+  sign__text: {
     ...Montserrat16,
   },
-  reg__link: {
+  sign__link: {
     ...Montserrat16,
     fontWeight: 500,
     cursor: 'pointer',

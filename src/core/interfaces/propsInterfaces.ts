@@ -5,6 +5,7 @@ import {
   ButtonVariants,
   Color,
   TypesInput,
+  LogoSize,
 } from 'core/variables/constants'
 
 export interface IPropsCard {
@@ -14,19 +15,19 @@ export interface IPropsCard {
   githubLink: TeamGithub
 }
 
-export interface IPropsInput {
+export interface IPropsInput extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string
   placeholder: string
   type: TypesInput
   name?: string
   action?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  
+  error?: boolean
 }
 
-export interface IButtonProps extends React.InputHTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariants
   background?: Color
-  width?: number|string
+  width?: number | string
   height?: number
   fontSize?: number
   disabled?: boolean
@@ -39,4 +40,8 @@ export interface IButtonProps extends React.InputHTMLAttributes<HTMLButtonElemen
 export interface IPropsSelectElement {
   label: string
   fields: string[]
+}
+
+export interface ILogoProps {
+  size?: LogoSize
 }
