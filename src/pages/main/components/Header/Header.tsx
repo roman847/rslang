@@ -1,13 +1,13 @@
 import { Box } from '@mui/system'
 import React from 'react'
 import clsx from 'clsx'
-import { AppBar, Link, Toolbar } from '@mui/material'
-import { useNavigate, Link as RouterLink, NavLink } from 'react-router-dom'
+import { AppBar, Toolbar } from '@mui/material'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { Color, ButtonVariants } from 'core/variables/constants'
 import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
-import Logo from 'pages/main/components/Logo'
 import './Header.scss'
+import Logo from 'components/Logo'
 
 const Header = () => {
   const navigate = useNavigate()
