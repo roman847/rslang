@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Link, Typography } from '@mui/material'
 import { useNavigate, Link as RouterLink } from 'react-router-dom'
+import BasicModal from 'components/BasicModal'
 import Logo from 'components/Logo'
 import Input from 'components/Input'
 import { UserErrorMessage, TypesInput, LogoSize } from 'core/variables/constants'
@@ -15,6 +16,8 @@ const Registration = () => {
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
+  const [open, setOpen] = React.useState(false)
+  const handleOpening = () => setOpen(!open)
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === TypesInput.email) {
@@ -44,13 +47,17 @@ const Registration = () => {
       } else if (isServerError(data)) {
         setErrorMessage(UserErrorMessage.unexpectedError)
       } else {
-        navigate('/auth')
+        setTimeout(() => {
+          navigate('/auth')
+        }, 5000),
+          handleOpening()
       }
     }
   }
   return (
     <Box sx={styles.wrapper}>
       <Logo />
+      <BasicModal open={open} handleOpening={handleOpening} />
       <Box>
         <Box sx={styles.header}>
           <Typography sx={styles.header__text} variant='h1'>

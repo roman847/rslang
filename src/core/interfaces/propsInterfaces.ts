@@ -45,3 +45,8 @@ export interface IPropsSelectElement {
 export interface ILogoProps {
   size?: LogoSize
 }
+
+export interface IPropsModal {
+  open: boolean
+  handleOpening: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
