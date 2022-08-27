@@ -14,6 +14,7 @@ const ProjectButton = ({
   lineHeight,
   borderColor = Color.secondary,
   action,
+  type,
 }: IButtonProps) => {
   const BasicButton = styled(Button)({
     height,
@@ -49,12 +50,16 @@ const ProjectButton = ({
 
   if (variant === ButtonVariants.primary || !variant) {
     return (
-      <PrimaryButton disabled={disabled} onClick={action}>
+      <PrimaryButton type={type} disabled={disabled} onClick={action}>
         {children}
       </PrimaryButton>
     )
   } else {
-    return <SecondaryButton onClick={action}>{children}</SecondaryButton>
+    return (
+      <SecondaryButton type={type} onClick={action}>
+        {children}
+      </SecondaryButton>
+    )
   }
 }
 
