@@ -11,7 +11,7 @@ import Logo from 'components/Logo'
 
 const Header = () => {
   const navigate = useNavigate()
-  const goTo = () => {
+  const loginButtonHandler = () => {
     navigate('/auth')
   }
   return (
@@ -31,7 +31,7 @@ const Header = () => {
               Статистика
             </NavLink>
             <ProjectButton
-              action={goTo}
+              action={loginButtonHandler}
               variant={ButtonVariants.secondary}
               width={110}
               height={35}
