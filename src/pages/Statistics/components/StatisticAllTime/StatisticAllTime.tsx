@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography, Box } from '@mui/material'
 import clsx from 'clsx'
-import RadioButton from 'pages/Statistics/components/RadioButton/RadioButtn'
+import RadioButton from 'components/RadioButton/RadioButtn'
 import style from './statisticAllTime.module.scss'
 
 const StatisticAllTime = () => {

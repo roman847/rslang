@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.scss'
-import Statistics from 'pages/Statistics/Statistics'
+import Statistics from 'pages/Statistics/StatisticsPage'
 import Authorization from 'pages/Authorization'
 import AudioCall from 'pages/AudioCall'
 import Sprint from 'pages/Sprint'

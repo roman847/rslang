@@ -1,19 +1,19 @@
 @mixin fontSize16 {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
 }
 @mixin fontSize28 {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 28px;
   line-height: 34px;
 }
 @mixin fontSize46 {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 46px;
@@ -21,7 +21,7 @@
 }
 
 @mixin font18px {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -44,4 +44,11 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
+}
+@mixin Mulish36 {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 50px;
+  letter-spacing: 0.07em;
 }
