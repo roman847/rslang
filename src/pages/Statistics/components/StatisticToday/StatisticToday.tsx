@@ -2,8 +2,7 @@ import React from 'react'
 import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import clsx from 'clsx'
-
-import ItemList from '../ItemList'
+import ItemList from 'pages/Statistics/components/ItemList'
 import style from './statistic.module.scss'
 
 const StatisticMainContent = () => {

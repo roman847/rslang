@@ -6,20 +6,19 @@ const ItemList = () => {
   return (
     <div>
       <ul className={style.item__list}>
-        <li>
-          <Typography className={style.list__textContent}>
-            Изучено слов: <strong className={style.list__value}>0</strong>
-          </Typography>
+        <li className={style.list__item}>
+          <Typography className={style.list__textContent}>Изучено слов:</Typography>
+          <Typography className={style.list__value}>0</Typography>
         </li>
-        <li>
-          <Typography className={style.list__textContent}>
-            Правильных ответов: <strong className={style.list__value}>0%</strong>
-          </Typography>
+        <li className={style.list__item}>
+          <Typography className={style.list__textContent}>Правильных ответов:</Typography>
+          <Typography className={style.list__value}>0%</Typography>
         </li>
-        <li>
+        <li className={style.list__item}>
           <Typography className={style.list__textContent}>
-            Самая длинная серия правильных ответов: <strong className={style.list__value}>0</strong>
+            Самая длинная серия правильных ответов:
           </Typography>
+          <Typography className={style.list__value}>0</Typography>
         </li>
       </ul>
     </div>
