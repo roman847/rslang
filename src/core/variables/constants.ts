@@ -110,6 +110,7 @@ export enum ServerErrorMessage {
   empty = 'is not allowed to be empty',
   invalidEmail = '"email" must be a valid email',
   incorrectPasswordLength = '"password" length must be at least 8 characters long',
+  userExists = 'user with this e-mail exists',
 }
 
 export enum UserErrorMessage {
@@ -121,6 +122,7 @@ export enum UserErrorMessage {
   invalidEmail = 'Введите корректный почтовый адрес!',
   incorrectPasswordLength = 'Длина пароля должна быть не менее 8 символов!',
   unexpectedError = 'Произошла непредвиденная ошибка',
+  userExists = 'Пользователь с таким email уже существует!',
 }
 
 export enum ErrorPaths {
