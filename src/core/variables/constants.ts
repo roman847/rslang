@@ -17,6 +17,10 @@ export enum AvatarsTeam {
   Alibek = 'images/alibek.jpg',
   Andrey = 'images/andrey.jpg',
 }
+export enum Images {
+  git = 'images/github.png',
+  school = 'images/school.png',
+}
 
 export enum TeamGithub {
   Roman = 'https://github.com/roman847',
@@ -31,11 +35,6 @@ export enum TypesInput {
   text = 'text',
   name = 'name',
 }
-
-export const AlibekGit = 'https://github.com/limhill'
-export const AndreyGit = 'https://github.com/DittmerOk'
-export const RomanGit = 'https://github.com/roman847'
-export const RsShoolGit = 'https://app.rs.school/'
 
 export enum ButtonVariants {
   primary = 'primary',
