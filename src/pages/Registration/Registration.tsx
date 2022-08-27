@@ -11,12 +11,12 @@ import isServerError from 'core/functions/isServerError'
 import styles from './style'
 
 const Registration = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
-  const navigate = useNavigate()
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const handleOpening = () => setOpen(!open)
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +41,6 @@ const Registration = () => {
       setErrorMessage('')
 
       const data = await createUser({ password, email, name })
-      console.log(data)
       if (typeof data === 'string') {
         setErrorMessage(data)
       } else if (isServerError(data)) {
@@ -56,7 +55,9 @@ const Registration = () => {
   }
   return (
     <Box sx={styles.wrapper}>
-      <Logo />
+      <Link component={RouterLink} to={'./'}>
+        <Logo />
+      </Link>
       <BasicModal open={open} handleOpening={handleOpening} />
       <Box>
         <Box sx={styles.header}>
