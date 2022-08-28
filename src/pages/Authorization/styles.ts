@@ -16,7 +16,7 @@ const styles = {
     backgroundRepeat: 'no-repeat, no-repeat',
     backgroundPosition: `${pxToRem(876.5)} ${pxToRem(135)}, ${pxToRem(835)} ${pxToRem(158.5)}`,
   },
-  logoLink: {
+  link: {
     cursor: 'pointer',
     textDecoration: 'none',
   },
@@ -49,14 +49,14 @@ const styles = {
   button: {
     paddingTop: pxToRem(18),
   },
-  reg: {
+  sign: {
     display: 'flex',
     paddingTop: pxToRem(15),
   },
-  reg__text: {
+  sign__text: {
     ...Montserrat16,
   },
-  reg__link: {
+  sign__link: {
     ...Montserrat16,
     fontWeight: 500,
     cursor: 'pointer',

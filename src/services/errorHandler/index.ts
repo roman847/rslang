@@ -9,7 +9,11 @@ export const signInErrHandler = (err: string) => {
   }
 }
 
-export const createUserErrHandler = (err: IError): UserErrorMessage => {
+export const createUserErrHandler = (err: IError | string): UserErrorMessage => {
+  if (typeof err === 'string') {
+    if (err === ServerErrorMessage.userExists) return UserErrorMessage.userExists
+    return UserErrorMessage.unexpectedError
+  }
   const { errors } = err.error
   const firstError = errors[0]
 
