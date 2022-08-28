@@ -1,0 +1,26 @@
+@import 'styles/main.scss';
+
+.container__textBook {
+  padding-top: 137px;
+  background-color: $bgColor;
+}
+.textBook__title {
+  @include fontSize46;
+  color: $secondaryColor;
+}
+.nav__words {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .nav__title {
+    @include font22;
+  }
+}
+
+.nav__butnBlock {
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
