@@ -135,3 +135,11 @@ export enum LogoSize {
   normal = 'logo',
   big = 'logo_big',
 }
+export enum WordItemBg {
+  A1 = '#FAD2C0',
+  A2 = '#C0E4EB',
+  B1 = '#FAD3E8',
+  B2 = '#F0EDCE',
+  C1 = '#D0F5D1',
+  C2 = '#D6DCF3',
+}
