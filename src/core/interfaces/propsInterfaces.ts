@@ -55,3 +55,7 @@ export interface IconProps {
   stroke: string
   strokeWidth: string
 }
+
+export interface IconProp {
+  isModeOn: boolean
+}
