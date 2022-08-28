@@ -17,6 +17,10 @@ export enum AvatarsTeam {
   Alibek = 'images/alibek.jpg',
   Andrey = 'images/andrey.jpg',
 }
+export enum Images {
+  git = 'images/github.png',
+  school = 'images/school.png',
+}
 
 export enum TeamGithub {
   Roman = 'https://github.com/roman847',
@@ -31,11 +35,6 @@ export enum TypesInput {
   text = 'text',
 }
 
-export const AlibekGit = 'https://github.com/limhill'
-export const AndreyGit = 'https://github.com/DittmerOk'
-export const RomanGit = 'https://github.com/roman847'
-export const RsShoolGit = 'https://app.rs.school/'
-
 export enum ButtonVariants {
   primary = 'primary',
   secondary = 'secondary',
@@ -48,6 +47,7 @@ export enum Color {
   blackText = '#1D1D1D',
   disabledButton = '#DBC7BF',
   pageBackground = '#FAF8F5',
+  error = '#B71313',
 }
 
 export const Montserrat16 = {
@@ -74,12 +74,28 @@ export const Montserrat28 = {
   lineHeight: `${pxToRem(34)}`,
 }
 
+export const Montserrat36 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 500,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(36)}`,
+  lineHeight: `${pxToRem(50)}`,
+}
+
 export const Montserrat46 = {
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 500,
   fontStyle: 'normal',
   fontSize: `${pxToRem(46)}`,
   lineHeight: `${pxToRem(70)}`,
+}
+
+export const Mulish36 = {
+  fontFamily: 'Mulish, sans-serif',
+  fontWeight: 700,
+  fontSize: `${pxToRem(36)}`,
+  lineHeight: `${pxToRem(50)}`,
+  letterSpacing: '0.07em',
 }
 
 export enum BrowserStorageItem {
@@ -93,6 +109,7 @@ export enum ServerErrorMessage {
   empty = 'is not allowed to be empty',
   invalidEmail = '"email" must be a valid email',
   incorrectPasswordLength = '"password" length must be at least 8 characters long',
+  userExists = 'user with this e-mail exists',
 }
 
 export enum UserErrorMessage {
@@ -104,10 +121,16 @@ export enum UserErrorMessage {
   invalidEmail = 'Введите корректный почтовый адрес!',
   incorrectPasswordLength = 'Длина пароля должна быть не менее 8 символов!',
   unexpectedError = 'Произошла непредвиденная ошибка',
+  userExists = 'Пользователь с таким email уже существует!',
 }
 
 export enum ErrorPaths {
   name = 'name',
   email = 'email',
   password = 'password',
+}
+
+export enum LogoSize {
+  normal = 'logo',
+  big = 'logo_big',
 }

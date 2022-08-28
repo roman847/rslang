@@ -6,7 +6,7 @@ import AudioCall from 'pages/AudioCall'
 import Sprint from 'pages/Sprint'
 import Statistics from 'pages/Statistics'
 import Textbook from 'pages/Textbook'
-import Main from '../src/pages/main/Main'
+import Main from 'pages/main/Main'
 
 const App = () => {
   return (
