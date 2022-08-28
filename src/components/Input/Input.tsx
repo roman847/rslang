@@ -1,7 +1,7 @@
 import React from 'react'
-import style from './input.module.scss'
-import { IPropsInput } from '../../core/interfaces/propsInterfaces'
 import { Box } from '@mui/system'
+import { IPropsInput } from '../../core/interfaces/propsInterfaces'
+import style from './input.module.scss'
 
 const Input = ({ placeholder, type, id }: IPropsInput) => {
   return (
