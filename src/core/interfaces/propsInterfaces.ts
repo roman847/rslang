@@ -56,3 +56,17 @@ export interface IPropsModal {
   open: boolean
   handleOpening: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
+
+export interface IconProps {
+  width?: number
+  height?: number
+  fill: string
+  viewBox?: string
+  path: string
+  stroke: string
+  strokeWidth: string
+}
+
+export interface IconProp {
+  isModeOn: boolean
+}
