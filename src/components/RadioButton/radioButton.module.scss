@@ -1,0 +1,45 @@
+@import 'styles/main.scss';
+
+.content__form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+.form__label {
+  @include fontSize16;
+}
+.customRadio {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+  border-radius: 20px;
+  border: 2px solid $secondaryColor;
+  vertical-align: text-top;
+  &:before {
+    content: '';
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url('../../../public/images/Vector.png');
+    background-size: 13px 10px;
+    height: 10px;
+    width: 10px;
+  }
+}
+.content__radio:checked + .customRadio::before {
+  display: block;
+}
+.content__radio {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  z-index: -1;
+}
