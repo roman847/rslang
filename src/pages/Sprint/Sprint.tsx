@@ -1,13 +1,15 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import styles from './styles'
 import Header from './components/Header'
+import SprintInitial from './components/SprintInitial'
+import styles from './styles'
 
 const Sprint = () => {
   return (
     <Box sx={styles.main}>
-      <Box component='main' sx={styles.wrapper}>
+      <Box sx={styles.wrapper}>
         <Header />
+        <SprintInitial />
       </Box>
     </Box>
   )

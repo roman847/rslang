@@ -33,6 +33,7 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
   disabled?: boolean
   lineHeight?: number
   borderColor?: Color
+  hoverColor?: Color
   action?: (e?: React.MouseEvent) => void
   children?: React.ReactNode
 }

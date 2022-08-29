@@ -39,6 +39,9 @@ export enum TypesInput {
 export enum ButtonVariants {
   primary = 'primary',
   secondary = 'secondary',
+  contained = 'contained',
+  outlined = 'outlined',
+  text = 'text',
 }
 
 export enum Color {
@@ -49,6 +52,7 @@ export enum Color {
   disabledButton = '#DBC7BF',
   pageBackground = '#FAF8F5',
   error = '#B71313',
+  activePrimaryButton = '#FAD2C0',
 }
 
 export const Montserrat16 = {
@@ -135,3 +139,5 @@ export enum LogoSize {
   normal = 'logo',
   big = 'logo_big',
 }
+
+export const languageLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
