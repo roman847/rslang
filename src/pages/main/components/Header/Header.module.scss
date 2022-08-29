@@ -1,0 +1,39 @@
+@import '/src/styles/main.scss';
+a {
+  text-decoration: none;
+}
+.wrapper {
+  .header {
+    box-shadow: none;
+    .header__nav {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 9%;
+      padding-right: 9%;
+      background-color: $bgColor;
+      .logo {
+        width: 126px;
+        display: flex;
+        justify-content: space-between;
+
+        .logo__title {
+          font-family: 'Mulish', sans-serif;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 28px;
+          line-height: 35px;
+          letter-spacing: 0.07em;
+        }
+      }
+      .nav__list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 671px;
+        .list__link {
+          @include font18px;
+        }
+      }
+    }
+  }
+}
