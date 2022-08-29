@@ -143,3 +143,11 @@ export enum WordItemBg {
   C1 = '#D0F5D1',
   C2 = '#D6DCF3',
 }
+export enum WordItemHover {
+  A1 = '#F49B73',
+  A2 = '#8EC4CE',
+  B1 = '#F49DCC',
+  B2 = '#E2DAA1',
+  C1 = '#AAEEAC',
+  C2 = '#B6C1EA',
+}

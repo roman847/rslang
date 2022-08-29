@@ -25,8 +25,17 @@
   gap: 20px;
 }
 .container__words {
+  max-width: 900px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
+}
+.textBook__mainContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 55px 0px 70px 0px;
 }

@@ -9,8 +9,7 @@
   height: 96px;
   border-radius: 100px;
   text-align: center;
-
-
+  transition: 0.4s;
   cursor: pointer;
   .item__word {
     @include font22;

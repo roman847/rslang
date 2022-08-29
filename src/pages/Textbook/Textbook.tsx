@@ -8,23 +8,12 @@ import Header from 'pages/main/components/Header/Header'
 import Footer from 'pages/main/components/Footer/Footer'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
 import { Color, ButtonVariants } from 'core/variables/constants'
-import { setPage, setGroup, fetchWords } from 'redux/textBook/textBookSlice'
+import { setPage, setGroup, fetchWords, setFocusWord } from 'redux/textBook/textBookSlice'
 import { useAppDispatch } from 'app/hooks'
-import { identifyWordItemBg } from 'services/index'
+import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
+import { identifyWordItemBg, identifyWordItemHover } from 'services/index'
+import { IStore } from 'core/interfaces/reduxInterfaces'
 import style from './textBook.module.scss'
-
-interface IStore {
-  textBook: IReducer
-}
-interface IReducer {
-  page: {
-    number: string
-  }
-  group: {
-    number: string
-  }
-  words: []
-}
 
 const Textbook = () => {
   const page = useSelector((state: IStore) => state.textBook.page.number)
@@ -32,12 +21,16 @@ const Textbook = () => {
   const words = useSelector((state: IStore) => state.textBook.words)
   const dispatch = useAppDispatch()
 
-  const handler = (difficult: string) => {
+  const handlerButton = (difficult: string) => {
     dispatch(setGroup({ number: difficult }))
   }
 
+  const initialTextBook = async () => {
+    await dispatch(fetchWords({ page: page, group: group }))
+  }
+
   useEffect(() => {
-    dispatch(fetchWords({ page: page, group: group }))
+    initialTextBook()
   }, [group, page])
 
   return (
@@ -54,37 +47,37 @@ const Textbook = () => {
           <Box className={style.nav__butnBlock}>
             <button
               style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handler('0')}
+              onClick={() => handlerButton('0')}
             >
               1
             </button>
             <button
               style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handler('1')}
+              onClick={() => handlerButton('1')}
             >
               2
             </button>
             <button
               style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handler('2')}
+              onClick={() => handlerButton('2')}
             >
               3
             </button>
             <button
               style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handler('3')}
+              onClick={() => handlerButton('3')}
             >
               4
             </button>
             <button
               style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handler('4')}
+              onClick={() => handlerButton('4')}
             >
               5
             </button>
             <button
               style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handler('5')}
+              onClick={() => handlerButton('5')}
             >
               6
             </button>
@@ -101,17 +94,20 @@ const Textbook = () => {
             Сложные слова
           </ProjectButton>
         </Box>
-        <Box className={style.container__words}>
-          {words.map((item: IWordsItem, index: number) => {
-            return (
-              <WordItem
-                word={item.word}
-                wordTranslate={item.wordTranslate}
-                bg={identifyWordItemBg(group)}
-                key={index}
-              />
-            )
-          })}
+        <Box className={style.textBook__mainContent}>
+          <Box className={style.container__words}>
+            {words.map((item: IWordsItem, index: number) => {
+              return (
+                <WordItem
+                  bg={identifyWordItemBg(group)}
+                  hover={identifyWordItemHover(group)}
+                  key={index}
+                  item={item}
+                />
+              )
+            })}
+          </Box>
+          <TextBookAside />
         </Box>
       </Box>
       <Footer />

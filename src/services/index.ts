@@ -1,6 +1,7 @@
 import axios from 'axios'
-import { BrowserStorageItem, WordItemBg } from 'core/variables/constants'
+import { BrowserStorageItem, WordItemBg, WordItemHover } from 'core/variables/constants'
 import { IUserInfo } from 'core/interfaces/dataModels'
+
 import { localStorageService } from './localStorageHelper'
 
 export const saveToken = (userInfo: IUserInfo): void => {
@@ -58,4 +59,31 @@ export const identifyWordItemBg = (group: string) => {
       break
   }
   return bg
+}
+export const identifyWordItemHover = (group: string) => {
+  let hover = ''
+  switch (group) {
+    case '0':
+      hover = WordItemHover.A1
+      break
+    case '1':
+      hover = WordItemHover.A2
+      break
+    case '2':
+      hover = WordItemHover.B1
+      break
+    case '3':
+      hover = WordItemHover.B2
+      break
+    case '4':
+      hover = WordItemHover.C1
+      break
+    case '5':
+      hover = WordItemHover.C2
+      break
+    default:
+      hover = WordItemHover.A1
+      break
+  }
+  return hover
 }

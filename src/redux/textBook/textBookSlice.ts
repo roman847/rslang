@@ -9,6 +9,8 @@ interface ITextBook {
   group: {
     number: string
   }
+  focusWord: IWordsItem | null
+
   words: IWordsItem[]
   status: string | null
   error: string | null
@@ -34,6 +36,8 @@ const initialState: ITextBook = {
   group: {
     number: '0',
   },
+  focusWord: null,
+
   words: [],
   status: null,
   error: null,
@@ -48,6 +52,9 @@ const texBookSlice = createSlice({
     },
     setGroup(state, action) {
       state.group.number = action.payload.number
+    },
+    setFocusWord(state, action) {
+      state.focusWord = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -66,5 +73,5 @@ const texBookSlice = createSlice({
   },
 })
 
-export const { setPage, setGroup } = texBookSlice.actions
+export const { setPage, setGroup, setFocusWord } = texBookSlice.actions
 export default texBookSlice.reducer
