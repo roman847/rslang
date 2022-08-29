@@ -33,6 +33,7 @@ export enum TypesInput {
   email = 'email',
   password = 'password',
   text = 'text',
+  name = 'name',
 }
 
 export enum ButtonVariants {
