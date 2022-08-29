@@ -1,8 +1,8 @@
 import { Box } from '@mui/system'
 import React from 'react'
 import clsx from 'clsx'
-import { AppBar, Toolbar } from '@mui/material'
-import { useNavigate, NavLink } from 'react-router-dom'
+import { AppBar, Toolbar, Link } from '@mui/material'
+import { useNavigate, NavLink, Link as RouterLink } from 'react-router-dom'
 import { Color, ButtonVariants } from 'core/variables/constants'
 import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
@@ -18,7 +18,9 @@ const Header = () => {
     <div className='wrapper'>
       <AppBar className='header'>
         <Toolbar className={clsx('container', 'header__nav')}>
-          <Logo />
+          <Link component={RouterLink} to='/' sx={{ textDecoration: 'none' }}>
+            <Logo />
+          </Link>
           <Box className='nav__list'>
             <NavLink to='/' className={({ isActive }) => (isActive ? 'active' : '')}>
               Главная

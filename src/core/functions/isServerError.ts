@@ -1,7 +1,7 @@
 import { ServerError } from 'core/interfaces/commonInterfaces'
-import { IUserData } from 'core/interfaces/dataModels'
+import { IUserData, IUser } from 'core/interfaces/dataModels'
 
-const isServerError = (data: ServerError | IUserData): data is ServerError => {
+const isServerError = (data: ServerError | IUserData | IUser): data is ServerError => {
   return (data as ServerError).errorMessage !== undefined
 }
 
