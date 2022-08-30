@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { Typography, Box } from '@mui/material'
 import { useSelector } from 'react-redux'
-import { IStore } from 'core/interfaces/reduxInterfaces'
 import { IWordsItem } from 'core/interfaces/dataModels'
 import { useAppDispatch } from 'app/hooks'
 import { setFocusWord } from 'redux/textBook/textBookSlice'
+import { IStore } from 'redux/textBook/store'
 
 import style from './wordItem.module.scss'
 
@@ -17,6 +17,9 @@ interface IWordItemProps {
 const WordItem = ({ item, bg, hover }: IWordItemProps) => {
   const dispatch = useAppDispatch()
   const words = useSelector((state: IStore) => state.textBook.words)
+  if (words) {
+    dispatch(setFocusWord(words[0]))
+  }
 
   const handler = () => {
     dispatch(setFocusWord(item))

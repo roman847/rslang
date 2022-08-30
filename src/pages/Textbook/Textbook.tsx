@@ -12,7 +12,7 @@ import { setPage, setGroup, fetchWords, setFocusWord } from 'redux/textBook/text
 import { useAppDispatch } from 'app/hooks'
 import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
 import { identifyWordItemBg, identifyWordItemHover } from 'services/index'
-import { IStore } from 'core/interfaces/reduxInterfaces'
+import { IStore } from 'redux/textBook/store'
 import style from './textBook.module.scss'
 
 const Textbook = () => {
@@ -21,8 +21,8 @@ const Textbook = () => {
   const words = useSelector((state: IStore) => state.textBook.words)
   const dispatch = useAppDispatch()
 
-  const handlerButton = (difficult: string) => {
-    dispatch(setGroup({ number: difficult }))
+  const handlerButton = async (difficult: string) => {
+    await dispatch(setGroup({ number: difficult }))
   }
 
   const initialTextBook = async () => {

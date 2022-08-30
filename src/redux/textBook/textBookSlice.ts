@@ -1,24 +1,26 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getWords } from 'services/words'
-import { IWordsItem } from './../../core/interfaces/dataModels'
+import { IWordsItem } from 'core/interfaces/dataModels'
 
-interface ITextBook {
-  page: {
-    number: string
-  }
-  group: {
-    number: string
-  }
-  focusWord: IWordsItem | null
-
-  words: IWordsItem[]
-  status: string | null
-  error: string | null
+export interface IPage {
+  number: string
 }
-
-interface IOptions {
+export interface IGroup {
+  number: string
+}
+export interface IOptions {
   page: string
   group: string
+}
+export interface IReducer {
+  page: IPage
+  group: IGroup
+  words: IWordsItem[]
+  focusWord: IWordsItem | null
+}
+export interface ITextBook extends IReducer {
+  status: string | null
+  error: string | null
 }
 
 export const fetchWords = createAsyncThunk<IWordsItem[], IOptions>(

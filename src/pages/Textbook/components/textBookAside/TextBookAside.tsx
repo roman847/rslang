@@ -12,7 +12,7 @@ import {
   Button,
 } from '@mui/material'
 import { CropLandscapeOutlined } from '@mui/icons-material'
-import { IStore } from 'core/interfaces/reduxInterfaces'
+import { IStore } from 'redux/textBook/store'
 
 const TextBookAside = () => {
   const image = useSelector((state: IStore) => state.textBook.focusWord)
@@ -21,7 +21,14 @@ const TextBookAside = () => {
     <Box>
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
-          <CardMedia component='img' height='140' image={``} alt='green iguana' />
+          {image && (
+            <CardMedia
+              component='img'
+              height='140'
+              image={`https://react-learn-new-words.herokuapp.com/${image.image}`}
+              alt='green iguana'
+            />
+          )}
           <CardContent>
             <Typography gutterBottom variant='h5' component='div'>
               Lizard
