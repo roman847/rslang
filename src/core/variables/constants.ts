@@ -53,6 +53,7 @@ export enum Color {
   pageBackground = '#FAF8F5',
   error = '#B71313',
   activePrimaryButton = '#FAD2C0',
+  primaryLight = '#F49B73',
 }
 
 export const Montserrat16 = {
@@ -79,6 +80,14 @@ export const Montserrat28 = {
   lineHeight: `${pxToRem(34)}`,
 }
 
+export const Montserrat32 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 400,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(32)}`,
+  lineHeight: `${pxToRem(39)}`,
+}
+
 export const Montserrat36 = {
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 500,
@@ -92,6 +101,14 @@ export const Montserrat46 = {
   fontWeight: 500,
   fontStyle: 'normal',
   fontSize: `${pxToRem(46)}`,
+  lineHeight: `${pxToRem(70)}`,
+}
+
+export const Montserrat52 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 600,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(52)}`,
   lineHeight: `${pxToRem(70)}`,
 }
 

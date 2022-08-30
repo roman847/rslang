@@ -36,6 +36,7 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
   hoverColor?: Color
   action?: (e?: React.MouseEvent) => void
   children?: React.ReactNode
+  buttonColor?: Color
 }
 
 export interface IPropsSelectElement {
