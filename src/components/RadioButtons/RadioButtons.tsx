@@ -1,10 +1,12 @@
-import * as React from 'react'
+import React from 'react'
 import { styled } from '@mui/material/styles'
 import RadioGroup, { useRadioGroup } from '@mui/material/RadioGroup'
 import FormControlLabel, { FormControlLabelProps } from '@mui/material/FormControlLabel'
 import Radio from '@mui/material/Radio'
 import { Color, languageLevels } from 'core/variables/constants'
 import pxToRem from 'core/functions/pxToRem'
+import { useAppDispatch } from 'app/hooks'
+import { setLevel } from 'features/sprint/sprintSlice'
 import styles from './styles'
 
 interface StyledFormControlLabelProps extends FormControlLabelProps {
@@ -23,10 +25,14 @@ const StyledFormControlLabel = styled((props: StyledFormControlLabelProps) => (
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: pxToRem(63),
+    transition: '0.5s',
+    '&:hover': {
+      background: Color.activePrimaryButton,
+    },
   },
 }))
 
-function MyFormControlLabel(props: FormControlLabelProps) {
+const MyFormControlLabel = (props: FormControlLabelProps) => {
   const radioGroup = useRadioGroup()
 
   let checked = false
@@ -38,9 +44,19 @@ function MyFormControlLabel(props: FormControlLabelProps) {
   return <StyledFormControlLabel checked={checked} {...props} />
 }
 
-export default function RadioButtons() {
+const RadioButtons = () => {
+  const dispatch = useAppDispatch()
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setLevel((event.target as HTMLInputElement).value))
+  }
   return (
-    <RadioGroup sx={styles.container} name='use-radio-group' defaultValue='first' row>
+    <RadioGroup
+      sx={styles.container}
+      name='use-radio-group'
+      defaultValue='first'
+      row
+      onChange={changeHandler}
+    >
       {languageLevels.map((level) => (
         <MyFormControlLabel
           key={level}
@@ -52,3 +68,5 @@ export default function RadioButtons() {
     </RadioGroup>
   )
 }
+
+export default RadioButtons
