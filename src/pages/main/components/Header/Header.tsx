@@ -14,6 +14,7 @@ const Header = () => {
   const loginButtonHandler = () => {
     navigate('/auth')
   }
+
   return (
     <div className='wrapper'>
       <AppBar className='header'>

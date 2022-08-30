@@ -43,6 +43,12 @@ export interface IPropsSelectElement {
   fields: string[]
 }
 
+export interface IRadioButton {
+  id: string
+  name: string
+  text: string
+}
+
 export interface ILogoProps {
   size?: LogoSize
 }
