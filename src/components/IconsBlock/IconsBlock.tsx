@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Box, Link } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import Icon from 'components/Icon'
-import SoundIcon from 'pages/AudioCall/components/SoundIcon'
-import ZoomIcon from 'pages/AudioCall/components/SoundIcon'
+import SoundIcon from 'components/SoundIcon'
+import ZoomIcon from 'components/ZoomIcon'
 import styles from './styles'
 
 const IconsBlock = () => {
