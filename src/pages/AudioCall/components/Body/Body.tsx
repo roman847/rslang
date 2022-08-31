@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
+import { GamePhase, setGamePhase } from 'features/audioCall/audioCallSlice'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
 import ProjectButton from 'components/ProjectButton'
 import { getWords } from 'services/words'
 import style from './Body.module.scss'
 
 const Body = () => {
-  const [page] = useState('')
-  const [group] = useState('')
-
-  const handleClinkButton = async () => {
-    const data = await getWords({ page, group })
-    console.log(data)
+  const { level } = useAppSelector((state) => state.audioCall)
+  const dispatch = useAppDispatch()
+  const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setLevel((event.target as HTMLInputElement).value))
   }
+  const clickHandler = () => {
+    dispatch(setGamePhase(GamePhase.inProcess))
+  }
+
   return (
     <div className={style.wrapper}>
       <div>Аудиовызов</div>
@@ -20,7 +24,7 @@ const Body = () => {
       </div>
       <div>Выберите уровень</div>
       <div>
-        <div onClick={handleClinkButton}>A1</div>
+        <div onClick={clickHandler}>A1</div>
         <div>A2</div>
         <div>B1</div>
         <div>B2</div>
