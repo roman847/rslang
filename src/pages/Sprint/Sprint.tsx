@@ -2,10 +2,10 @@ import React from 'react'
 import { Box } from '@mui/material'
 import { useAppSelector } from 'app/hooks'
 import { GamePhase } from 'features/sprint/sprintSlice'
+import LoadingGame from '../AudioCall/components/LoadingGame'
+import SprintGame from '../AudioCall/components/AudioGame'
 import SprintInitial from './components/SprintInitial'
 import styles from './styles'
-import SprintGame from './components/SprintGame'
-import LoadingGame from './components/LoadingGame'
 
 const Sprint = () => {
   const { gamePhase } = useAppSelector((state) => state.sprint)

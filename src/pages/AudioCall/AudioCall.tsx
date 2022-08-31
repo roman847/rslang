@@ -1,16 +1,25 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import Header from './components/Header'
+import { useAppSelector } from 'app/hooks'
+import { GamePhase } from 'features/audioCall/audioCallSlice'
+import AudioInitial from './components/AudioInitial'
+import AudioGame from './components/AudioGame'
+import LoadingGame from './components/LoadingGame'
 import styles from './styles'
-import Body from './components/Body'
 
 const AudioCall = () => {
+  const { gamePhase } = useAppSelector((state) => state.audioCall)
+  let currentComponent
+  if (gamePhase === GamePhase.preparation) {
+    currentComponent = <AudioInitial />
+  } else if (gamePhase === GamePhase.loading) {
+    currentComponent = <LoadingGame />
+  } else {
+    currentComponent = <AudioGame />
+  }
   return (
     <Box sx={styles.main}>
-      <Box sx={styles.wrapper}>
-        <Header />
-        <Body />
-      </Box>
+      <Box sx={styles.wrapper}>{currentComponent}</Box>
     </Box>
   )
 }
