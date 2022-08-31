@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-
 import {
   Box,
   Typography,
@@ -11,20 +10,20 @@ import {
   CardActions,
   Button,
 } from '@mui/material'
-import { CropLandscapeOutlined } from '@mui/icons-material'
-import { IWordsItem } from 'core/interfaces/dataModels'
-import { setFocusWord } from 'redux/textBook/textBookSlice'
+import { Color, ButtonVariants } from 'core/variables/constants'
+
 import { IStore } from 'redux/textBook/store'
+import ProjectButton from 'components/ProjectButton/ProjectButton'
 import { useAppDispatch } from 'app/hooks'
+import style from './textBookAside.module.scss'
 
 const TextBookAside = () => {
   const dispatch = useAppDispatch()
   const word = useSelector((state: IStore) => state.textBook.focusWord)
-  // dispatch(setFocusWord(word))
 
   return (
     <Box>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 300 }}>
         <CardActionArea>
           {word && (
             <CardMedia
@@ -35,19 +34,38 @@ const TextBookAside = () => {
             />
           )}
           <CardContent>
-            <Typography gutterBottom variant='h5' component='div'>
-              Lizard
-            </Typography>
-            <Typography variant='body2' color='text.secondary'>
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
-            </Typography>
+            <Box className={style.wrapper__word}>
+              {word && (
+                <Typography gutterBottom variant='h5' component='div'>
+                  {word.word} -
+                </Typography>
+              )}
+              {word && (
+                <Typography gutterBottom variant='h5' component='div'>
+                  {word.wordTranslate}
+                </Typography>
+              )}
+            </Box>
+
+            {word && <Typography>{word.transcription}</Typography>}
+            <Typography>Значение</Typography>
+            {word && <Typography>{word.textMeaningTranslate}</Typography>}
+            <Typography>Пример</Typography>
+            {word && <Typography>{word.textExample}</Typography>}
+            {word && <Typography>{word.textExampleTranslate}</Typography>}
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size='small' color='primary'>
-            Share
-          </Button>
+          <ProjectButton
+            className='button'
+            variant={ButtonVariants.secondary}
+            width={'100%'}
+            height={35}
+            borderColor={Color.primary}
+            fontSize={18}
+          >
+            Сложные слова
+          </ProjectButton>
         </CardActions>
       </Card>
     </Box>

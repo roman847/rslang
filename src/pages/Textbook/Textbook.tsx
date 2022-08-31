@@ -23,6 +23,12 @@ const Textbook = () => {
   const words = useSelector((state: IStore) => state.textBook.words)
   const dispatch = useAppDispatch()
 
+  const [appState, setState] = useState({
+    activeCard: words[0],
+    cards: words,
+  })
+  console.log(words)
+
   const handlerButton = (difficult: string) => {
     dispatch(setGroup({ number: difficult }))
     setTimeout(() => {
