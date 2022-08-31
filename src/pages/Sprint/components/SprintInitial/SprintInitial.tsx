@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import ProjectButton from 'components/ProjectButton'
 import RadioButtons from 'components/RadioButtons'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
-import { GamePhase, setGamePhase } from 'features/sprint/sprintSlice'
+import { getWordsChunk } from 'features/sprint/sprintSlice'
 import Logo from 'components/Logo'
 import IconsBlock from 'components/IconsBlock'
 import styles from './styles'
@@ -14,7 +14,7 @@ const SprintInitial = () => {
   const { level } = useAppSelector((state) => state.sprint)
   const dispatch = useAppDispatch()
   const clickHandler = () => {
-    dispatch(setGamePhase(GamePhase.inProcess))
+    dispatch(getWordsChunk({ page: '0', group: '0' }))
   }
   return (
     <Box>

@@ -5,12 +5,15 @@ import { GamePhase } from 'features/sprint/sprintSlice'
 import SprintInitial from './components/SprintInitial'
 import styles from './styles'
 import SprintGame from './components/SprintGame'
+import LoadingGame from './components/LoadingGame'
 
 const Sprint = () => {
   const { gamePhase } = useAppSelector((state) => state.sprint)
   let currentComponent
   if (gamePhase === GamePhase.preparation) {
     currentComponent = <SprintInitial />
+  } else if (gamePhase === GamePhase.loading) {
+    currentComponent = <LoadingGame />
   } else {
     currentComponent = <SprintGame />
   }
