@@ -22,6 +22,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    background: 'none',
   },
   timeInfo: {
     display: 'flex',

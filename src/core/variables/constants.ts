@@ -45,6 +45,7 @@ export enum ButtonVariants {
 }
 
 export enum Color {
+  none = 'none',
   primary = '#F06A33',
   secondary = '#3E92A3',
   lightText = '#F0F0F0',
@@ -54,6 +55,8 @@ export enum Color {
   error = '#B71313',
   activePrimaryButton = '#FAD2C0',
   primaryLight = '#F49B73',
+  correctAnswerBackground = '#E5F2F5',
+  incorrectAnswerBackground = '#FDEAEA',
 }
 
 export const Montserrat16 = {

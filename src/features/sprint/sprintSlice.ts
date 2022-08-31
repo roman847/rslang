@@ -14,7 +14,7 @@ export interface ISprintState {
   gamePhase: GamePhase
   level: string
   words: IWordsItem[]
-  rightAnswers: IWordsItem[]
+  rightAnswers: string[]
   wrongAnswers: IWordsItem[]
 }
 
@@ -28,13 +28,12 @@ export const getWordsChunk = createAsyncThunk(
         result = result.concat(res)
       }
     }
-    console.log(result)
     return result
   },
 )
 
 const initialState: ISprintState = {
-  level: 'none',
+  level: '',
   gamePhase: GamePhase.preparation,
   words: [],
   rightAnswers: [],
@@ -51,6 +50,12 @@ export const sprintSlice = createSlice({
     setGamePhase: (state, action: PayloadAction<GamePhase>) => {
       state.gamePhase = action.payload
     },
+    addRightAnswer: (state, action) => {
+      if (!state.rightAnswers.includes(action.payload)) state.rightAnswers.push(action.payload)
+    },
+    addWrongAnswer: (state, action) => {
+      if (!state.wrongAnswers.includes(action.payload)) state.wrongAnswers.push(action.payload)
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getWordsChunk.pending, (state) => {
@@ -65,6 +70,6 @@ export const sprintSlice = createSlice({
   },
 })
 
-export const { setLevel, setGamePhase } = sprintSlice.actions
+export const { setLevel, setGamePhase, addRightAnswer, addWrongAnswer } = sprintSlice.actions
 
 export default sprintSlice.reducer
