@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IGetWords, IWordsItem } from 'core/interfaces/dataModels'
-import { getWords } from '../../services/words'
-import isServerError from '../../core/functions/isServerError'
+import { getWords } from 'services/words'
+import isServerError from 'core/functions/isServerError'
 
 export enum GamePhase {
   preparation = 'preparation',
@@ -10,42 +10,43 @@ export enum GamePhase {
   results = 'results',
 }
 
-export enum LanguageLevel {
-  none = '',
-  A1 = '0',
-  A2 = '1',
-  B1 = '2',
-  B2 = '3',
-  C1 = '4',
-  C2 = '5',
-}
-
 export interface ISprintState {
   gamePhase: GamePhase
   level: string
   words: IWordsItem[]
+  rightAnswers: IWordsItem[]
+  wrongAnswers: IWordsItem[]
 }
 
 export const getWordsChunk = createAsyncThunk(
   'sprint/getWordsChunk',
-  async ({ page, group }: IGetWords) => {
-    const response = await getWords({ page, group })
-    console.log(response)
-    return response
+  async ({ group }: IGetWords) => {
+    let result: IWordsItem[] = []
+    for (let i = 0; i < 3; i += 1) {
+      const res = await getWords({ page: i.toString(), group })
+      if (!isServerError(res)) {
+        result = result.concat(res)
+      }
+    }
+    console.log(result)
+    return result
   },
 )
 
 const initialState: ISprintState = {
-  level: LanguageLevel.none,
+  level: 'none',
   gamePhase: GamePhase.preparation,
   words: [],
+  rightAnswers: [],
+  wrongAnswers: [],
 }
 export const sprintSlice = createSlice({
   name: 'sprint',
   initialState,
   reducers: {
     setLevel: (state, action: PayloadAction<string>) => {
-      state.level = action.payload
+      const levels = { A1: '0', A2: '1', B1: '2', B2: '3', C1: '4', C2: '5' }
+      state.level = levels[action.payload as keyof typeof levels]
     },
     setGamePhase: (state, action: PayloadAction<GamePhase>) => {
       state.gamePhase = action.payload
@@ -53,14 +54,12 @@ export const sprintSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getWordsChunk.pending, (state) => {
-      console.log('loading')
       state.gamePhase = GamePhase.loading
     })
     builder.addCase(getWordsChunk.fulfilled, (state, action) => {
       if (!isServerError(action.payload)) {
         state.gamePhase = GamePhase.inProcess
-        console.log(action.payload)
-        state.words = action.payload
+        state.words.push(...action.payload)
       }
     })
   },

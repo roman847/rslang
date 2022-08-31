@@ -14,7 +14,7 @@ const SprintInitial = () => {
   const { level } = useAppSelector((state) => state.sprint)
   const dispatch = useAppDispatch()
   const clickHandler = () => {
-    dispatch(getWordsChunk({ page: '0', group: '0' }))
+    dispatch(getWordsChunk({ page: '0', group: level }))
   }
   return (
     <Box>
