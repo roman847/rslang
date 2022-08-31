@@ -17,6 +17,10 @@ export enum AvatarsTeam {
   Alibek = 'images/alibek.jpg',
   Andrey = 'images/andrey.jpg',
 }
+export enum Images {
+  git = 'images/github.png',
+  school = 'images/school.png',
+}
 
 export enum TeamGithub {
   Roman = 'https://github.com/roman847',
@@ -29,16 +33,15 @@ export enum TypesInput {
   email = 'email',
   password = 'password',
   text = 'text',
+  name = 'name',
 }
-
-export const AlibekGit = 'https://github.com/limhill'
-export const AndreyGit = 'https://github.com/DittmerOk'
-export const RomanGit = 'https://github.com/roman847'
-export const RsShoolGit = 'https://app.rs.school/'
 
 export enum ButtonVariants {
   primary = 'primary',
   secondary = 'secondary',
+  contained = 'contained',
+  outlined = 'outlined',
+  text = 'text',
 }
 
 export enum Color {
@@ -49,6 +52,7 @@ export enum Color {
   disabledButton = '#DBC7BF',
   pageBackground = '#FAF8F5',
   error = '#B71313',
+  activePrimaryButton = '#FAD2C0',
 }
 
 export const Montserrat16 = {
@@ -135,6 +139,7 @@ export enum LogoSize {
   normal = 'logo',
   big = 'logo_big',
 }
+
 export enum WordItemBg {
   A1 = '#FAD2C0',
   A2 = '#C0E4EB',
@@ -151,3 +156,4 @@ export enum WordItemHover {
   C1 = '#AAEEAC',
   C2 = '#B6C1EA',
 }
+export const languageLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']

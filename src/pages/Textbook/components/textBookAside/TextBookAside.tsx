@@ -12,20 +12,25 @@ import {
   Button,
 } from '@mui/material'
 import { CropLandscapeOutlined } from '@mui/icons-material'
+import { IWordsItem } from 'core/interfaces/dataModels'
+import { setFocusWord } from 'redux/textBook/textBookSlice'
 import { IStore } from 'redux/textBook/store'
+import { useAppDispatch } from 'app/hooks'
 
 const TextBookAside = () => {
-  const image = useSelector((state: IStore) => state.textBook.focusWord)
+  const dispatch = useAppDispatch()
+  const word = useSelector((state: IStore) => state.textBook.focusWord)
+  // dispatch(setFocusWord(word))
 
   return (
     <Box>
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
-          {image && (
+          {word && (
             <CardMedia
               component='img'
               height='140'
-              image={`https://react-learn-new-words.herokuapp.com/${image.image}`}
+              image={`https://react-learn-new-words.herokuapp.com/${word.image}`}
               alt='green iguana'
             />
           )}

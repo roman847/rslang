@@ -83,7 +83,7 @@ const Authorization = () => {
             </Box>
             <Box sx={styles.sign}>
               <Typography sx={styles.sign__text}>Нет аккаунта?&nbsp;</Typography>
-              <Link component={RouterLink} to='reg' sx={styles.sign__link}>
+              <Link component={RouterLink} to='/reg' sx={styles.sign__link}>
                 Зарегистрироваться
               </Link>
             </Box>

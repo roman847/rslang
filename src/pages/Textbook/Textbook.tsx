@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react'
+// import { setTimeout } from 'timers'
+import React, { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import clsx from 'clsx'
 import { useSelector } from 'react-redux'
+import ButtonCircleGroup from 'pages/Textbook/components/ButtonCircle/ButtonCircleGroup'
 import WordItem from 'pages/Textbook/components/WordItem/WordItem'
 import { IWordsItem } from 'core/interfaces/dataModels'
 import Header from 'pages/main/components/Header/Header'
 import Footer from 'pages/main/components/Footer/Footer'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
 import { Color, ButtonVariants } from 'core/variables/constants'
-import { setPage, setGroup, fetchWords, setFocusWord } from 'redux/textBook/textBookSlice'
+import { setGroup, fetchWords, setFocusWord } from 'redux/textBook/textBookSlice'
 import { useAppDispatch } from 'app/hooks'
 import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
 import { identifyWordItemBg, identifyWordItemHover } from 'services/index'
@@ -21,8 +23,11 @@ const Textbook = () => {
   const words = useSelector((state: IStore) => state.textBook.words)
   const dispatch = useAppDispatch()
 
-  const handlerButton = async (difficult: string) => {
-    await dispatch(setGroup({ number: difficult }))
+  const handlerButton = (difficult: string) => {
+    dispatch(setGroup({ number: difficult }))
+    setTimeout(() => {
+      dispatch(setFocusWord(words[0]))
+    }, 0)
   }
 
   const initialTextBook = async () => {
@@ -30,11 +35,19 @@ const Textbook = () => {
   }
 
   useEffect(() => {
+    dispatch(setFocusWord(words[0]))
+  }, [words])
+
+  useEffect(() => {
     initialTextBook()
   }, [group, page])
 
+  const handler = (item: IWordsItem) => {
+    dispatch(setFocusWord(item))
+  }
+
   return (
-    <div>
+    <Box className={style.container__page}>
       <Header />
       <Box className={clsx('container', style.container__textBook)}>
         <Typography variant='h2' className={style.textBook__title}>
@@ -45,42 +58,7 @@ const Textbook = () => {
             Уровень сложности
           </Typography>
           <Box className={style.nav__butnBlock}>
-            <button
-              style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handlerButton('0')}
-            >
-              1
-            </button>
-            <button
-              style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handlerButton('1')}
-            >
-              2
-            </button>
-            <button
-              style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handlerButton('2')}
-            >
-              3
-            </button>
-            <button
-              style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handlerButton('3')}
-            >
-              4
-            </button>
-            <button
-              style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handlerButton('4')}
-            >
-              5
-            </button>
-            <button
-              style={{ width: '63px', height: '63px', borderRadius: '50%' }}
-              onClick={() => handlerButton('5')}
-            >
-              6
-            </button>
+            <ButtonCircleGroup handler={handlerButton} />
           </Box>
 
           <ProjectButton
@@ -103,6 +81,8 @@ const Textbook = () => {
                   hover={identifyWordItemHover(group)}
                   key={index}
                   item={item}
+                  active={index === 0 ? true : false}
+                  onClick={() => handler(item)}
                 />
               )
             })}
@@ -111,7 +91,7 @@ const Textbook = () => {
         </Box>
       </Box>
       <Footer />
-    </div>
+    </Box>
   )
 }
 

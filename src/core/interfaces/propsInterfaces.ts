@@ -33,6 +33,7 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
   disabled?: boolean
   lineHeight?: number
   borderColor?: Color
+  hoverColor?: Color
   action?: (e?: React.MouseEvent) => void
   children?: React.ReactNode
 }
@@ -42,6 +43,31 @@ export interface IPropsSelectElement {
   fields: string[]
 }
 
+export interface IRadioButton {
+  id: string
+  name: string
+  text: string
+}
+
 export interface ILogoProps {
   size?: LogoSize
+}
+
+export interface IPropsModal {
+  open: boolean
+  handleOpening: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+export interface IconProps {
+  width?: number
+  height?: number
+  fill: string
+  viewBox?: string
+  path: string
+  stroke: string
+  strokeWidth: string
+}
+
+export interface IconProp {
+  isModeOn: boolean
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Typography, Box } from '@mui/material'
 import { useSelector } from 'react-redux'
 import { IWordsItem } from 'core/interfaces/dataModels'
@@ -12,28 +12,22 @@ interface IWordItemProps {
   bg: string
   hover: string
   item: IWordsItem
+  active?: boolean
+  onClick: () => void
 }
 
-const WordItem = ({ item, bg, hover }: IWordItemProps) => {
-  const dispatch = useAppDispatch()
-  const words = useSelector((state: IStore) => state.textBook.words)
-  if (words) {
-    dispatch(setFocusWord(words[0]))
-  }
-
-  const handler = () => {
-    dispatch(setFocusWord(item))
-  }
-  useEffect(() => {
-    dispatch(setFocusWord(words[0]))
-  }, [])
+const WordItem = ({ item, bg, hover, active, onClick }: IWordItemProps) => {
   return (
     <Box
       onClick={() => {
-        handler()
+        onClick()
       }}
       className={style.container__item}
-      sx={{ background: bg, ':hover': { background: hover } }}
+      sx={
+        active
+          ? { background: hover, ':hover': { background: hover } }
+          : { background: bg, ':hover': { background: hover } }
+      }
     >
       <Typography className={style.item__word}>{item.word}</Typography>
       <Typography className={style.item__translate}>{item.wordTranslate}</Typography>

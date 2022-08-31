@@ -17,6 +17,10 @@ export const getToken = () => {
 
 export const getUserId = () => {
   return localStorageService.get(BrowserStorageItem.userId)
+
+  if (localStorage.getItem('user')) {
+    return JSON.parse(localStorage.getItem('user') as string).token
+  }
 }
 
 export const getId = () => {
@@ -79,6 +83,33 @@ export const identifyWordItemHover = (group: string) => {
       hover = WordItemHover.C1
       break
     case '5':
+      hover = WordItemHover.C2
+      break
+    default:
+      hover = WordItemHover.A1
+      break
+  }
+  return hover
+}
+export const identtifyActiveButtonCircle = (id: number) => {
+  let hover = ''
+  switch (id) {
+    case 0:
+      hover = WordItemHover.A1
+      break
+    case 1:
+      hover = WordItemHover.A2
+      break
+    case 2:
+      hover = WordItemHover.B1
+      break
+    case 3:
+      hover = WordItemHover.B2
+      break
+    case 4:
+      hover = WordItemHover.C1
+      break
+    case 5:
       hover = WordItemHover.C2
       break
     default:

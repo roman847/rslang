@@ -13,22 +13,24 @@ const ProjectButton = ({
   disabled,
   lineHeight,
   borderColor = Color.secondary,
+  hoverColor,
   action,
   type,
 }: IButtonProps) => {
   const BasicButton = styled(Button)({
-    height,
     width,
     disabled,
     background,
     fontSize,
     lineHeight,
     borderColor,
+    hoverColor,
     fontFamily: ['Montserrat', 'sans-serif'].join(','),
     fontStyle: 'normal',
     fontWeight: 700,
     textTransform: 'none',
     borderRadius: '100px',
+    maxHeight: height,
   })
 
   const PrimaryButton = styled(BasicButton)({
@@ -44,7 +46,7 @@ const ProjectButton = ({
     color: Color.blackText,
     fontWeight: 500,
     '&:hover, &:active': {
-      background: borderColor,
+      background: hoverColor ? hoverColor : borderColor,
     },
   })
 
