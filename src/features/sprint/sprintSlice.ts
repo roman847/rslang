@@ -16,6 +16,8 @@ export interface ISprintState {
   words: IWordsItem[]
   rightAnswers: string[]
   wrongAnswers: IWordsItem[]
+  score: number
+  multiplexer: number
 }
 
 export const getWordsChunk = createAsyncThunk(
@@ -38,6 +40,8 @@ const initialState: ISprintState = {
   words: [],
   rightAnswers: [],
   wrongAnswers: [],
+  score: 0,
+  multiplexer: 1,
 }
 export const sprintSlice = createSlice({
   name: 'sprint',

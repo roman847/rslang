@@ -72,3 +72,7 @@ export interface IconProps {
 export interface IconProp {
   isModeOn: boolean
 }
+
+export interface IParentProp {
+  children?: React.ReactNode
+}

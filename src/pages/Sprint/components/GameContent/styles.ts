@@ -7,17 +7,6 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
   },
-  container: {
-    width: pxToRem(770),
-    height: pxToRem(530),
-    border: `2px solid ${Color.primary}`,
-    borderRadius: pxToRem(100),
-    padding: `${pxToRem(49)} ${pxToRem(140)} ${pxToRem(64)}`,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    background: 'none',
-  },
   gameInfo: {
     display: 'flex',
     alignItems: 'center',
