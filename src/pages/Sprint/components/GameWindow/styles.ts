@@ -1,11 +1,5 @@
 import pxToRem from 'core/functions/pxToRem'
-import {
-  Color,
-  Montserrat28,
-  Montserrat32,
-  Montserrat36,
-  Montserrat52,
-} from 'core/variables/constants'
+import { Color, Montserrat28, Montserrat36, Montserrat52 } from 'core/variables/constants'
 
 const styles = {
   wrapper: {
@@ -23,15 +17,6 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     background: 'none',
-  },
-  timeInfo: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  timeInfo__text: {
-    paddingLeft: pxToRem(14),
-    ...Montserrat32,
   },
   gameInfo: {
     display: 'flex',
