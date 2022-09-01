@@ -10,10 +10,9 @@ import WordItem from 'pages/Textbook/components/WordItem/WordItem'
 import { IWordsItem } from 'core/interfaces/dataModels'
 import Header from 'pages/main/components/Header/Header'
 import Footer from 'pages/main/components/Footer/Footer'
-
 import ProjectButton from 'components/ProjectButton/ProjectButton'
 import { Color, ButtonVariants } from 'core/variables/constants'
-
+import LinkToGame from 'pages/Textbook/components/LinkToGame/LinkToGame'
 import { useAppDispatch } from 'app/hooks'
 import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
 import { identifyWordItemBg, identifyWordItemHover } from 'services/index'
@@ -101,6 +100,20 @@ const Textbook = () => {
             sx={{ marginX: 'auto', marginBottom: '100px' }}
           />
         </Stack>
+        <Box className={style.container__gamesLink}>
+          <LinkToGame
+            image='images/sprint.png'
+            title='Спринт'
+            description="Проверь свои знания в интеллектуальной игре 'Спринт'"
+            route={'/sprint'}
+          />
+          <LinkToGame
+            image='images/audiocall.png'
+            title='Аудиовызов'
+            description="Проверь свои знания в интеллектуальной игре 'Аудиовызов'"
+            route={'/audio'}
+          />
+        </Box>
       </Box>
       <Footer />
     </Box>

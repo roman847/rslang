@@ -71,3 +71,10 @@ export interface IconProps {
 export interface IconProp {
   isModeOn: boolean
 }
+
+export interface ILinkToGameProp {
+  image: string
+  title: string
+  description: string
+  route: string
+}
