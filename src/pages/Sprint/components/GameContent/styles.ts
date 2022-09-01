@@ -6,6 +6,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    padding: `${pxToRem(49)} ${pxToRem(140)} ${pxToRem(64)}`,
   },
   gameInfo: {
     display: 'flex',

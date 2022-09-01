@@ -57,6 +57,7 @@ export enum Color {
   primaryLight = '#F49B73',
   correctAnswerBackground = '#E5F2F5',
   incorrectAnswerBackground = '#FDEAEA',
+  gray = '#646464',
 }
 
 export const Montserrat16 = {
@@ -73,6 +74,14 @@ export const Montserrat18 = {
   fontStyle: 'normal',
   fontSize: `${pxToRem(18)}`,
   lineHeight: `${pxToRem(22)}`,
+}
+
+export const Montserrat22 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 600,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(22)}`,
+  lineHeight: `${pxToRem(27)}`,
 }
 
 export const Montserrat28 = {
