@@ -1,16 +1,19 @@
-// import { setTimeout } from 'timers'
 import React, { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import clsx from 'clsx'
 import { useSelector } from 'react-redux'
+import Pagination from '@mui/material/Pagination'
+import Stack from '@mui/material/Stack'
+import { setPage, setGroup, fetchWords, setFocusWord } from 'redux/textBook/textBookSlice'
 import ButtonCircleGroup from 'pages/Textbook/components/ButtonCircle/ButtonCircleGroup'
 import WordItem from 'pages/Textbook/components/WordItem/WordItem'
 import { IWordsItem } from 'core/interfaces/dataModels'
 import Header from 'pages/main/components/Header/Header'
 import Footer from 'pages/main/components/Footer/Footer'
+
 import ProjectButton from 'components/ProjectButton/ProjectButton'
 import { Color, ButtonVariants } from 'core/variables/constants'
-import { setGroup, fetchWords, setFocusWord } from 'redux/textBook/textBookSlice'
+
 import { useAppDispatch } from 'app/hooks'
 import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
 import { identifyWordItemBg, identifyWordItemHover } from 'services/index'
@@ -23,21 +26,9 @@ const Textbook = () => {
   const words = useSelector((state: IStore) => state.textBook.words)
   const dispatch = useAppDispatch()
 
-  const [appState, setState] = useState({
-    activeCard: words[0],
-    cards: words,
-  })
-  console.log(words)
-
   const handlerButton = (difficult: string) => {
     dispatch(setGroup({ number: difficult }))
-    setTimeout(() => {
-      dispatch(setFocusWord(words[0]))
-    }, 0)
-  }
-
-  const initialTextBook = async () => {
-    await dispatch(fetchWords({ page: page, group: group }))
+    dispatch(setPage({ number: '0' }))
   }
 
   useEffect(() => {
@@ -45,10 +36,10 @@ const Textbook = () => {
   }, [words])
 
   useEffect(() => {
-    initialTextBook()
-  }, [group, page])
+    dispatch(fetchWords({ page: page, group: group }))
+  }, [page, group])
 
-  const handler = (item: IWordsItem) => {
+  const handlerItem = (item: IWordsItem) => {
     dispatch(setFocusWord(item))
   }
 
@@ -88,13 +79,28 @@ const Textbook = () => {
                   key={index}
                   item={item}
                   active={index === 0 ? true : false}
-                  onClick={() => handler(item)}
+                  onClick={() => handlerItem(item)}
                 />
               )
             })}
           </Box>
           <TextBookAside />
         </Box>
+        <Stack spacing={2}>
+          <Pagination
+            size='large'
+            count={30}
+            variant='outlined'
+            page={+page + 1}
+            showFirstButton
+            showLastButton
+            onChange={(_, num) => {
+              dispatch(fetchWords({ page: `${num - 1}`, group: group }))
+              dispatch(setPage({ number: `${num - 1}` }))
+            }}
+            sx={{ marginX: 'auto', marginBottom: '100px' }}
+          />
+        </Stack>
       </Box>
       <Footer />
     </Box>

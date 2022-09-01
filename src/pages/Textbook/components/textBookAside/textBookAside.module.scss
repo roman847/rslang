@@ -1,4 +1,38 @@
 @import 'styles/main.scss';
+.card__container {
+  .card {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background-color: $bgColor;
+  }
+}
+
 .wrapper__word {
   display: flex;
+  gap: 5px;
+  .word {
+    @include fontSize28;
+    font-weight: 600;
+  }
+  .word__translation {
+    @include fontSize28;
+    font-weight: 400;
+  }
+}
+.container__cardText {
+  .word__transcription {
+    @include fontSize16;
+    color: $blackColor;
+  }
+  .title__word {
+    @include fontSize16;
+    font-weight: 600;
+    color: $secondaryColor;
+    margin-top: 10px;
+  }
+  .word__description {
+    @include fontSize16;
+    font-weight: 400;
+  }
 }
