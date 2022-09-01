@@ -8,7 +8,7 @@ import getRandomIndex from 'core/functions/getRandomIndex'
 import styles from './styles'
 
 const GameWindow = () => {
-  const { words } = useAppSelector((state) => state.sprint)
+  const { words } = useAppSelector((state) => state.audioCall)
   const wordIndex = getRandomIndex(words.length)
   const randomIndex = getRandomIndex(words.length)
   const { word } = words[wordIndex]

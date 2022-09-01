@@ -1,2 +1,2 @@
-import SprintGame from './SprintGame'
-export default SprintGame
+import AudioGame from './AudioGame'
+export default AudioGame
