@@ -1,10 +1,9 @@
 import axios, { AxiosError } from 'axios'
-import { axiosInstance, saveToken } from 'services'
+import { axiosInstance, saveToken, saveUserID } from 'services'
 import { IUserData, IAuthorizingUser } from 'core/interfaces/dataModels'
 import { ServerError } from 'core/interfaces/commonInterfaces'
 import { UserErrorMessage } from 'core/variables/constants'
 import { signInErrHandler } from 'services/errorHandler'
-
 export const signIn = async ({
   password,
   email,
@@ -16,7 +15,7 @@ export const signIn = async ({
     })
 
     saveToken(response.data)
-
+    saveUserID(response.data)
     return response.data
   } catch (error) {
     if (axios.isAxiosError(error)) {

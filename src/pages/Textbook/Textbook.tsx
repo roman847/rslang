@@ -4,22 +4,64 @@ import clsx from 'clsx'
 import { useSelector } from 'react-redux'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
+import axios, { AxiosError } from 'axios'
 import { setPage, setGroup, fetchWords, setFocusWord } from 'redux/textBook/textBookSlice'
 import ButtonCircleGroup from 'pages/Textbook/components/ButtonCircle/ButtonCircleGroup'
 import WordItem from 'pages/Textbook/components/WordItem/WordItem'
 import { IWordsItem } from 'core/interfaces/dataModels'
+import { ServerError } from 'core/interfaces/commonInterfaces'
 import Header from 'pages/main/components/Header/Header'
 import Footer from 'pages/main/components/Footer/Footer'
+import { getToken, identifyWordItemBg, identifyWordItemHover, getUserId } from 'services/index'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
 import { Color, ButtonVariants } from 'core/variables/constants'
 import LinkToGame from 'pages/Textbook/components/LinkToGame/LinkToGame'
 import { useAppDispatch } from 'app/hooks'
+import { getUser } from 'services/users'
 import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
-import { identifyWordItemBg, identifyWordItemHover } from 'services/index'
+import { signInErrHandler } from 'services/errorHandler'
 import { IStore } from 'redux/textBook/store'
+
 import style from './textBook.module.scss'
 
+interface IWordCreate {
+  userToken: string
+  id: string
+}
+interface IResponseCreateWord {
+  difficulty: 'string'
+  optional: {
+    difficulty: string
+  }
+}
+
 const Textbook = () => {
+  const token = getToken()
+  const userId = getUserId()
+
+  const createWord = async (): Promise<IResponseCreateWord | void> => {
+    try {
+      const response = await axios.post(
+        `https://react-learn-new-words.herokuapp.com/users/${userId}/words/5e9f5ee35eb9e72bc21af4a5`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'Application/json',
+            'Content-type': 'Application/json',
+          },
+          data: {
+            difficulty: 'string',
+            optional: {},
+          },
+        },
+      )
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  createWord()
   const page = useSelector((state: IStore) => state.textBook.page.number)
   const group = useSelector((state: IStore) => state.textBook.group.number)
   const words = useSelector((state: IStore) => state.textBook.words)
@@ -49,6 +91,13 @@ const Textbook = () => {
         <Typography variant='h2' className={style.textBook__title}>
           Учебник
         </Typography>
+        <button
+          onClick={() => {
+            createWord()
+          }}
+        >
+          Click meeeee
+        </button>
         <Box className={style.nav__words}>
           <Typography variant='h5' className={style.nav__title}>
             Уровень сложности
@@ -56,7 +105,6 @@ const Textbook = () => {
           <Box className={style.nav__butnBlock}>
             <ButtonCircleGroup handler={handlerButton} />
           </Box>
-
           <ProjectButton
             className='button'
             variant={ButtonVariants.secondary}
