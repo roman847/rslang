@@ -94,6 +94,20 @@ export const sprintSlice = createSlice({
       state.winStreak = 0
       state.multiplier = 1
     },
+    prepareToContinue: (state) => {
+      state.score = 0
+      state.winStreak = 0
+      state.multiplier = 1
+      state.rightAnswers = []
+      state.wrongAnswers = []
+      state.storeWord = ''
+      state.storeWordTranslate = ''
+      state.storeWordIndex = -1
+    },
+    exitTheGame: (state) => {
+      state.words = []
+      state.level = ''
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getWordsChunk.pending, (state) => {
@@ -117,6 +131,8 @@ export const {
   updateStore,
   increaseScore,
   resetWinStreak,
+  prepareToContinue,
+  exitTheGame,
 } = sprintSlice.actions
 
 export default sprintSlice.reducer

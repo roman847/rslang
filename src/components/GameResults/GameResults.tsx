@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { ButtonVariants, Color, GameType } from 'core/variables/constants'
 import { useAppDispatch } from 'app/hooks'
-import { GamePhase, setGamePhase } from 'features/sprint/sprintSlice'
+import { GamePhase, prepareToContinue, setGamePhase } from 'features/sprint/sprintSlice'
 import ProjectButton from 'components/ProjectButton'
 import TotalScore from 'components/TotalScore'
 import WordsList from 'components/WordsList'
@@ -41,7 +41,10 @@ const GameResults = ({ gameType }: IGameResults) => {
 
   let action: () => void
   if (gameType === GameType.Sprint) {
-    action = () => dispatch(setGamePhase(GamePhase.inProcess))
+    action = () => {
+      dispatch(setGamePhase(GamePhase.inProcess))
+      dispatch(prepareToContinue())
+    }
   } else if (gameType === GameType.AudioCall) {
     action = () => {
       /* placeholder */

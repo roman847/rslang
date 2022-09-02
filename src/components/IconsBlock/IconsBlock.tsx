@@ -4,9 +4,17 @@ import { Link as RouterLink } from 'react-router-dom'
 import Icon from 'components/Icon'
 import SoundIcon from 'components/SoundIcon'
 import ZoomIcon from 'components/ZoomIcon'
+import { useAppDispatch } from 'app/hooks'
+import { exitTheGame, prepareToContinue } from 'features/sprint/sprintSlice'
 import styles from './styles'
 
 const IconsBlock = () => {
+  const dispatch = useAppDispatch()
+  const closeClickHandler = () => {
+    dispatch(prepareToContinue())
+    dispatch(exitTheGame())
+  }
+
   const [sound, setSound] = useState(true)
   const clickSoundHandler = () => {
     setSound((prevState) => !prevState)
@@ -24,7 +32,7 @@ const IconsBlock = () => {
 
   return (
     <Box sx={styles.icons}>
-      <Link component={RouterLink} to='/'>
+      <Link component={RouterLink} to='/' onClick={closeClickHandler}>
         <Icon path='M18 6L6 18M6 6l12 12' fill='none' stroke='#1D1D1D' strokeWidth='2' />
       </Link>
       <Box sx={styles.icon} onClick={clickSoundHandler}>
