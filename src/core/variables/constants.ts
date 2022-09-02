@@ -58,6 +58,8 @@ export enum Color {
   correctAnswerBackground = '#E5F2F5',
   incorrectAnswerBackground = '#FDEAEA',
   gray = '#646464',
+  secondaryButtonHover = '#D5EBF0',
+  lightGray = '#DAD9D9',
 }
 
 export const Montserrat16 = {
@@ -171,4 +173,7 @@ export enum LogoSize {
 
 export const languageLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 
-export const sprintDurationMs = 60000
+export enum GameType {
+  Sprint = 'Sprint',
+  AudioCall = 'AudioCall',
+}

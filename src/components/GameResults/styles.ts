@@ -1,5 +1,5 @@
 import pxToRem from 'core/functions/pxToRem'
-import { Color, Montserrat22, Montserrat36 } from 'core/variables/constants'
+import { Color, Montserrat16, Montserrat22 } from 'core/variables/constants'
 
 const styles = {
   wrapper: {
@@ -22,15 +22,21 @@ const styles = {
       textDecoration: 'underline',
       cursor: 'pointer',
     },
-    '&:active': {
-      textDecoration: 'underline',
-      color: Color.blackText,
-    },
   },
-  title: {
-    ...Montserrat36,
-    color: Color.secondary,
-    paddingTop: pxToRem(65),
+  subtitle: {
+    paddingTop: pxToRem(9),
+    ...Montserrat16,
+  },
+  buttons: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  active: {
+    ...Montserrat22,
+    color: Color.blackText,
+    textDecoration: 'underline',
+    cursor: 'pointer',
   },
 }
 export default styles

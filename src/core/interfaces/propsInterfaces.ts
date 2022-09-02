@@ -6,6 +6,7 @@ import {
   Color,
   TypesInput,
   LogoSize,
+  GameType,
 } from 'core/variables/constants'
 
 export interface IPropsCard {
@@ -75,4 +76,13 @@ export interface IconProp {
 
 export interface IParentProp {
   children?: React.ReactNode
+}
+
+export interface IContainer extends IParentProp {
+  width?: number
+  height?: number
+}
+
+export interface IGameResults {
+  gameType: GameType
 }
