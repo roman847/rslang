@@ -91,13 +91,6 @@ const Textbook = () => {
         <Typography variant='h2' className={style.textBook__title}>
           Учебник
         </Typography>
-        <button
-          onClick={() => {
-            createWord()
-          }}
-        >
-          Click meeeee
-        </button>
         <Box className={style.nav__words}>
           <Typography variant='h5' className={style.nav__title}>
             Уровень сложности
