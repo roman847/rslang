@@ -6,7 +6,6 @@ import { useAppSelector } from 'app/hooks'
 import { GamePhase } from 'features/sprint/sprintSlice'
 import GameContent from 'pages/Sprint/components/GameContent'
 import GameResults from 'components/GameResults'
-import { GameType } from 'core/variables/constants'
 import styles from './styles'
 
 const SprintGeneral = () => {
@@ -19,7 +18,7 @@ const SprintGeneral = () => {
     width = 770
     height = 530
   } else if (gamePhase === GamePhase.results) {
-    currentComponent = <GameResults gameType={GameType.Sprint} />
+    currentComponent = <GameResults />
   }
   return (
     <Box>
