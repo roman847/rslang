@@ -18,7 +18,7 @@ export interface ISprintState {
   rightAnswers: string[]
   wrongAnswers: IWordsItem[]
   score: number
-  multiplexer: number
+  multiplier: number
   winStreak: number
   background: Color
   storeWord: string
@@ -47,7 +47,7 @@ const initialState: ISprintState = {
   rightAnswers: [],
   wrongAnswers: [],
   score: 0,
-  multiplexer: 1,
+  multiplier: 1,
   winStreak: 0,
   background: Color.none,
   storeWord: '',
@@ -81,6 +81,19 @@ export const sprintSlice = createSlice({
       state.storeWordTranslate = wordTranslate
       state.storeWordIndex = wordIndex
     },
+    increaseScore: (state) => {
+      state.score += state.multiplier * 10
+      if (state.winStreak >= 3) {
+        state.winStreak = 0
+        state.multiplier += 1
+      } else {
+        state.winStreak += 1
+      }
+    },
+    resetWinStreak: (state) => {
+      state.winStreak = 0
+      state.multiplier = 1
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getWordsChunk.pending, (state) => {
@@ -102,6 +115,8 @@ export const {
   addWrongAnswer,
   setBackground,
   updateStore,
+  increaseScore,
+  resetWinStreak,
 } = sprintSlice.actions
 
 export default sprintSlice.reducer

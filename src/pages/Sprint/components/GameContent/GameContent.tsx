@@ -10,14 +10,15 @@ import {
   addWrongAnswer,
   setBackground,
   updateStore,
+  increaseScore,
+  resetWinStreak,
 } from 'features/sprint/sprintSlice'
 import styles from './styles'
 
 const GameContent = () => {
   const dispatch = useAppDispatch()
-  const { storeWord, storeWordTranslate, storeWordIndex, words } = useAppSelector(
-    (state) => state.sprint,
-  )
+  const { storeWord, storeWordTranslate, storeWordIndex, words, score, multiplier } =
+    useAppSelector((state) => state.sprint)
   const [disabled, setDisabled] = useState(false)
 
   const getGameData = () => {
@@ -40,13 +41,14 @@ const GameContent = () => {
     )
   }
 
-  const word = storeWord ? storeWord : gameData.word
-  const wordTranslate = storeWordTranslate ? storeWordTranslate : gameData.wordTranslate
-  const wordIndex = storeWordIndex ? storeWordIndex : gameData.wordIndex
+  const word = storeWord
+  const wordTranslate = storeWordTranslate
+  const wordIndex = storeWordIndex
 
   const correctAnswerHandler = () => {
     dispatch(setBackground(Color.correctAnswerBackground))
     setDisabled(true)
+    dispatch(increaseScore())
     setTimeout(() => {
       dispatch(addRightAnswer(words[wordIndex].id))
       dispatch(
@@ -63,6 +65,7 @@ const GameContent = () => {
   const incorrectAnswerHandler = () => {
     dispatch(setBackground(Color.incorrectAnswerBackground))
     setDisabled(true)
+    dispatch(resetWinStreak())
     setTimeout(() => {
       dispatch(addWrongAnswer(words[wordIndex].id))
       dispatch(
@@ -95,8 +98,10 @@ const GameContent = () => {
     <Box sx={styles.wrapper}>
       <Timer />
       <Box sx={styles.gameInfo}>
-        <Typography sx={styles.gameInfo__text}>0 баллов</Typography>
-        <Typography sx={styles.gameInfo__text}>X 1 (+10)</Typography>
+        <Typography sx={styles.gameInfo__text}>{score} баллов</Typography>
+        <Typography sx={styles.gameInfo__text}>
+          X {multiplier} (+{multiplier * 10})
+        </Typography>
       </Box>
       <Typography sx={styles.title}>{word}</Typography>
       <Typography sx={styles.subtitle}>{wordTranslate}</Typography>
