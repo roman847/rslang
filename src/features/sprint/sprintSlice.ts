@@ -15,7 +15,7 @@ export interface ISprintState {
   gamePhase: GamePhase
   level: string
   words: IWordsItem[]
-  rightAnswers: string[]
+  rightAnswers: IWordsItem[]
   wrongAnswers: IWordsItem[]
   score: number
   multiplier: number

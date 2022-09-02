@@ -50,7 +50,7 @@ const GameContent = () => {
     setDisabled(true)
     dispatch(increaseScore())
     setTimeout(() => {
-      dispatch(addRightAnswer(words[wordIndex].id))
+      dispatch(addRightAnswer(words[wordIndex]))
       dispatch(
         updateStore({
           word: gameData.word,
@@ -67,7 +67,7 @@ const GameContent = () => {
     setDisabled(true)
     dispatch(resetWinStreak())
     setTimeout(() => {
-      dispatch(addWrongAnswer(words[wordIndex].id))
+      dispatch(addWrongAnswer(words[wordIndex]))
       dispatch(
         updateStore({
           word: gameData.word,

@@ -2,10 +2,10 @@ import React from 'react'
 import { Box } from '@mui/material'
 import { useAppSelector } from 'app/hooks'
 import { GamePhase } from 'features/sprint/sprintSlice'
-import SprintInitial from './components/SprintInitial'
+import SprintInitial from 'pages/Sprint/components/SprintInitial'
+import SprintGeneral from 'pages/Sprint/components/SprintGeneral'
+import LoadingScreen from 'pages/Sprint/components/LoadingScreen'
 import styles from './styles'
-import SprintGeneral from './components/SprintGeneral'
-import LoadingScreen from './components/LoadingScreen'
 
 const Sprint = () => {
   const { gamePhase } = useAppSelector((state) => state.sprint)

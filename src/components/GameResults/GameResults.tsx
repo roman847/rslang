@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import { ButtonVariants, Color } from 'core/variables/constants'
+import { ButtonVariants, Color, GameType } from 'core/variables/constants'
 import { useAppDispatch } from 'app/hooks'
 import { GamePhase, setGamePhase } from 'features/sprint/sprintSlice'
 import ProjectButton from 'components/ProjectButton'
 import TotalScore from 'components/TotalScore'
 import WordsList from 'components/WordsList'
+import { IGameResults } from 'core/interfaces/propsInterfaces'
 import styles from './styles'
 
-const GameResults = () => {
+const GameResults = ({ gameType }: IGameResults) => {
   const dispatch = useAppDispatch()
   const [firstLinkActive, setFirstLinkActive] = useState(true)
   const [secondLinkActive, setSecondLinkActive] = useState(false)
@@ -26,19 +27,29 @@ const GameResults = () => {
     setSecondLinkActive(true)
   }
 
-  let currentComponent
+  let currentComponent: React.ReactNode
   if (firstLinkActive) {
-    currentComponent = <TotalScore />
+    currentComponent = <TotalScore gameType={gameType} />
   } else {
-    currentComponent = <WordsList />
+    currentComponent = <WordsList gameType={gameType} />
   }
 
   const navigate = useNavigate()
   const clickTextbookHandler = () => {
     navigate('../textbook')
   }
+
+  let action: () => void
+  if (gameType === GameType.Sprint) {
+    action = () => dispatch(setGamePhase(GamePhase.inProcess))
+  } else if (gameType === GameType.AudioCall) {
+    action = () => {
+      /* placeholder */
+    }
+  }
+
   const continueGameHandler = () => {
-    dispatch(setGamePhase(GamePhase.inProcess))
+    action()
   }
 
   return (
