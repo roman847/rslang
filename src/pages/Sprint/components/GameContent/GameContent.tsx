@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import ProjectButton from 'components/ProjectButton'
 import { Color } from 'core/variables/constants'
@@ -18,6 +18,7 @@ const GameContent = () => {
   const { storeWord, storeWordTranslate, storeWordIndex, words } = useAppSelector(
     (state) => state.sprint,
   )
+  const [disabled, setDisabled] = useState(false)
 
   const getGameData = () => {
     const wordIndex = getRandomIndex(words.length)
@@ -43,39 +44,51 @@ const GameContent = () => {
   const wordTranslate = storeWordTranslate ? storeWordTranslate : gameData.wordTranslate
   const wordIndex = storeWordIndex ? storeWordIndex : gameData.wordIndex
 
+  const correctAnswerHandler = () => {
+    dispatch(setBackground(Color.correctAnswerBackground))
+    setDisabled(true)
+    setTimeout(() => {
+      dispatch(addRightAnswer(words[wordIndex].id))
+      dispatch(
+        updateStore({
+          word: gameData.word,
+          wordTranslate: gameData.wordTranslate,
+          wordIndex: gameData.wordIndex,
+        }),
+      )
+      setDisabled(false)
+    }, 500)
+  }
+
+  const incorrectAnswerHandler = () => {
+    dispatch(setBackground(Color.incorrectAnswerBackground))
+    setDisabled(true)
+    setTimeout(() => {
+      dispatch(addWrongAnswer(words[wordIndex].id))
+      dispatch(
+        updateStore({
+          word: gameData.word,
+          wordTranslate: gameData.wordTranslate,
+          wordIndex: gameData.wordIndex,
+        }),
+      )
+      setDisabled(false)
+    }, 500)
+  }
+
   const correctClickHandler = () => {
     if (wordTranslate === words[wordIndex].wordTranslate) {
-      dispatch(setBackground(Color.correctAnswerBackground))
-      setTimeout(() => {
-        dispatch(addRightAnswer(words[wordIndex].id))
-        dispatch(
-          updateStore({
-            word: gameData.word,
-            wordTranslate: gameData.wordTranslate,
-            wordIndex: gameData.wordIndex,
-          }),
-        )
-      }, 500)
+      correctAnswerHandler()
     } else {
-      dispatch(setBackground(Color.incorrectAnswerBackground))
-      setTimeout(() => {
-        dispatch(addWrongAnswer(words[wordIndex].id))
-        dispatch(
-          updateStore({
-            word: gameData.word,
-            wordTranslate: gameData.wordTranslate,
-            wordIndex: gameData.wordIndex,
-          }),
-        )
-      }, 500)
+      incorrectAnswerHandler()
     }
   }
 
   const incorrectClickHandler = () => {
     if (wordTranslate === words[wordIndex].wordTranslate) {
-      dispatch(addWrongAnswer(words[wordIndex].id))
+      incorrectAnswerHandler()
     } else {
-      dispatch(addRightAnswer(words[wordIndex].id))
+      correctAnswerHandler()
     }
   }
   return (
@@ -93,7 +106,7 @@ const GameContent = () => {
           height={50}
           buttonColor={Color.error}
           action={incorrectClickHandler}
-          disabled={true}
+          disabled={disabled}
         >
           Неверно
         </ProjectButton>
@@ -102,6 +115,7 @@ const GameContent = () => {
           height={50}
           buttonColor={Color.secondary}
           action={correctClickHandler}
+          disabled={disabled}
         >
           Верно
         </ProjectButton>
