@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IGetWords, IWordsItem } from 'core/interfaces/dataModels'
 import { getWords } from 'services/words'
 import isServerError from 'core/functions/isServerError'
+import { Color } from 'core/variables/constants'
 
 export enum GamePhase {
   preparation = 'preparation',
@@ -18,6 +19,11 @@ export interface ISprintState {
   wrongAnswers: IWordsItem[]
   score: number
   multiplexer: number
+  winStreak: number
+  background: Color
+  storeWord: string
+  storeWordTranslate: string
+  storeWordIndex: number
 }
 
 export const getWordsChunk = createAsyncThunk(
@@ -42,6 +48,11 @@ const initialState: ISprintState = {
   wrongAnswers: [],
   score: 0,
   multiplexer: 1,
+  winStreak: 0,
+  background: Color.none,
+  storeWord: '',
+  storeWordTranslate: '',
+  storeWordIndex: -1,
 }
 export const sprintSlice = createSlice({
   name: 'sprint',
@@ -60,6 +71,16 @@ export const sprintSlice = createSlice({
     addWrongAnswer: (state, action) => {
       if (!state.wrongAnswers.includes(action.payload)) state.wrongAnswers.push(action.payload)
     },
+    setBackground: (state, action) => {
+      state.background = action.payload
+    },
+    updateStore: (state, action) => {
+      const { word, wordTranslate, wordIndex } = action.payload
+      state.background = Color.none
+      state.storeWord = word
+      state.storeWordTranslate = wordTranslate
+      state.storeWordIndex = wordIndex
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getWordsChunk.pending, (state) => {
@@ -74,6 +95,13 @@ export const sprintSlice = createSlice({
   },
 })
 
-export const { setLevel, setGamePhase, addRightAnswer, addWrongAnswer } = sprintSlice.actions
+export const {
+  setLevel,
+  setGamePhase,
+  addRightAnswer,
+  addWrongAnswer,
+  setBackground,
+  updateStore,
+} = sprintSlice.actions
 
 export default sprintSlice.reducer

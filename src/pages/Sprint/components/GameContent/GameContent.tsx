@@ -5,12 +5,19 @@ import { Color } from 'core/variables/constants'
 import Timer from 'pages/Sprint/components/Timer'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import getRandomIndex from 'core/functions/getRandomIndex'
-import { addRightAnswer, addWrongAnswer } from 'features/sprint/sprintSlice'
+import {
+  addRightAnswer,
+  addWrongAnswer,
+  setBackground,
+  updateStore,
+} from 'features/sprint/sprintSlice'
 import styles from './styles'
 
 const GameContent = () => {
   const dispatch = useAppDispatch()
-  const { words } = useAppSelector((state) => state.sprint)
+  const { storeWord, storeWordTranslate, storeWordIndex, words } = useAppSelector(
+    (state) => state.sprint,
+  )
 
   const getGameData = () => {
     const wordIndex = getRandomIndex(words.length)
@@ -20,13 +27,47 @@ const GameContent = () => {
     return { word, wordTranslate, wordIndex, randomIndex }
   }
 
-  const { word, wordTranslate, wordIndex } = getGameData()
+  const gameData = getGameData()
+
+  if (!storeWord && !storeWordTranslate && storeWordIndex === -1) {
+    dispatch(
+      updateStore({
+        word: gameData.word,
+        wordTranslate: gameData.wordTranslate,
+        wordIndex: gameData.wordIndex,
+      }),
+    )
+  }
+
+  const word = storeWord ? storeWord : gameData.word
+  const wordTranslate = storeWordTranslate ? storeWordTranslate : gameData.wordTranslate
+  const wordIndex = storeWordIndex ? storeWordIndex : gameData.wordIndex
 
   const correctClickHandler = () => {
     if (wordTranslate === words[wordIndex].wordTranslate) {
-      dispatch(addRightAnswer(words[wordIndex].id))
+      dispatch(setBackground(Color.correctAnswerBackground))
+      setTimeout(() => {
+        dispatch(addRightAnswer(words[wordIndex].id))
+        dispatch(
+          updateStore({
+            word: gameData.word,
+            wordTranslate: gameData.wordTranslate,
+            wordIndex: gameData.wordIndex,
+          }),
+        )
+      }, 500)
     } else {
-      dispatch(addWrongAnswer(words[wordIndex].id))
+      dispatch(setBackground(Color.incorrectAnswerBackground))
+      setTimeout(() => {
+        dispatch(addWrongAnswer(words[wordIndex].id))
+        dispatch(
+          updateStore({
+            word: gameData.word,
+            wordTranslate: gameData.wordTranslate,
+            wordIndex: gameData.wordIndex,
+          }),
+        )
+      }, 500)
     }
   }
 
@@ -52,6 +93,7 @@ const GameContent = () => {
           height={50}
           buttonColor={Color.error}
           action={incorrectClickHandler}
+          disabled={true}
         >
           Неверно
         </ProjectButton>
