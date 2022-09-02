@@ -15,7 +15,7 @@ const GameWindow = () => {
   const { wordTranslate } = Math.random() > 0.5 ? words[randomIndex] : words[wordIndex]
   return (
     <Box sx={styles.wrapper}>
-      <Typography>1/20</Typography>
+      <Typography sx={styles.result}>1/20</Typography>
       <Box sx={styles.container}>
         <Box sx={styles.icon}>
           <VolumeIcon />
