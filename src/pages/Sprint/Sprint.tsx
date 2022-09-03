@@ -2,9 +2,9 @@ import React from 'react'
 import { Box } from '@mui/material'
 import { useAppSelector } from 'app/hooks'
 import { GamePhase } from 'features/sprint/sprintSlice'
-import LoadingGame from '../AudioCall/components/LoadingGame'
-import SprintGame from '../AudioCall/components/AudioGame'
-import SprintInitial from './components/SprintInitial'
+import SprintInitial from 'pages/Sprint/components/SprintInitial'
+import SprintGeneral from 'pages/Sprint/components/SprintGeneral'
+import LoadingScreen from 'pages/Sprint/components/LoadingScreen'
 import styles from './styles'
 
 const Sprint = () => {
@@ -13,9 +13,9 @@ const Sprint = () => {
   if (gamePhase === GamePhase.preparation) {
     currentComponent = <SprintInitial />
   } else if (gamePhase === GamePhase.loading) {
-    currentComponent = <LoadingGame />
+    currentComponent = <LoadingScreen />
   } else {
-    currentComponent = <SprintGame />
+    currentComponent = <SprintGeneral />
   }
   return (
     <Box sx={styles.main}>

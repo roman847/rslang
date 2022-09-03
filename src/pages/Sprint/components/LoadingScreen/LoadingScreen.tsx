@@ -25,7 +25,7 @@ const LoadingScreen = () => {
   return (
     <Box>
       <Box component='header' sx={styles.header}>
-        <Typography sx={styles.title}>Аудиовызов</Typography>
+        <Typography sx={styles.title}>Спринт</Typography>
         <IconsBlock />
       </Box>
       <Box sx={styles.container}>

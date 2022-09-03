@@ -1,31 +1,23 @@
 import pxToRem from 'core/functions/pxToRem'
-import { Color, Montserrat32, Montserrat36, Montserrat52 } from 'core/variables/constants'
+import { Color, Montserrat28, Montserrat36, Montserrat52 } from 'core/variables/constants'
 
 const styles = {
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  link: {
-    cursor: 'pointer',
-  },
-  container: {
-    width: pxToRem(770),
-    height: pxToRem(530),
     padding: `${pxToRem(49)} ${pxToRem(140)} ${pxToRem(64)}`,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
   },
-  icon: {
+  gameInfo: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: '100%',
+    paddingTop: pxToRem(41),
   },
-  timeInfo__text: {
-    paddingLeft: pxToRem(14),
-    ...Montserrat32,
+  gameInfo__text: {
+    ...Montserrat28,
+    fontWeight: 600,
   },
   title: {
     paddingTop: pxToRem(65),
@@ -36,17 +28,11 @@ const styles = {
     ...Montserrat36,
     color: Color.primaryLight,
   },
-  button: {
-    paddingTop: pxToRem(70),
-    textAlign: 'center',
-    width: '100%',
-  },
   buttons: {
     paddingTop: pxToRem(70),
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%',
-    columnGap: pxToRem(13),
   },
 }
 export default styles

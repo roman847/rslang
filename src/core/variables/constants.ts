@@ -45,15 +45,23 @@ export enum ButtonVariants {
 }
 
 export enum Color {
+  none = 'none',
   primary = '#F06A33',
   secondary = '#3E92A3',
+  secondaryLight = '#E1F1F5',
   lightText = '#F0F0F0',
   blackText = '#1D1D1D',
   disabledButton = '#DBC7BF',
   pageBackground = '#FAF8F5',
   error = '#B71313',
+  errorLight = '#FCE2E2',
   activePrimaryButton = '#FAD2C0',
   primaryLight = '#F49B73',
+  correctAnswerBackground = '#E5F2F5',
+  incorrectAnswerBackground = '#FDEAEA',
+  gray = '#646464',
+  secondaryButtonHover = '#D5EBF0',
+  lightGray = '#DAD9D9',
 }
 
 export const Montserrat16 = {
@@ -70,6 +78,14 @@ export const Montserrat18 = {
   fontStyle: 'normal',
   fontSize: `${pxToRem(18)}`,
   lineHeight: `${pxToRem(22)}`,
+}
+
+export const Montserrat22 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 600,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(22)}`,
+  lineHeight: `${pxToRem(27)}`,
 }
 
 export const Montserrat28 = {
@@ -158,3 +174,8 @@ export enum LogoSize {
 }
 
 export const languageLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+
+export enum GameType {
+  Sprint = 'Sprint',
+  AudioCall = 'AudioCall',
+}
