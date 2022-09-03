@@ -37,46 +37,15 @@ interface IResponseCreateWord {
 }
 
 const Textbook = () => {
-  // const token = getToken()
-  // const userId = getUserId()
-
-  // const createWord = async (): Promise<IResponseCreateWord | UserErrorMessage | ServerError> => {
-  //   try {
-  //     const response = await axios.post(
-  //       `https://react-learn-new-words.herokuapp.com/users/${userId}/words/5e9f5ee35eb9e72bc21af4a5`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //           Accept: 'Application/json',
-  //           'Content-type': 'Application/json',
-  //         },
-  //         data: {
-  //           difficulty: 'string',
-  //           optional: {},
-  //         },
-  //       },
-  //     )
-  //     console.log(response.data)
-  //     return response.data
-  //   } catch (error) {
-  //     if (axios.isAxiosError(error)) {
-  //       const serverError = error as AxiosError<string>
-  //       if (serverError && serverError.response) {
-  //         return signInErrHandler(serverError.response.data)
-  //       }
-  //     }
-
-  //     return { errorMessage: 'Unknown error' }
-  //   }
-  // }
-  // createWord()
-
   const page = useSelector((state: IStore) => state.textBook.page.number)
   const group = useSelector((state: IStore) => state.textBook.group.number)
   const words = useSelector((state: IStore) => state.textBook.words)
+  const [activeItem, setActiveItem] = useState(0)
+
   const dispatch = useAppDispatch()
 
   const handlerButton = (difficult: string) => {
+    setActiveItem(0)
     dispatch(setGroup({ number: difficult }))
     dispatch(setPage({ number: '0' }))
   }
@@ -89,14 +58,14 @@ const Textbook = () => {
     dispatch(fetchWords({ page: page, group: group }))
   }, [page, group])
 
-  const handlerItem = (item: IWordsItem) => {
-    dispatch(setFocusWord(item))
+  const handlerItem = (index: number) => {
+    setActiveItem(index)
+    dispatch(setFocusWord(words[index]))
   }
 
   return (
     <Box className={style.container__page}>
       <Header />
-
       <Box className={clsx('container', style.container__textBook)}>
         <Typography variant='h2' className={style.textBook__title}>
           Учебник
@@ -121,18 +90,19 @@ const Textbook = () => {
         </Box>
         <Box className={style.textBook__mainContent}>
           <Box className={style.container__words}>
-            {words.map((item: IWordsItem, index: number) => {
-              return (
-                <WordItem
-                  bg={identifyWordItemBg(group)}
-                  hover={identifyWordItemHover(group)}
-                  key={index}
-                  item={item}
-                  active={index === 0 ? true : false}
-                  onClick={() => handlerItem(item)}
-                />
-              )
-            })}
+            {words &&
+              words.map((item: IWordsItem, index: number) => {
+                return (
+                  <WordItem
+                    bg={identifyWordItemBg(group)}
+                    hover={identifyWordItemHover(group)}
+                    key={index}
+                    item={item}
+                    active={activeItem === index ? true : false}
+                    onClick={() => handlerItem(index)}
+                  />
+                )
+              })}
           </Box>
           <TextBookAside />
         </Box>
@@ -147,6 +117,7 @@ const Textbook = () => {
             onChange={(_, num) => {
               dispatch(fetchWords({ page: `${num - 1}`, group: group }))
               dispatch(setPage({ number: `${num - 1}` }))
+              setActiveItem(0)
             }}
             sx={{ marginX: 'auto', marginBottom: '100px' }}
           />

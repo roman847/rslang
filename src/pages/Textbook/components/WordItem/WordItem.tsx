@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Typography, Box } from '@mui/material'
-import { useSelector } from 'react-redux'
 import { IWordsItem } from 'core/interfaces/dataModels'
-import { useAppDispatch } from 'app/hooks'
-import { setFocusWord } from 'redux/textBook/textBookSlice'
-import { IStore } from 'redux/textBook/store'
-
 import style from './wordItem.module.scss'
 
 interface IWordItemProps {
@@ -19,9 +14,7 @@ interface IWordItemProps {
 const WordItem = ({ item, bg, hover, active, onClick }: IWordItemProps) => {
   return (
     <Box
-      onClick={() => {
-        onClick()
-      }}
+      onClick={onClick}
       className={style.container__item}
       sx={
         active
