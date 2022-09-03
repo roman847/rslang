@@ -12,10 +12,10 @@ const GameWindow = () => {
   const wordIndex = getRandomIndex(words.length)
   const randomIndex = getRandomIndex(words.length)
   const { word } = words[wordIndex]
+  console.log(word)
   const { wordTranslate } = Math.random() > 0.5 ? words[randomIndex] : words[wordIndex]
   return (
     <Box sx={styles.wrapper}>
-      <Typography sx={styles.result}>1/20</Typography>
       <Box sx={styles.container}>
         <Box sx={styles.icon}>
           <VolumeIcon />

@@ -8,8 +8,13 @@ const AudioGame = () => {
   return (
     <Box>
       <Box component='header' sx={styles.header}>
-        <Typography sx={styles.title}>Аудиовызов</Typography>
-        <IconsBlock />
+        <Box>
+          <Typography sx={styles.title}>Аудиовызов</Typography>
+          <Typography sx={styles.title}>1/20</Typography>
+        </Box>
+        <Box>
+          <IconsBlock />
+        </Box>
       </Box>
       <Box component='main'>
         <GameWindow />

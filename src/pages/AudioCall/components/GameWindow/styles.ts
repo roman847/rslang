@@ -1,23 +1,11 @@
 import pxToRem from 'core/functions/pxToRem'
-import {
-  Color,
-  Montserrat32,
-  Montserrat36,
-  Montserrat52,
-  Montserrat46,
-} from 'core/variables/constants'
+import { Color, Montserrat32, Montserrat36, Montserrat52 } from 'core/variables/constants'
 
 const styles = {
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  result: {
-    paddingLeft: pxToRem(5),
-    ...Montserrat46,
-    fontWeight: 700,
-    color: Color.secondary,
   },
   container: {
     width: pxToRem(770),
@@ -55,7 +43,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     width: '100%',
-    border: Color.blackText,
   },
 }
 export default styles

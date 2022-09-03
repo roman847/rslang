@@ -10,6 +10,8 @@ const styles = {
   },
   header: {
     display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 }
 
