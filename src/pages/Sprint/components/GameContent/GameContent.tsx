@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
+import useEventListener from '@use-it/event-listener'
 import ProjectButton from 'components/ProjectButton'
 import { Color } from 'core/variables/constants'
 import Timer from 'pages/Sprint/components/Timer'
@@ -96,6 +97,15 @@ const GameContent = () => {
       correctAnswerHandler()
     }
   }
+
+  useEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.code === 'ArrowRight') {
+      correctClickHandler()
+    } else if (e.code === 'ArrowLeft') {
+      incorrectClickHandler()
+    }
+  })
+
   return (
     <Box sx={styles.wrapper}>
       <Timer />
