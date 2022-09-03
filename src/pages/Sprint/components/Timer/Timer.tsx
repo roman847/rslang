@@ -20,7 +20,7 @@ const Timer = () => {
     return () => {
       clearInterval(myInterval)
     }
-  })
+  }, [seconds])
   return (
     <Box sx={styles.timeInfo}>
       <WatchIcon />
