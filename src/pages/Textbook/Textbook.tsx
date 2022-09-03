@@ -14,12 +14,13 @@ import Header from 'pages/main/components/Header/Header'
 import Footer from 'pages/main/components/Footer/Footer'
 import { getToken, identifyWordItemBg, identifyWordItemHover, getUserId } from 'services/index'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
-import { Color, ButtonVariants } from 'core/variables/constants'
+import { Color, ButtonVariants, UserErrorMessage } from 'core/variables/constants'
 import LinkToGame from 'pages/Textbook/components/LinkToGame/LinkToGame'
 import { useAppDispatch } from 'app/hooks'
 import { getUser } from 'services/users'
 import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
 import { signInErrHandler } from 'services/errorHandler'
+
 import { IStore } from 'redux/textBook/store'
 
 import style from './textBook.module.scss'
@@ -36,32 +37,40 @@ interface IResponseCreateWord {
 }
 
 const Textbook = () => {
-  const token = getToken()
-  const userId = getUserId()
+  // const token = getToken()
+  // const userId = getUserId()
 
-  const createWord = async (): Promise<IResponseCreateWord | void> => {
-    try {
-      const response = await axios.post(
-        `https://react-learn-new-words.herokuapp.com/users/${userId}/words/5e9f5ee35eb9e72bc21af4a5`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: 'Application/json',
-            'Content-type': 'Application/json',
-          },
-          data: {
-            difficulty: 'string',
-            optional: {},
-          },
-        },
-      )
-      console.log(response.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const createWord = async (): Promise<IResponseCreateWord | UserErrorMessage | ServerError> => {
+  //   try {
+  //     const response = await axios.post(
+  //       `https://react-learn-new-words.herokuapp.com/users/${userId}/words/5e9f5ee35eb9e72bc21af4a5`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //           Accept: 'Application/json',
+  //           'Content-type': 'Application/json',
+  //         },
+  //         data: {
+  //           difficulty: 'string',
+  //           optional: {},
+  //         },
+  //       },
+  //     )
+  //     console.log(response.data)
+  //     return response.data
+  //   } catch (error) {
+  //     if (axios.isAxiosError(error)) {
+  //       const serverError = error as AxiosError<string>
+  //       if (serverError && serverError.response) {
+  //         return signInErrHandler(serverError.response.data)
+  //       }
+  //     }
 
-  createWord()
+  //     return { errorMessage: 'Unknown error' }
+  //   }
+  // }
+  // createWord()
+
   const page = useSelector((state: IStore) => state.textBook.page.number)
   const group = useSelector((state: IStore) => state.textBook.group.number)
   const words = useSelector((state: IStore) => state.textBook.words)
@@ -87,6 +96,7 @@ const Textbook = () => {
   return (
     <Box className={style.container__page}>
       <Header />
+
       <Box className={clsx('container', style.container__textBook)}>
         <Typography variant='h2' className={style.textBook__title}>
           Учебник

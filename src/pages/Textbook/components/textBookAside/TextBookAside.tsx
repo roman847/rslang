@@ -15,15 +15,24 @@ import { setFocusWord } from 'redux/textBook/textBookSlice'
 import { IStore } from 'redux/textBook/store'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
 import { useAppDispatch } from 'app/hooks'
+import Icon from 'components/Icon/Icon'
 import style from './textBookAside.module.scss'
 
 const TextBookAside = () => {
-  const dispatch = useAppDispatch()
   const word = useSelector((state: IStore) => state.textBook.focusWord)
+  const audioWord = new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audio}`)
+  const audioMeaning = new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audioMeaning}`)
+  const audioExample = new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audioExample}`)
 
-  // useEffect(() => {
-  //   dispatch(setFocusWord(word))
-  // }, [word])
+  const handlerAudio = () => {
+    audioWord.play()
+    setTimeout(() => {
+      audioMeaning.play()
+    }, 1500)
+    setTimeout(() => {
+      audioExample.play()
+    }, 7000)
+  }
 
   return (
     <Box className={style.card__container}>
@@ -44,10 +53,17 @@ const TextBookAside = () => {
                 <Typography className={style.word__translation}>{word.wordTranslate}</Typography>
               )}
             </Box>
-
-            {word && (
-              <Typography className={style.word__transcription}>{word.transcription}</Typography>
-            )}
+            <Box className={style.container__transcription}>
+              {word && (
+                <Typography className={style.word__transcription}>{word.transcription}</Typography>
+              )}
+              <img
+                onClick={handlerAudio}
+                src='images/volume-2.svg'
+                alt='volume'
+                className={style.audio__icon}
+              />
+            </Box>
             <Typography className={style.title__word}>Значение</Typography>
             {word && (
               <Typography className={style.word__description}>
