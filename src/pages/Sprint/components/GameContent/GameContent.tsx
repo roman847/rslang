@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import ProjectButton from 'components/ProjectButton'
 import { Color } from 'core/variables/constants'
@@ -31,15 +31,17 @@ const GameContent = () => {
 
   const gameData = getGameData()
 
-  if (!storeWord && !storeWordTranslate && storeWordIndex === -1) {
-    dispatch(
-      updateStore({
-        word: gameData.word,
-        wordTranslate: gameData.wordTranslate,
-        wordIndex: gameData.wordIndex,
-      }),
-    )
-  }
+  useEffect(() => {
+    if (!storeWord && !storeWordTranslate && storeWordIndex === -1) {
+      dispatch(
+        updateStore({
+          word: gameData.word,
+          wordTranslate: gameData.wordTranslate,
+          wordIndex: gameData.wordIndex,
+        }),
+      )
+    }
+  })
 
   const word = storeWord
   const wordTranslate = storeWordTranslate
