@@ -39,16 +39,29 @@ export enum TypesInput {
 export enum ButtonVariants {
   primary = 'primary',
   secondary = 'secondary',
+  contained = 'contained',
+  outlined = 'outlined',
+  text = 'text',
 }
 
 export enum Color {
+  none = 'none',
   primary = '#F06A33',
   secondary = '#3E92A3',
+  secondaryLight = '#E1F1F5',
   lightText = '#F0F0F0',
   blackText = '#1D1D1D',
   disabledButton = '#DBC7BF',
   pageBackground = '#FAF8F5',
   error = '#B71313',
+  errorLight = '#FCE2E2',
+  activePrimaryButton = '#FAD2C0',
+  primaryLight = '#F49B73',
+  correctAnswerBackground = '#E5F2F5',
+  incorrectAnswerBackground = '#FDEAEA',
+  gray = '#646464',
+  secondaryButtonHover = '#D5EBF0',
+  lightGray = '#DAD9D9',
 }
 
 export const Montserrat16 = {
@@ -67,12 +80,28 @@ export const Montserrat18 = {
   lineHeight: `${pxToRem(22)}`,
 }
 
+export const Montserrat22 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 600,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(22)}`,
+  lineHeight: `${pxToRem(27)}`,
+}
+
 export const Montserrat28 = {
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 500,
   fontStyle: 'normal',
   fontSize: `${pxToRem(28)}`,
   lineHeight: `${pxToRem(34)}`,
+}
+
+export const Montserrat32 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 400,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(32)}`,
+  lineHeight: `${pxToRem(39)}`,
 }
 
 export const Montserrat36 = {
@@ -88,6 +117,14 @@ export const Montserrat46 = {
   fontWeight: 500,
   fontStyle: 'normal',
   fontSize: `${pxToRem(46)}`,
+  lineHeight: `${pxToRem(70)}`,
+}
+
+export const Montserrat52 = {
+  fontFamily: 'Montserrat, sans-serif',
+  fontWeight: 600,
+  fontStyle: 'normal',
+  fontSize: `${pxToRem(52)}`,
   lineHeight: `${pxToRem(70)}`,
 }
 
@@ -135,6 +172,16 @@ export enum LogoSize {
   normal = 'logo',
   big = 'logo_big',
 }
+
+export const languageLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+
+export enum GameType {
+  Sprint = 'Sprint',
+  AudioCall = 'AudioCall',
+}
+
+export enum IconPath {
+  closeGameIcon = 'M18 6L6 18M6 6l12 12',
 
 export enum Pages {
   main = '/',

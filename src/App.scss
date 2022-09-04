@@ -1,7 +1,18 @@
 @import 'styles/main.scss';
 
+
+body {
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $accentColor;
+    border-radius: pxToRem(10);
+  }
+}
+
 .container {
-  padding: 0% 9%;
+  padding: 0 9%;
 }
 .title__accent {
   @include fontSize46;
