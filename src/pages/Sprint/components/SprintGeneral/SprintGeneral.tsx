@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import IconsBlock from 'components/IconsBlock'
 import Container from 'components/Container'
@@ -11,16 +11,23 @@ import styles from './styles'
 
 const SprintGeneral = () => {
   const { gamePhase } = useAppSelector((state) => state.sprint)
-  let currentComponent
-  let width = 630
-  let height = 550
-  if (gamePhase === GamePhase.inProcess) {
-    currentComponent = <GameContent />
-    width = 770
-    height = 530
-  } else if (gamePhase === GamePhase.results) {
-    currentComponent = <GameResults gameType={GameType.Sprint} />
-  }
+
+  const [currentComponent, setCurrentComponent] = useState(<></>)
+  const [width, setWidth] = useState(630)
+  const [height, setHeight] = useState(550)
+
+  useEffect(() => {
+    if (gamePhase === GamePhase.inProcess) {
+      setCurrentComponent(<GameContent />)
+      setWidth(770)
+      setHeight(530)
+    } else {
+      setCurrentComponent(<GameResults gameType={GameType.Sprint} />)
+      setWidth(630)
+      setHeight(550)
+    }
+  }, [gamePhase])
+
   return (
     <Box>
       <Box component='header' sx={styles.header}>

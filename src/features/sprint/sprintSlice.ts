@@ -65,11 +65,15 @@ export const sprintSlice = createSlice({
     setGamePhase: (state, action: PayloadAction<GamePhase>) => {
       state.gamePhase = action.payload
     },
-    addRightAnswer: (state, action) => {
-      if (!state.rightAnswers.includes(action.payload)) state.rightAnswers.push(action.payload)
+    addRightAnswer: (state, action: PayloadAction<IWordsItem>) => {
+      if (!state.rightAnswers.find((item) => item.id === action.payload.id)) {
+        state.rightAnswers.push(action.payload)
+      }
     },
     addWrongAnswer: (state, action) => {
-      if (!state.wrongAnswers.includes(action.payload)) state.wrongAnswers.push(action.payload)
+      if (!state.wrongAnswers.find((item) => item.id === action.payload.id)) {
+        state.wrongAnswers.push(action.payload)
+      }
     },
     setBackground: (state, action) => {
       state.background = action.payload
