@@ -11,7 +11,7 @@ const styles = {
     cursor: 'pointer',
   },
   container: {
-    width: pxToRem(770),
+    width: pxToRem(1152),
     height: pxToRem(530),
     padding: `${pxToRem(49)} ${pxToRem(140)} ${pxToRem(64)}`,
     display: 'flex',
@@ -27,24 +27,16 @@ const styles = {
     paddingLeft: pxToRem(14),
     ...Montserrat32,
   },
-  title: {
-    paddingTop: pxToRem(65),
-    ...Montserrat52,
-    color: Color.primary,
-  },
-  subtitle: {
-    ...Montserrat36,
-    color: Color.primaryLight,
-  },
   button: {
     paddingTop: pxToRem(70),
     textAlign: 'center',
     width: '100%',
   },
   buttons: {
+    border: '1px solid red',
     paddingTop: pxToRem(70),
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     width: '100%',
     columnGap: pxToRem(13),
   },

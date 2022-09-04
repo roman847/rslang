@@ -9,14 +9,26 @@ import styles from './styles'
 
 const GameWindow = () => {
   const { words } = useAppSelector((state) => state.audioCall)
-  console.log(words)
   const wordIndex = getRandomIndex(words.length)
   const randomIndex = getRandomIndex(words.length)
-  const { audioMeaning } = words[wordIndex]
-  console.log(audioMeaning)
-  const { wordTranslate } = Math.random() > 0.5 ? words[randomIndex] : words[wordIndex]
+  const randomIndex1 = getRandomIndex(words.length)
+  const randomIndex2 = getRandomIndex(words.length)
+  const randomIndex3 = getRandomIndex(words.length)
+  const array = []
+  const { wordTranslate: word1 } = words[wordIndex]
+  array.push(
+    word1,
+    words[randomIndex].wordTranslate,
+    words[randomIndex1].wordTranslate,
+    words[randomIndex2].wordTranslate,
+    words[randomIndex3].wordTranslate,
+  )
+  const shuffle = (array: string[]) => {
+    array.sort(() => Math.random() - 0.5)
+  }
+  shuffle(array)
   const play = () => {
-    const click = new Audio(audioMeaning)
+    const click = new Audio(`${process.env.REACT_APP_BASE_URL}/${words[wordIndex].audio} `)
     click.play()
   }
   return (
@@ -27,48 +39,46 @@ const GameWindow = () => {
             <VolumeIcon />
           </Link>
         </Box>
-        <Typography sx={styles.title}>{audioMeaning}</Typography>
-        <Typography sx={styles.subtitle}>{wordTranslate}</Typography>
         <Box sx={styles.buttons}>
           <ProjectButton
             variant={ButtonVariants.secondary}
-            width={300}
+            width={200}
             height={50}
             hoverColor={Color.secondaryButtonHover}
           >
-            1. {wordTranslate}
+            1. {array[0]}
           </ProjectButton>
           <ProjectButton
             variant={ButtonVariants.secondary}
-            width={300}
+            width={200}
             height={50}
             hoverColor={Color.secondaryButtonHover}
           >
-            2. {wordTranslate}
+            2. {array[1]}
           </ProjectButton>
           <ProjectButton
             variant={ButtonVariants.secondary}
-            width={300}
+            width={200}
             height={50}
             hoverColor={Color.secondaryButtonHover}
           >
-            3. {wordTranslate}
+            3. {array[2]}
           </ProjectButton>
           <ProjectButton
             variant={ButtonVariants.secondary}
-            width={300}
+            width={200}
             height={50}
             hoverColor={Color.secondaryButtonHover}
           >
-            4. {wordTranslate}
+            4. {array[3]}
           </ProjectButton>
           <ProjectButton
             variant={ButtonVariants.secondary}
-            width={300}
+            width={200}
             height={50}
             hoverColor={Color.secondaryButtonHover}
           >
-            5. {wordTranslate}
+            5. {array[4]}
           </ProjectButton>
         </Box>
         <Box sx={styles.button}>
