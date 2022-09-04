@@ -135,3 +135,13 @@ export enum LogoSize {
   normal = 'logo',
   big = 'logo_big',
 }
+
+export enum Pages {
+  main = '/',
+  auth = '/auth',
+  reg = '/reg',
+  audio = '/audio',
+  sprint = '/sprint',
+  statistics = '/statistics',
+  textbook = '/textbook',
+}
