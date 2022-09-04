@@ -4,50 +4,42 @@ import clsx from 'clsx'
 import { useSelector } from 'react-redux'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
-import axios, { AxiosError } from 'axios'
-import { setPage, setGroup, fetchWords, setFocusWord } from 'redux/textBook/textBookSlice'
+import {
+  saveLocalStorage,
+  identifyWordItemBg,
+  identifyWordItemHover,
+  getGroup,
+  getPage,
+} from 'services/index'
+import { fetchWords, setFocusWord } from 'redux/textBook/textBookSlice'
 import ButtonCircleGroup from 'pages/Textbook/components/ButtonCircle/ButtonCircleGroup'
 import WordItem from 'pages/Textbook/components/WordItem/WordItem'
 import { IWordsItem } from 'core/interfaces/dataModels'
-import { ServerError } from 'core/interfaces/commonInterfaces'
 import Header from 'pages/main/components/Header/Header'
 import Footer from 'pages/main/components/Footer/Footer'
-import { getToken, identifyWordItemBg, identifyWordItemHover, getUserId } from 'services/index'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
-import { Color, ButtonVariants, UserErrorMessage } from 'core/variables/constants'
+import { Color, ButtonVariants } from 'core/variables/constants'
 import LinkToGame from 'pages/Textbook/components/LinkToGame/LinkToGame'
 import { useAppDispatch } from 'app/hooks'
-import { getUser } from 'services/users'
 import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
-import { signInErrHandler } from 'services/errorHandler'
-
 import { IStore } from 'redux/textBook/store'
 
 import style from './textBook.module.scss'
 
-interface IWordCreate {
-  userToken: string
-  id: string
-}
-interface IResponseCreateWord {
-  difficulty: 'string'
-  optional: {
-    difficulty: string
-  }
-}
-
 const Textbook = () => {
-  const page = useSelector((state: IStore) => state.textBook.page.number)
-  const group = useSelector((state: IStore) => state.textBook.group.number)
   const words = useSelector((state: IStore) => state.textBook.words)
   const [activeItem, setActiveItem] = useState(0)
-
+  const [group, setGroup] = useState(getGroup)
+  const [page, setPage] = useState(getPage)
   const dispatch = useAppDispatch()
+
+  saveLocalStorage('group', group)
+  saveLocalStorage('page', page)
 
   const handlerButton = (difficult: string) => {
     setActiveItem(0)
-    dispatch(setGroup({ number: difficult }))
-    dispatch(setPage({ number: '0' }))
+    setGroup(difficult)
+    setPage('0')
   }
 
   useEffect(() => {
@@ -116,8 +108,9 @@ const Textbook = () => {
             showLastButton
             onChange={(_, num) => {
               dispatch(fetchWords({ page: `${num - 1}`, group: group }))
-              dispatch(setPage({ number: `${num - 1}` }))
+              setPage(`${num - 1}`)
               setActiveItem(0)
+              saveLocalStorage('page', `${num - 1}`)
             }}
             sx={{ marginX: 'auto', marginBottom: '100px' }}
           />

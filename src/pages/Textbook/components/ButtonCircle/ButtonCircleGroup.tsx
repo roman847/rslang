@@ -12,8 +12,10 @@ interface IButtonCircleProps {
 }
 
 const ButtonCircle = ({ handler }: IButtonCircleProps) => {
+  const group = localStorage.getItem('group')
+
   const [appState, setState] = useState({
-    activeButton: { id: 1 },
+    activeButton: group,
     buttons: [
       { id: 1, value: 'A1' },
       { id: 2, value: 'A2' },
@@ -23,20 +25,9 @@ const ButtonCircle = ({ handler }: IButtonCircleProps) => {
       { id: 6, value: 'C2' },
     ],
   })
-  useEffect(() => {
-    setState({ ...appState, activeButton: appState.buttons[0] })
-  }, [])
 
-  const toggleActive = (index: number) => {
-    setState({ ...appState, activeButton: appState.buttons[index] })
-  }
-
-  const toggleActiveStyle = (index: number): string => {
-    if (appState.buttons[index] === appState.activeButton) {
-      return `${style.active}`
-    } else {
-      return 'nonactive'
-    }
+  const toggleActive = () => {
+    setState({ ...appState, activeButton: group })
   }
 
   return (
@@ -45,14 +36,14 @@ const ButtonCircle = ({ handler }: IButtonCircleProps) => {
         {appState.buttons.map((btn, index) => {
           return (
             <Button
-              className={clsx(style.group__button, toggleActiveStyle(index))}
+              className={clsx(style.group__button)}
               key={index}
               onClick={() => {
-                toggleActive(index)
+                toggleActive()
                 handler(`${index}`)
               }}
               sx={
-                appState.buttons[index] === appState.activeButton
+                index.toString() === group
                   ? {
                       backgroundColor: identtifyActiveButtonCircle(index),
                       border: `1px solid ${identtifyActiveButtonCircle(index)}`,

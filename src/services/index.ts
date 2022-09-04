@@ -4,6 +4,9 @@ import { IUserInfo } from 'core/interfaces/dataModels'
 
 import { localStorageService } from './localStorageHelper'
 
+export const saveLocalStorage = (nameField: string, value: string) => {
+  localStorage.setItem(nameField, value)
+}
 export const saveToken = (userInfo: IUserInfo): void => {
   localStorageService.set(BrowserStorageItem.userToken, userInfo.token)
 }
@@ -26,6 +29,21 @@ export const getUserId = () => {
 export const getId = () => {
   if (localStorage.getItem('user')) {
     return JSON.parse(localStorage.getItem('user') as string).userId
+  }
+}
+
+export const getGroup = () => {
+  if (localStorage.getItem('group')) {
+    return localStorage.getItem('group') as string
+  } else {
+    return '0'
+  }
+}
+export const getPage = () => {
+  if (localStorage.getItem('page')) {
+    return localStorage.getItem('page') as string
+  } else {
+    return '0'
   }
 }
 

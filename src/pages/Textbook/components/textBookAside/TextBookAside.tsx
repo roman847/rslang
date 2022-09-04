@@ -33,7 +33,25 @@ const TextBookAside = () => {
       audioExample.play()
     }, 7000)
   }
+  // useEffect(() => {
+  //   const userId = getUserId()
 
+  //   const createWord = async (): Promise<IResponseCreateWord | void> => {
+  //     try {
+  //       const response = await axiosInstance.post(
+  //         `/users/${userId}/words/5e9f5ee35eb9e72bc21af6fe`,
+  //         {
+  //           difficulty: 'difficult',
+  //           optional: {},
+  //         },
+  //       )
+  //       console.log(response.data)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  //   createWord()
+  // }, [])
   return (
     <Box className={style.card__container}>
       <Card sx={{ maxWidth: 300 }} className={style.card}>
