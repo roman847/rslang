@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios'
-import { axiosInstance, getToken } from 'services'
+import { axiosInstance } from 'services'
 import { IWordsItem, IWordItemDifficult } from 'core/interfaces/dataModels'
 import { ServerError } from 'core/interfaces/commonInterfaces'
 

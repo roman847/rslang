@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getUserWords } from 'services/usersWords'
 import { getWords } from 'services/words'
 import { IWordsItem } from 'core/interfaces/dataModels'
 
