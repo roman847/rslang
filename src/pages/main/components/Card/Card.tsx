@@ -3,7 +3,7 @@ import { Avatar, Container, Typography } from '@mui/material'
 import { IPropsCard } from 'core/interfaces/propsInterfaces'
 import style from './card.module.scss'
 
-const Card = ({ name, teamAvatar, text, githubLink }: IPropsCard) => {
+const Card = ({ name, teamAvatar, text, githubLink, role }: IPropsCard) => {
   return (
     <div className={style.card}>
       <div className={style.card__container}>
@@ -12,6 +12,7 @@ const Card = ({ name, teamAvatar, text, githubLink }: IPropsCard) => {
           <Typography variant='h3' className={style.title__card}>
             {name}
           </Typography>
+          <Typography className={style.card__role}>{role}</Typography>
           <a className={style.card__link} href={githubLink} target='blank'>
             github
           </a>
