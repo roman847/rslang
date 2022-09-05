@@ -39,7 +39,7 @@ const GameResults = ({ gameType }: IGameResults) => {
 
   const navigate = useNavigate()
   const clickTextbookHandler = () => {
-    navigate(Pages.Textbook)
+    navigate(Pages.textbook)
   }
 
   let action: () => void

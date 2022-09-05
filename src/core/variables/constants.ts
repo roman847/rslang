@@ -182,6 +182,7 @@ export enum GameType {
 
 export enum IconPath {
   closeGameIcon = 'M18 6L6 18M6 6l12 12',
+}
 
 export enum Pages {
   main = '/',
