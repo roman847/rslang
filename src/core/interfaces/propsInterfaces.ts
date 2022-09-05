@@ -94,10 +94,6 @@ export interface IPropsSelectElement {
    * Defines text on unopened menu button
    */
   label: string
-  /**
-   * Defines lines text in opened menu
-   */
-  fields: string[]
 }
 
 export interface IRadioButton {

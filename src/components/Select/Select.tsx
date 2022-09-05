@@ -4,16 +4,19 @@ import {
   Button,
   ClickAwayListener,
   Grow,
+  Link,
   MenuItem,
   MenuList,
   Paper,
   Popper,
 } from '@mui/material'
+import { Link as RouterLink } from 'react-router-dom'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { IPropsSelectElement } from 'core/interfaces/propsInterfaces'
+import { Pages } from 'core/variables/constants'
 import { styles } from './Select.styles'
 
-const SelectElement = ({ label, fields }: IPropsSelectElement) => {
+const SelectElement = ({ label }: IPropsSelectElement) => {
   const [open, setOpen] = React.useState(false)
   const anchorRef = React.useRef<HTMLButtonElement>(null)
 
@@ -66,7 +69,7 @@ const SelectElement = ({ label, fields }: IPropsSelectElement) => {
               transformOrigin: placement === 'bottom-start' ? 'left top' : 'left bottom',
             }}
           >
-            <Paper>
+            <Paper sx={styles.paper}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   autoFocusItem={open}
@@ -74,11 +77,16 @@ const SelectElement = ({ label, fields }: IPropsSelectElement) => {
                   aria-labelledby='composition-button'
                   onKeyDown={handleListKeyDown}
                 >
-                  {fields.map((field, index) => (
-                    <MenuItem key={index} onClick={handleClose}>
-                      {field}
-                    </MenuItem>
-                  ))}
+                  <MenuItem onClick={handleClose} sx={styles.menuItem}>
+                    <Link component={RouterLink} to={Pages.sprint} sx={styles.link}>
+                      Спринт
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} sx={styles.menuItem}>
+                    <Link component={RouterLink} to={Pages.audio} sx={styles.link}>
+                      Аудиовызов
+                    </Link>
+                  </MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
