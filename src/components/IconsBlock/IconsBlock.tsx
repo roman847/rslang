@@ -6,7 +6,7 @@ import SoundIcon from 'components/SoundIcon'
 import ZoomIcon from 'components/ZoomIcon'
 import { useAppDispatch } from 'app/hooks'
 import { exitTheGame, prepareToContinue } from 'features/sprint/sprintSlice'
-import { IconPath } from 'core/variables/constants'
+import { IconPath, Pages } from 'core/variables/constants'
 import styles from './styles'
 
 const IconsBlock = () => {
@@ -33,7 +33,7 @@ const IconsBlock = () => {
 
   return (
     <Box sx={styles.icons}>
-      <Link component={RouterLink} to='/' onClick={closeClickHandler}>
+      <Link component={RouterLink} to={Pages.main} onClick={closeClickHandler}>
         <Icon path={IconPath.closeGameIcon} fill='none' stroke='#1D1D1D' strokeWidth='2' />
       </Link>
       <Box sx={styles.icon} onClick={clickSoundHandler}>

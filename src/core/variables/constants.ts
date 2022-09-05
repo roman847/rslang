@@ -62,6 +62,7 @@ export enum Color {
   gray = '#646464',
   secondaryButtonHover = '#D5EBF0',
   lightGray = '#DAD9D9',
+  innerListItems = '#42474E',
 }
 
 export const Montserrat16 = {
