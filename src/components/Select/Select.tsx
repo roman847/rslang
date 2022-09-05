@@ -39,7 +39,6 @@ const SelectElement = ({ label }: IPropsSelectElement) => {
       setOpen(false)
     }
   }
-
   return (
     <Box>
       <Button
