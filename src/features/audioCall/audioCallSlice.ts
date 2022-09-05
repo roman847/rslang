@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IGetWords, IWordsItem } from 'core/interfaces/dataModels'
 import { getWords } from 'services/words'
 import isServerError from 'core/functions/isServerError'
+import { Color } from 'core/variables/constants'
 
 export enum GamePhase {
   preparation = 'preparation',
@@ -16,14 +17,28 @@ export interface IAudioCallState {
   words: IWordsItem[]
   rightAnswers: IWordsItem[]
   wrongAnswers: IWordsItem[]
+  score: number
+  multiplier: number
+  winStreak: number
+  background: Color
+  storeWord: string
+  storeWordTranslate: string
+  storeWordIndex: number
 }
 
 const initialState: IAudioCallState = {
-  level: 'none',
+  level: '',
   gamePhase: GamePhase.preparation,
   words: [],
   rightAnswers: [],
   wrongAnswers: [],
+  score: 0,
+  multiplier: 1,
+  winStreak: 0,
+  background: Color.none,
+  storeWord: '',
+  storeWordTranslate: '',
+  storeWordIndex: -1,
 }
 
 export const getWordsChunk = createAsyncThunk(
@@ -36,7 +51,6 @@ export const getWordsChunk = createAsyncThunk(
         result = result.concat(res)
       }
     }
-    console.log(result)
     return result
   },
 )
@@ -52,6 +66,16 @@ export const audioCallSlice = createSlice({
     setGamePhase: (state, action: PayloadAction<GamePhase>) => {
       state.gamePhase = action.payload
     },
+    updateStore: (state, action) => {
+      const { word, wordTranslate, wordIndex } = action.payload
+      state.background = Color.none
+      state.storeWord = word
+      state.storeWordTranslate = wordTranslate
+      state.storeWordIndex = wordIndex
+    },
+    setBackgroundBorder: (state, action) => {
+      state.background = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getWordsChunk.pending, (state) => {
@@ -66,6 +90,6 @@ export const audioCallSlice = createSlice({
   },
 })
 
-export const { setLevel, setGamePhase } = audioCallSlice.actions
+export const { setLevel, setGamePhase, updateStore, setBackgroundBorder } = audioCallSlice.actions
 
 export default audioCallSlice.reducer
