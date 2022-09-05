@@ -16,8 +16,10 @@ const ProjectButton = ({
   hoverColor,
   action,
   type,
+  buttonColor = Color.primary,
 }: IButtonProps) => {
   const BasicButton = styled(Button)({
+    height,
     width,
     disabled,
     background,
@@ -34,7 +36,7 @@ const ProjectButton = ({
   })
 
   const PrimaryButton = styled(BasicButton)({
-    background: disabled ? Color.disabledButton : Color.primary,
+    background: disabled ? Color.disabledButton : buttonColor,
     color: Color.lightText,
     '&:hover, &:active': {
       background: '#B9410D',

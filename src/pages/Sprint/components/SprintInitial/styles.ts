@@ -9,6 +9,7 @@ const styles = {
     alignItems: 'center',
     maxWidth: pxToRem(500),
     margin: '0 auto',
+    paddingTop: pxToRem(20),
   },
   title: {
     ...Montserrat46,
@@ -35,6 +36,15 @@ const styles = {
   },
   button: {
     paddingTop: pxToRem(75),
+  },
+  header: {
+    display: 'flex',
+  },
+  link: {
+    textDecoration: 'none',
+  },
+  menuIcon: {
+    marginRight: pxToRem(27),
   },
 }
 

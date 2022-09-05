@@ -8,6 +8,9 @@ const styles = {
     justifyContent: 'space-between',
     width: '100%',
   },
+  label: {
+    margin: 0,
+  },
 }
 
 export default styles

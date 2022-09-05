@@ -1,8 +1,6 @@
 import React from 'react'
 import { Typography, Box, Button } from '@mui/material'
 import { IWordItemProps } from 'core/interfaces/propsInterfaces'
-import { deleteUserWord } from 'services/usersWords'
-import { getUserId } from 'services'
 import style from './wordItem.module.scss'
 
 const WordItem = ({ word, wordTranslate, bg, hover, active, onClick }: IWordItemProps) => {
