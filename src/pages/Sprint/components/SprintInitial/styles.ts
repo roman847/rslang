@@ -43,9 +43,6 @@ const styles = {
   link: {
     textDecoration: 'none',
   },
-  menuIcon: {
-    marginRight: pxToRem(27),
-  },
 }
 
 export default styles

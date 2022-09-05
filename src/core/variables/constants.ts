@@ -62,6 +62,7 @@ export enum Color {
   gray = '#646464',
   secondaryButtonHover = '#D5EBF0',
   lightGray = '#DAD9D9',
+  innerListItems = '#42474E',
 }
 
 export const Montserrat16 = {
@@ -182,6 +183,7 @@ export enum GameType {
 
 export enum IconPath {
   closeGameIcon = 'M18 6L6 18M6 6l12 12',
+}
 
 export enum Pages {
   main = '/',

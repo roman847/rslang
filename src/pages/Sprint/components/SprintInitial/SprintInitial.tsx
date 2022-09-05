@@ -1,13 +1,14 @@
 import React from 'react'
 import { Box, Link, Typography } from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu'
 import { Link as RouterLink } from 'react-router-dom'
 import ProjectButton from 'components/ProjectButton'
 import RadioButtons from 'components/RadioButtons'
+import Sidebar from 'components/Sidebar'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { getWordsChunk } from 'features/sprint/sprintSlice'
 import Logo from 'components/Logo'
 import IconsBlock from 'components/IconsBlock'
+import { Pages } from 'core/variables/constants'
 import styles from './styles'
 
 const SprintInitial = () => {
@@ -19,8 +20,8 @@ const SprintInitial = () => {
   return (
     <Box>
       <Box component='header' sx={styles.header}>
-        <MenuIcon fontSize='large' sx={styles.menuIcon} />
-        <Link component={RouterLink} to='/' sx={styles.link}>
+        <Sidebar />
+        <Link component={RouterLink} to={Pages.main} sx={styles.link}>
           <Logo />
         </Link>
         <IconsBlock />
