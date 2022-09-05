@@ -63,6 +63,7 @@ const RadioButtons = () => {
           value={level}
           label={level}
           control={<Radio sx={styles.radio} />}
+          sx={styles.label}
         />
       ))}
     </RadioGroup>

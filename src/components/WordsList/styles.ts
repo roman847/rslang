@@ -27,7 +27,6 @@ const styles = {
   },
   listItemText: {
     display: 'flex',
-    width: '200px',
   },
   primaryText: {
     ...Montserrat16,

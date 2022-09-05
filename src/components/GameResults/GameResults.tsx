@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
-import { ButtonVariants, Color, GameType } from 'core/variables/constants'
+import { ButtonVariants, Color, GameType, Pages } from 'core/variables/constants'
 import { useAppDispatch } from 'app/hooks'
 import { GamePhase, prepareToContinue, setGamePhase } from 'features/sprint/sprintSlice'
 import ProjectButton from 'components/ProjectButton'
@@ -27,16 +27,19 @@ const GameResults = ({ gameType }: IGameResults) => {
     setSecondLinkActive(true)
   }
 
-  let currentComponent: React.ReactNode
-  if (firstLinkActive) {
-    currentComponent = <TotalScore gameType={gameType} />
-  } else {
-    currentComponent = <WordsList gameType={gameType} />
-  }
+  const [currentComponent, setCurrentComponent] = useState(<TotalScore gameType={gameType} />)
+
+  useEffect(() => {
+    if (firstLinkActive) {
+      setCurrentComponent(<TotalScore gameType={gameType} />)
+    } else {
+      setCurrentComponent(<WordsList gameType={gameType} />)
+    }
+  }, [firstLinkActive])
 
   const navigate = useNavigate()
   const clickTextbookHandler = () => {
-    navigate('../textbook')
+    navigate(Pages.Textbook)
   }
 
   let action: () => void
@@ -45,14 +48,10 @@ const GameResults = ({ gameType }: IGameResults) => {
       dispatch(setGamePhase(GamePhase.inProcess))
       dispatch(prepareToContinue())
     }
-  } else if (gameType === GameType.AudioCall) {
+  } else {
     action = () => {
       /* placeholder */
     }
-  }
-
-  const continueGameHandler = () => {
-    action()
   }
 
   return (
@@ -72,7 +71,7 @@ const GameResults = ({ gameType }: IGameResults) => {
           width={230}
           height={50}
           hoverColor={Color.secondaryButtonHover}
-          action={continueGameHandler}
+          action={action}
         >
           Продолжить игру
         </ProjectButton>

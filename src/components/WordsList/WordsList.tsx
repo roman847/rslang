@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Box,
   Divider,
@@ -9,7 +9,7 @@ import {
   ListSubheader,
   Typography,
 } from '@mui/material'
-import mockData from 'app/mockData'
+import { IWordsItem } from 'core/interfaces/dataModels'
 import { IGameResults } from 'core/interfaces/propsInterfaces'
 import { useAppSelector } from 'app/hooks'
 import { GameType } from 'core/variables/constants'
@@ -17,15 +17,20 @@ import Icon from 'components/Icon'
 import styles from './styles'
 
 const WordsList = ({ gameType }: IGameResults) => {
-  let incorrectWords
-  let correctWords
-  if (gameType === GameType.Sprint) {
-    incorrectWords = useAppSelector((state) => state.sprint.wrongAnswers)
-    correctWords = useAppSelector((state) => state.sprint.rightAnswers)
-  } else {
-    incorrectWords = mockData
-    correctWords = mockData
-  }
+  const incorrectSprintWords = useAppSelector((state) => state.sprint.wrongAnswers)
+  const correctSprintWords = useAppSelector((state) => state.sprint.rightAnswers)
+  const [correctWords, setCorrectWords] = useState([] as IWordsItem[])
+  const [incorrectWords, setIncorrectWords] = useState([] as IWordsItem[])
+
+  useEffect(() => {
+    if (gameType === GameType.Sprint) {
+      setIncorrectWords(incorrectSprintWords)
+      setCorrectWords(correctSprintWords)
+    } else {
+      setIncorrectWords([])
+      setCorrectWords([])
+    }
+  })
 
   return (
     <Box sx={styles.wrapper}>
