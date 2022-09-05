@@ -21,12 +21,14 @@ export const styles = {
   card__img: {
     width: pxToRem(270),
     height: pxToRem(208),
+    cursor: 'pointer',
   },
   card__header: {
     color: Color.secondary,
     paddingTop: pxToRem(25),
     paddingBottom: pxToRem(10),
     ...Montserrat28,
+    cursor: 'pointer',
   },
   card__description: {
     ...Montserrat16,
