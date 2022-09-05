@@ -18,9 +18,11 @@ export interface IAudioCallState {
   rightAnswers: IWordsItem[]
   wrongAnswers: IWordsItem[]
   score: number
-  multiplier: number
-  winStreak: number
-  background: Color
+  borderColor1: Color
+  borderColor2: Color
+  borderColor3: Color
+  borderColor4: Color
+  borderColor5: Color
   storeWord: string
   storeWordTranslate: string
   storeWordIndex: number
@@ -33,9 +35,11 @@ const initialState: IAudioCallState = {
   rightAnswers: [],
   wrongAnswers: [],
   score: 0,
-  multiplier: 1,
-  winStreak: 0,
-  background: Color.none,
+  borderColor1: Color.blackText,
+  borderColor2: Color.blackText,
+  borderColor3: Color.blackText,
+  borderColor4: Color.blackText,
+  borderColor5: Color.blackText,
   storeWord: '',
   storeWordTranslate: '',
   storeWordIndex: -1,
@@ -68,13 +72,27 @@ export const audioCallSlice = createSlice({
     },
     updateStore: (state, action) => {
       const { word, wordTranslate, wordIndex } = action.payload
-      state.background = Color.none
       state.storeWord = word
       state.storeWordTranslate = wordTranslate
       state.storeWordIndex = wordIndex
     },
-    setBackgroundBorder: (state, action) => {
-      state.background = action.payload
+    increaseScore: (state) => {
+      state.score += 1
+    },
+    setBackgroundBorder1: (state, action) => {
+      state.borderColor1 = action.payload
+    },
+    setBackgroundBorder2: (state, action) => {
+      state.borderColor2 = action.payload
+    },
+    setBackgroundBorder3: (state, action) => {
+      state.borderColor3 = action.payload
+    },
+    setBackgroundBorder4: (state, action) => {
+      state.borderColor4 = action.payload
+    },
+    setBackgroundBorder5: (state, action) => {
+      state.borderColor5 = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -90,6 +108,16 @@ export const audioCallSlice = createSlice({
   },
 })
 
-export const { setLevel, setGamePhase, updateStore, setBackgroundBorder } = audioCallSlice.actions
+export const {
+  setLevel,
+  setGamePhase,
+  updateStore,
+  setBackgroundBorder1,
+  setBackgroundBorder2,
+  setBackgroundBorder3,
+  setBackgroundBorder4,
+  setBackgroundBorder5,
+  increaseScore,
+} = audioCallSlice.actions
 
 export default audioCallSlice.reducer

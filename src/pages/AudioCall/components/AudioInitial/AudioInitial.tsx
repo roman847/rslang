@@ -12,7 +12,6 @@ import styles from './styles'
 
 const AudioInitial = () => {
   const { level } = useAppSelector((state) => state.audioCall)
-  console.log(level)
   const dispatch = useAppDispatch()
   const clickHandler = () => {
     dispatch(getWordsChunk({ page: '0', group: level }))

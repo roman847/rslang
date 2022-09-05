@@ -5,15 +5,31 @@ import { Color, ButtonVariants } from 'core/variables/constants'
 import { useAppSelector, useAppDispatch } from 'app/hooks'
 import getRandomIndex from 'core/functions/getRandomIndex'
 import VolumeIcon from 'pages/AudioCall/components/VolumeIcon'
-import { updateStore, setBackgroundBorder } from 'features/audioCall/audioCallSlice'
+import {
+  updateStore,
+  setBackgroundBorder1,
+  setBackgroundBorder2,
+  setBackgroundBorder3,
+  setBackgroundBorder4,
+  setBackgroundBorder5,
+  increaseScore,
+} from 'features/audioCall/audioCallSlice'
 import styles from './styles'
 
 const GameWindow = () => {
   const dispatch = useAppDispatch()
-  const { storeWord, storeWordTranslate, storeWordIndex, words } = useAppSelector(
-    (state) => state.audioCall,
-  )
-  const [score, setScore] = useState(0)
+
+  const {
+    storeWord,
+    storeWordTranslate,
+    storeWordIndex,
+    words,
+    borderColor1,
+    borderColor2,
+    borderColor3,
+    borderColor4,
+    borderColor5,
+  } = useAppSelector((state) => state.audioCall)
 
   const wordIndex = getRandomIndex(words.length)
   const randomIndex = getRandomIndex(words.length)
@@ -29,6 +45,14 @@ const GameWindow = () => {
     words[randomIndex1].wordTranslate,
     words[randomIndex2].wordTranslate,
     words[randomIndex3].wordTranslate,
+  )
+  const [currentComponent] = useState<React.ReactNode>(
+    <CardMedia
+      component='img'
+      image={`${process.env.REACT_APP_BASE_URL}/${words[wordIndex].image} `}
+      alt='image'
+      sx={styles.image}
+    />,
   )
   const shuffle = (array: string[]) => {
     array.sort(() => Math.random() - 0.5)
@@ -52,9 +76,9 @@ const GameWindow = () => {
   })
 
   const correctAnswerHandler = () => {
-    dispatch(setBackgroundBorder(Color.correctAnswerBackground))
-    setScore(score + 1)
+    dispatch(increaseScore())
     console.log('правильный ответ')
+    //setCurrentComponent()
   }
 
   const incorrectAnswerHandler = () => {
@@ -64,36 +88,47 @@ const GameWindow = () => {
 
   const clickHandler1 = () => {
     if (firstName === words[wordIndex].wordTranslate) {
+      dispatch(setBackgroundBorder1(Color.secondary))
+
       correctAnswerHandler()
     } else {
+      dispatch(setBackgroundBorder1(Color.error))
       incorrectAnswerHandler()
     }
   }
   const clickHandler2 = () => {
     if (secondName === words[wordIndex].wordTranslate) {
+      dispatch(setBackgroundBorder2(Color.secondary))
       correctAnswerHandler()
     } else {
+      dispatch(setBackgroundBorder2(Color.error))
       incorrectAnswerHandler()
     }
   }
   const clickHandler3 = () => {
     if (thidrname === words[wordIndex].wordTranslate) {
+      dispatch(setBackgroundBorder3(Color.secondary))
       correctAnswerHandler()
     } else {
+      dispatch(setBackgroundBorder3(Color.error))
       incorrectAnswerHandler()
     }
   }
   const clickHandler4 = () => {
     if (fourthname === words[wordIndex].wordTranslate) {
+      dispatch(setBackgroundBorder4(Color.secondary))
       correctAnswerHandler()
     } else {
+      dispatch(setBackgroundBorder4(Color.error))
       incorrectAnswerHandler()
     }
   }
   const clickHandler5 = () => {
     if (fivename === words[wordIndex].wordTranslate) {
+      dispatch(setBackgroundBorder5(Color.secondary))
       correctAnswerHandler()
     } else {
+      dispatch(setBackgroundBorder5(Color.error))
       incorrectAnswerHandler()
     }
   }
@@ -101,13 +136,7 @@ const GameWindow = () => {
   return (
     <Box sx={styles.wrapper}>
       <Box sx={styles.container}>
-        <CardMedia
-          component='img'
-          image={`${process.env.REACT_APP_BASE_URL}/${words[wordIndex].image} `}
-          alt='image'
-          sx={styles.image}
-        />
-
+        {currentComponent}
         <Box sx={styles.icon}>
           <Link onClick={play} sx={styles.link}>
             <VolumeIcon />
@@ -117,7 +146,7 @@ const GameWindow = () => {
         <Box sx={styles.buttons}>
           <ProjectButton
             variant={ButtonVariants.secondary}
-            borderColor={Color.blackText}
+            borderColor={borderColor1}
             width={200}
             height={50}
             hoverColor={Color.secondaryButtonHover}
@@ -129,7 +158,7 @@ const GameWindow = () => {
             variant={ButtonVariants.secondary}
             width={200}
             height={50}
-            borderColor={Color.blackText}
+            borderColor={borderColor2}
             hoverColor={Color.secondaryButtonHover}
             action={clickHandler2}
           >
@@ -137,7 +166,7 @@ const GameWindow = () => {
           </ProjectButton>
           <ProjectButton
             variant={ButtonVariants.secondary}
-            borderColor={Color.blackText}
+            borderColor={borderColor3}
             width={200}
             height={50}
             hoverColor={Color.secondaryButtonHover}
@@ -147,7 +176,7 @@ const GameWindow = () => {
           </ProjectButton>
           <ProjectButton
             variant={ButtonVariants.secondary}
-            borderColor={Color.blackText}
+            borderColor={borderColor4}
             width={200}
             height={50}
             hoverColor={Color.secondaryButtonHover}
@@ -157,7 +186,7 @@ const GameWindow = () => {
           </ProjectButton>
           <ProjectButton
             variant={ButtonVariants.secondary}
-            borderColor={Color.blackText}
+            borderColor={borderColor5}
             width={200}
             height={50}
             hoverColor={Color.secondaryButtonHover}
