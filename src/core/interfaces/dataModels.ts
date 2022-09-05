@@ -65,3 +65,12 @@ export interface IError {
     errors: IErrorInfo[]
   }
 }
+export interface IWordItemDifficult {
+  difficulty: string
+  id: string
+  wordId: string
+  optional: {
+    word: string
+    wordTranslate: string
+  }
+}

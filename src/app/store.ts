@@ -1,4 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
+import textBookReducer from 'redux/textBook/dictionary'
 import counterReducer from 'features/counter/counterSlice'
 import sprintReducer from 'features/sprint/sprintSlice'
 import audioCallReducer from 'features/audioCall/audioCallSlice'
@@ -8,6 +9,7 @@ export const store = configureStore({
     counter: counterReducer,
     audioCall: audioCallReducer,
     sprint: sprintReducer,
+    textBook: textBookReducer,
   },
 })
 

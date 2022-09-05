@@ -7,9 +7,9 @@ export enum DevelopersNames {
 }
 
 export enum AboutTeam {
-  Roman = 'Нечем заняться в выходной,придумываю всем девизы',
-  Alibek = 'Устал работать в огне, решил стать программистом',
-  Andrey = 'Столичный парень, в столице все хотят быть программистами',
+  Roman = 'Настроил приложение, базовые настройки проекта, начальную компоновку, создал словарь, header,блок "О команде",  страницу статистики',
+  Alibek = 'Создал компоненту "Button", реализовал игру "Спринт", регистрацию, блок "Наши возможности", обработку ошибок в запросах',
+  Andrey = 'Создал Footer, секцию "Главный контент", логотип, реализовал игру "Аудиовызов", авторизацию, устранял общие недочеты',
 }
 
 export enum AvatarsTeam {
@@ -62,6 +62,7 @@ export enum Color {
   gray = '#646464',
   secondaryButtonHover = '#D5EBF0',
   lightGray = '#DAD9D9',
+  innerListItems = '#42474E',
 }
 
 export const Montserrat16 = {
@@ -173,6 +174,22 @@ export enum LogoSize {
   big = 'logo_big',
 }
 
+export enum WordItemBg {
+  A1 = '#FAD2C0',
+  A2 = '#C0E4EB',
+  B1 = '#FAD3E8',
+  B2 = '#F0EDCE',
+  C1 = '#D0F5D1',
+  C2 = '#D6DCF3',
+}
+export enum WordItemHover {
+  A1 = '#F49B73',
+  A2 = '#8EC4CE',
+  B1 = '#F49DCC',
+  B2 = '#E2DAA1',
+  C1 = '#AAEEAC',
+  C2 = '#B6C1EA',
+}
 export const languageLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 
 export enum GameType {

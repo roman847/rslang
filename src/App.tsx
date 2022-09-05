@@ -8,6 +8,7 @@ import Sprint from 'pages/Sprint'
 import Textbook from 'pages/Textbook'
 import Main from 'pages/main/Main'
 import Registration from 'pages/Registration'
+import DifficultWords from 'pages/Textbook/components/DifficultWords/DifficultWords'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='sprint' element={<Sprint />} />
         <Route path='statistics' element={<Statistics />} />
         <Route path='textbook' element={<Textbook />} />
+        <Route path='difficultwords' element={<DifficultWords />} />
       </Routes>
     </BrowserRouter>
   )

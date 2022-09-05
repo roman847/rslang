@@ -1,4 +1,6 @@
 import React from 'react'
+import { IWordsItem } from 'core/interfaces/dataModels'
+
 import {
   DevelopersNames,
   TeamGithub,
@@ -10,6 +12,7 @@ import {
 } from 'core/variables/constants'
 
 export interface IPropsCard {
+  role: string
   name: DevelopersNames
   teamAvatar: string
   text: string
@@ -94,10 +97,6 @@ export interface IPropsSelectElement {
    * Defines text on unopened menu button
    */
   label: string
-  /**
-   * Defines lines text in opened menu
-   */
-  fields: string[]
 }
 
 export interface IRadioButton {
@@ -172,6 +171,24 @@ export interface IconProp {
   isModeOn: boolean
 }
 
+export interface ILinkToGameProp {
+  image: string
+  title: string
+  description: string
+  route: string
+}
+
+export interface IWordItemProps {
+  wordTranslate: string
+  wordId?: string
+  word: string
+  bg: string
+  hover: string
+  item?: IWordsItem
+  active?: boolean
+  onClick?: () => void
+  isDifficult?: boolean
+}
 /**
  * Defines standard React prop children and allow us to pass children nodes to our custom component
  * @interface
