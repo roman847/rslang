@@ -21,10 +21,6 @@ export const getToken = () => {
 
 export const getUserId = () => {
   return localStorageService.get(BrowserStorageItem.userId)
-
-  if (localStorage.getItem('user')) {
-    return JSON.parse(localStorage.getItem('user') as string).token
-  }
 }
 
 export const getId = () => {

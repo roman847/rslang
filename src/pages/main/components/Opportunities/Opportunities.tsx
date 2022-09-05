@@ -24,9 +24,8 @@ const Opportunities = () => {
             Учебник
           </Typography>
           <Typography sx={styles.card__description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio ac a augue magna amet,
-            commodo amet cursus proin. Augue a pulvinar sed vel feugiat viverra sed id. Fermentum
-            molestie enim, morbi felis.
+            В нашем учебнике находится более 3600 слов. К каждому слову прилагается
+            транскрипция,предложение с примером, аудиозапись с произношением слова и примера
           </Typography>
         </Box>
         <Box sx={styles.card}>
@@ -38,9 +37,8 @@ const Opportunities = () => {
             Спринт
           </Typography>
           <Typography sx={styles.card__description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio ac a augue magna amet,
-            commodo amet cursus proin. Augue a pulvinar sed vel feugiat viverra sed id. Fermentum
-            molestie enim, morbi felis.
+            Словарь содержит наиболее часто употребляемые слова в коммуникации в разных обстановках
+            и ситуациях
           </Typography>
         </Box>
         <Box sx={styles.card}>
@@ -52,9 +50,8 @@ const Opportunities = () => {
             Статистика
           </Typography>
           <Typography sx={styles.card__description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio ac a augue magna amet,
-            commodo amet cursus proin. Augue a pulvinar sed vel feugiat viverra sed id. Fermentum
-            molestie enim, morbi felis.
+            На странице статистики отображается прогресс обучения, ежедневный прогресс а также за
+            все время. Данные указаны в соответствующей диаграмме
           </Typography>
         </Box>
         <Box sx={styles.card}>
@@ -66,8 +63,7 @@ const Opportunities = () => {
             Аудиовызов
           </Typography>
           <Typography sx={styles.card__description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio ac a augue magna amet,
-            commodo amet cursus proin. Augue a pulvinar sed vel feugiat viverra sed id.
+            Проверить свои силы можно, сыграя в познавательные игры, такие, как Спринт и Аудиозапись
           </Typography>
         </Box>
       </Box>
