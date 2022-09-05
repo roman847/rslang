@@ -28,15 +28,15 @@ const Opportunities = () => {
           <Box sx={{ ...styles.thirdImg, ...styles.card__img }}></Box>
           <Typography sx={styles.card__header}>Статистика</Typography>
           <Typography sx={styles.card__description}>
-            На странице статистики отображается прогресс обучения, ежедненый прогрес а также за все
-            время. Данные указаны в соответствующей диаграмме
+            На странице статистики отображается прогресс обучения, ежедневный прогресс а также за
+            все время. Данные указаны в соответствующей диаграмме
           </Typography>
         </Box>
         <Box sx={styles.card}>
           <Box sx={{ ...styles.fourthImg, ...styles.card__img }}></Box>
           <Typography sx={styles.card__header}>Игры</Typography>
           <Typography sx={styles.card__description}>
-            Проверить свои силы можно, сыграя в познавательные игры такие, как Спринт и Аудиозапись
+            Проверить свои силы можно, сыграя в познавательные игры, такие, как Спринт и Аудиозапись
           </Typography>
         </Box>
       </Box>
