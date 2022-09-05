@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Box, Button } from '@mui/material'
+import { Typography, Box } from '@mui/material'
 import { IWordItemProps } from 'core/interfaces/propsInterfaces'
 import style from './wordItem.module.scss'
 
