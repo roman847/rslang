@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { BrowserStorageItem, WordItemBg, WordItemHover } from 'core/variables/constants'
+
 import { IUserInfo } from 'core/interfaces/dataModels'
 
 import { localStorageService } from './localStorageHelper'
@@ -47,14 +48,28 @@ export const getPage = () => {
   }
 }
 
+const token = getToken()
 export const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    Authorization: `Bearer ${getToken()}`,
+    Authorization: `Bearer ${token}`,
   },
 })
+
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = getToken()
+    if (!config.headers) config.headers = {}
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+    return config
+  },
+  (error) => console.log(error),
+)
+
 export const identifyWordItemBg = (group: string) => {
   let bg = ''
   switch (group) {
