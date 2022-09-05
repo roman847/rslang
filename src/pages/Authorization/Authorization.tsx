@@ -3,10 +3,12 @@ import { Box, Link, Typography } from '@mui/material'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import Logo from 'components/Logo'
 import Input from 'components/Input'
-import { LogoSize, TypesInput, UserErrorMessage } from 'core/variables/constants'
+import { LogoSize, Pages, TypesInput, UserErrorMessage } from 'core/variables/constants'
 import ProjectButton from 'components/ProjectButton'
 import { signIn } from 'services/signIn'
 import isServerError from 'core/functions/isServerError'
+import { useAppDispatch } from 'app/hooks'
+import { setCurrentUserName } from 'features/general/generalSlice'
 import styles from './styles'
 
 const Authorization = () => {
@@ -14,6 +16,7 @@ const Authorization = () => {
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === TypesInput.email) {
@@ -36,14 +39,15 @@ const Authorization = () => {
       } else if (isServerError(data)) {
         setErrorMessage(UserErrorMessage.unexpectedError)
       } else {
-        navigate('/')
+        dispatch(setCurrentUserName(data.name))
+        navigate(Pages.main)
       }
     }
   }
   return (
     <Box sx={styles.page}>
       <Box sx={styles.wrapper}>
-        <Link component={RouterLink} to='/' sx={styles.link}>
+        <Link component={RouterLink} to={Pages.main} sx={styles.link}>
           <Logo />
         </Link>
         <Box>
@@ -83,7 +87,7 @@ const Authorization = () => {
             </Box>
             <Box sx={styles.sign}>
               <Typography sx={styles.sign__text}>Нет аккаунта?&nbsp;</Typography>
-              <Link component={RouterLink} to='/reg' sx={styles.sign__link}>
+              <Link component={RouterLink} to={Pages.reg} sx={styles.sign__link}>
                 Зарегистрироваться
               </Link>
             </Box>

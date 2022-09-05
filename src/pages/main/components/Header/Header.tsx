@@ -1,19 +1,50 @@
-import { Box } from '@mui/system'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
-import { AppBar, Toolbar, Link } from '@mui/material'
+import { AppBar, Toolbar, Link, Box, Typography } from '@mui/material'
 import { useNavigate, NavLink, Link as RouterLink } from 'react-router-dom'
-import { Color, ButtonVariants } from 'core/variables/constants'
+import { Color, ButtonVariants, Montserrat16 } from 'core/variables/constants'
 import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
 import './Header.scss'
 import Logo from 'components/Logo'
+import { useAppSelector } from 'app/hooks'
+import UserIcon from 'components/UserIcon'
+import pxToRem from 'core/functions/pxToRem'
 
 const Header = () => {
   const navigate = useNavigate()
   const loginButtonHandler = () => {
     navigate('/auth')
   }
+  const { currentUserName } = useAppSelector((state) => state.general)
+  const [currentComponent, setCurrentComponent] = useState<React.ReactNode>(<></>)
+
+  useEffect(() => {
+    if (!currentUserName) {
+      setCurrentComponent(
+        <ProjectButton
+          className='button'
+          action={loginButtonHandler}
+          variant={ButtonVariants.secondary}
+          width={110}
+          height={35}
+          borderColor={Color.primary}
+          fontSize={18}
+        >
+          Вход
+        </ProjectButton>,
+      )
+    } else {
+      setCurrentComponent(
+        <Box className='user-logo' sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography sx={{ marginRight: pxToRem(8), ...Montserrat16, fontWeight: 600 }}>
+            {currentUserName}
+          </Typography>
+          <UserIcon />
+        </Box>,
+      )
+    }
+  }, [currentUserName])
 
   return (
     <div className='wrapper'>
@@ -29,21 +60,11 @@ const Header = () => {
             <NavLink to='/textbook' className={({ isActive }) => (isActive ? 'active' : '')}>
               Учебник
             </NavLink>
-            <SelectElement label={'Игры'} fields={['Игра 1', 'Игра 2', 'Игра 3', 'Игра 4']} />
+            <SelectElement label={'Игры'} />
             <NavLink to='/statistics' className={({ isActive }) => (isActive ? 'active' : '')}>
               Статистика
             </NavLink>
-            <ProjectButton
-              className='button'
-              action={loginButtonHandler}
-              variant={ButtonVariants.secondary}
-              width={110}
-              height={35}
-              borderColor={Color.primary}
-              fontSize={18}
-            >
-              Вход
-            </ProjectButton>
+            {currentComponent}
           </Box>
         </Toolbar>
       </AppBar>
