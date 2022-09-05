@@ -13,6 +13,10 @@ import {
   setBackgroundBorder4,
   setBackgroundBorder5,
   increaseScore,
+  addRightAnswer,
+  addWrongAnswer,
+  setGamePhase,
+  GamePhase,
 } from 'features/audioCall/audioCallSlice'
 import styles from './styles'
 
@@ -29,6 +33,8 @@ const GameWindow = () => {
     borderColor3,
     borderColor4,
     borderColor5,
+    wrongAnswers,
+    rightAnswers,
   } = useAppSelector((state) => state.audioCall)
 
   const wordIndex = getRandomIndex(words.length)
@@ -46,14 +52,7 @@ const GameWindow = () => {
     words[randomIndex2].wordTranslate,
     words[randomIndex3].wordTranslate,
   )
-  const [currentComponent] = useState<React.ReactNode>(
-    <CardMedia
-      component='img'
-      image={`${process.env.REACT_APP_BASE_URL}/${words[wordIndex].image} `}
-      alt='image'
-      sx={styles.image}
-    />,
-  )
+  //const [currentComponent] = useState<React.ReactNode>()
   const shuffle = (array: string[]) => {
     array.sort(() => Math.random() - 0.5)
   }
@@ -75,21 +74,34 @@ const GameWindow = () => {
     }
   })
 
+  useEffect(() => {
+    if (!rightAnswers.length) {
+      return
+    } else if (!wrongAnswers.length) {
+      return
+    } else if (rightAnswers.length + wrongAnswers.length > 19) {
+      dispatch(setGamePhase(GamePhase.results))
+    } else return
+  })
+
   const correctAnswerHandler = () => {
     dispatch(increaseScore())
-    console.log('правильный ответ')
+    setTimeout(() => {
+      dispatch(addRightAnswer(words[wordIndex]))
+    }, 500)
     //setCurrentComponent()
   }
 
   const incorrectAnswerHandler = () => {
-    console.log('неправильный ответ')
+    setTimeout(() => {
+      dispatch(addWrongAnswer(words[wordIndex]))
+    }, 500)
   }
   const [firstName, secondName, thidrname, fourthname, fivename] = array
 
   const clickHandler1 = () => {
     if (firstName === words[wordIndex].wordTranslate) {
       dispatch(setBackgroundBorder1(Color.secondary))
-
       correctAnswerHandler()
     } else {
       dispatch(setBackgroundBorder1(Color.error))
@@ -136,7 +148,13 @@ const GameWindow = () => {
   return (
     <Box sx={styles.wrapper}>
       <Box sx={styles.container}>
-        {currentComponent}
+        <CardMedia
+          component='img'
+          image={`${process.env.REACT_APP_BASE_URL}/${words[wordIndex].image} `}
+          alt='image'
+          sx={styles.image}
+        />
+        ,
         <Box sx={styles.icon}>
           <Link onClick={play} sx={styles.link}>
             <VolumeIcon />

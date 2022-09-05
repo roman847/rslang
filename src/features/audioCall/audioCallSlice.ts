@@ -94,6 +94,24 @@ export const audioCallSlice = createSlice({
     setBackgroundBorder5: (state, action) => {
       state.borderColor5 = action.payload
     },
+    addRightAnswer: (state, action: PayloadAction<IWordsItem>) => {
+      if (!state.rightAnswers.find((item) => item.id === action.payload.id)) {
+        state.rightAnswers.push(action.payload)
+      }
+    },
+    addWrongAnswer: (state, action) => {
+      if (!state.wrongAnswers.find((item) => item.id === action.payload.id)) {
+        state.wrongAnswers.push(action.payload)
+      }
+    },
+    prepareToContinue: (state) => {
+      state.score = 0
+      state.rightAnswers = []
+      state.wrongAnswers = []
+      state.storeWord = ''
+      state.storeWordTranslate = ''
+      state.storeWordIndex = -1
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getWordsChunk.pending, (state) => {
@@ -118,6 +136,9 @@ export const {
   setBackgroundBorder4,
   setBackgroundBorder5,
   increaseScore,
+  addRightAnswer,
+  addWrongAnswer,
+  prepareToContinue,
 } = audioCallSlice.actions
 
 export default audioCallSlice.reducer
