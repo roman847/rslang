@@ -23,7 +23,8 @@
       "core": ["core/*"],
       "feature": ["feature/*"],
       "pages": ["pages/*"],
-      "styles":["styles/*"]
+      "redux": ["redux/*"],
+      "styles": ["styles/*"]
     }
   },
   "include": ["src"]

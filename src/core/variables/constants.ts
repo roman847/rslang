@@ -174,6 +174,22 @@ export enum LogoSize {
   big = 'logo_big',
 }
 
+export enum WordItemBg {
+  A1 = '#FAD2C0',
+  A2 = '#C0E4EB',
+  B1 = '#FAD3E8',
+  B2 = '#F0EDCE',
+  C1 = '#D0F5D1',
+  C2 = '#D6DCF3',
+}
+export enum WordItemHover {
+  A1 = '#F49B73',
+  A2 = '#8EC4CE',
+  B1 = '#F49DCC',
+  B2 = '#E2DAA1',
+  C1 = '#AAEEAC',
+  C2 = '#B6C1EA',
+}
 export const languageLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 
 export enum GameType {

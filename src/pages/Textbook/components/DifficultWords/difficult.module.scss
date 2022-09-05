@@ -1,0 +1,22 @@
+@import 'styles/main.scss';
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding-top: 137px;
+  background-color: $bgColor;
+}
+.container__main {
+  display: flex;
+  background-color: $bgColor;
+  margin-bottom: auto;
+}
+
+.container__words {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  gap: 50px 10px;
+}

@@ -1,8 +1,13 @@
 import axios from 'axios'
-import { BrowserStorageItem } from 'core/variables/constants'
+import { BrowserStorageItem, WordItemBg, WordItemHover } from 'core/variables/constants'
+
 import { IUserInfo } from 'core/interfaces/dataModels'
+
 import { localStorageService } from './localStorageHelper'
 
+export const saveLocalStorage = (nameField: string, value: string) => {
+  localStorage.setItem(nameField, value)
+}
 export const saveToken = (userInfo: IUserInfo): void => {
   localStorageService.set(BrowserStorageItem.userToken, userInfo.token)
 }
@@ -24,12 +29,28 @@ export const getId = () => {
   }
 }
 
+export const getGroup = () => {
+  if (localStorage.getItem('group')) {
+    return localStorage.getItem('group') as string
+  } else {
+    return '0'
+  }
+}
+export const getPage = () => {
+  if (localStorage.getItem('page')) {
+    return localStorage.getItem('page') as string
+  } else {
+    return '0'
+  }
+}
+
+const token = getToken()
 export const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    Authorization: `Bearer ${getToken()}`,
+    Authorization: `Bearer ${token}`,
   },
 })
 
@@ -44,3 +65,85 @@ axiosInstance.interceptors.request.use(
   },
   (error) => console.log(error),
 )
+
+export const identifyWordItemBg = (group: string) => {
+  let bg = ''
+  switch (group) {
+    case '0':
+      bg = WordItemBg.A1
+      break
+    case '1':
+      bg = WordItemBg.A2
+      break
+    case '2':
+      bg = WordItemBg.B1
+      break
+    case '3':
+      bg = WordItemBg.B2
+      break
+    case '4':
+      bg = WordItemBg.C1
+      break
+    case '5':
+      bg = WordItemBg.C2
+      break
+    default:
+      bg = WordItemBg.A1
+      break
+  }
+  return bg
+}
+export const identifyWordItemHover = (group: string) => {
+  let hover = ''
+  switch (group) {
+    case '0':
+      hover = WordItemHover.A1
+      break
+    case '1':
+      hover = WordItemHover.A2
+      break
+    case '2':
+      hover = WordItemHover.B1
+      break
+    case '3':
+      hover = WordItemHover.B2
+      break
+    case '4':
+      hover = WordItemHover.C1
+      break
+    case '5':
+      hover = WordItemHover.C2
+      break
+    default:
+      hover = WordItemHover.A1
+      break
+  }
+  return hover
+}
+export const identtifyActiveButtonCircle = (id: number) => {
+  let hover = ''
+  switch (id) {
+    case 0:
+      hover = WordItemHover.A1
+      break
+    case 1:
+      hover = WordItemHover.A2
+      break
+    case 2:
+      hover = WordItemHover.B1
+      break
+    case 3:
+      hover = WordItemHover.B2
+      break
+    case 4:
+      hover = WordItemHover.C1
+      break
+    case 5:
+      hover = WordItemHover.C2
+      break
+    default:
+      hover = WordItemHover.A1
+      break
+  }
+  return hover
+}

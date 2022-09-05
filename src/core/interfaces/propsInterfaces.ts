@@ -1,4 +1,6 @@
 import React from 'react'
+import { IWordsItem } from 'core/interfaces/dataModels'
+
 import {
   DevelopersNames,
   TeamGithub,
@@ -169,6 +171,24 @@ export interface IconProp {
   isModeOn: boolean
 }
 
+export interface ILinkToGameProp {
+  image: string
+  title: string
+  description: string
+  route: string
+}
+
+export interface IWordItemProps {
+  wordTranslate: string
+  wordId?: string
+  word: string
+  bg: string
+  hover: string
+  item?: IWordsItem
+  active?: boolean
+  onClick?: () => void
+  isDifficult?: boolean
+}
 /**
  * Defines standard React prop children and allow us to pass children nodes to our custom component
  * @interface
