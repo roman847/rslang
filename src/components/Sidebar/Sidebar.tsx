@@ -68,7 +68,12 @@ const Sidebar = () => {
 
   return (
     <Box>
-      <MenuIcon sx={styles.menuIcon} fontSize='large' onClick={toggleDrawer}></MenuIcon>
+      <Box sx={{ display: opened ? 'none' : 'flex' }}>
+        <MenuIcon sx={styles.menuIcon} fontSize='large' onClick={toggleDrawer} />
+        <Link component={RouterLink} to={Pages.main} sx={styles.link}>
+          <Logo />
+        </Link>
+      </Box>
       <Drawer anchor='left' open={opened} onClose={toggleDrawer}>
         {list()}
       </Drawer>

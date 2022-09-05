@@ -1,14 +1,11 @@
 import React from 'react'
-import { Box, Link, Typography } from '@mui/material'
-import { Link as RouterLink } from 'react-router-dom'
+import { Box, Typography } from '@mui/material'
 import ProjectButton from 'components/ProjectButton'
 import RadioButtons from 'components/RadioButtons'
 import Sidebar from 'components/Sidebar'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { getWordsChunk } from 'features/sprint/sprintSlice'
-import Logo from 'components/Logo'
 import IconsBlock from 'components/IconsBlock'
-import { Pages } from 'core/variables/constants'
 import styles from './styles'
 
 const SprintInitial = () => {
@@ -21,9 +18,7 @@ const SprintInitial = () => {
     <Box>
       <Box component='header' sx={styles.header}>
         <Sidebar />
-        <Link component={RouterLink} to={Pages.main} sx={styles.link}>
-          <Logo />
-        </Link>
+
         <IconsBlock />
       </Box>
       <Box component='main' sx={styles.container}>
