@@ -5,8 +5,8 @@ import setPageReducer from './dictionary'
 export interface IStore {
   textBook: IReducer
 }
-export default configureStore({
-  reducer: {
-    textBook: setPageReducer,
-  },
-})
+// export default configureStore({
+//   reducer: {
+//     textBook: setPageReducer,
+//   },
+// })
