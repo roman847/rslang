@@ -13,6 +13,7 @@ const Team = () => {
       </Typography>
       <div className={style.container__cards}>
         <Card
+          role={'Team lead'}
           name={DevelopersNames.Roman}
           teamAvatar={AvatarsTeam.Roman}
           text={AboutTeam.Roman}
@@ -20,6 +21,7 @@ const Team = () => {
         />
         <div style={{ marginLeft: 'auto' }}>
           <Card
+            role={'Developer'}
             name={DevelopersNames.Alibek}
             teamAvatar={AvatarsTeam.Alibek}
             text={AboutTeam.Alibek}
@@ -27,6 +29,7 @@ const Team = () => {
           />
         </div>
         <Card
+          role={'Developer'}
           name={DevelopersNames.Andrey}
           teamAvatar={AvatarsTeam.Andrey}
           text={AboutTeam.Andrey}

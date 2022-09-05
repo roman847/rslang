@@ -31,6 +31,9 @@
       @include fontSize28;
       color: $secondaryColor;
     }
+    .card__role {
+      @include font24;
+    }
     .card__link {
       @include fontSize16;
       color: $linkGithubColor;

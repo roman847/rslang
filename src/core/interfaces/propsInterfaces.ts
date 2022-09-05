@@ -9,6 +9,7 @@ import {
 } from 'core/variables/constants'
 
 export interface IPropsCard {
+  role: string
   name: DevelopersNames
   teamAvatar: string
   text: string
