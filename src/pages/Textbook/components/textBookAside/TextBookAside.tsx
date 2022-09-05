@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import {
   Box,
@@ -8,21 +8,28 @@ import {
   CardMedia,
   CardContent,
   CardActions,
-  Button,
 } from '@mui/material'
+import { IWordsItem } from 'core/interfaces/dataModels'
 import { Color, ButtonVariants } from 'core/variables/constants'
-import { setFocusWord } from 'redux/textBook/textBookSlice'
 import { IStore } from 'redux/textBook/store'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
-import { useAppDispatch } from 'app/hooks'
-import Icon from 'components/Icon/Icon'
+import { getUserId } from 'services'
+import { createWord } from 'services/usersWords'
 import style from './textBookAside.module.scss'
 
 const TextBookAside = () => {
   const word = useSelector((state: IStore) => state.textBook.focusWord)
-  const audioWord = new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audio}`)
-  const audioMeaning = new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audioMeaning}`)
-  const audioExample = new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audioExample}`)
+  const audioWord = word
+    ? new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audio}`)
+    : new Audio()
+  const audioMeaning = word
+    ? new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audioMeaning}`)
+    : new Audio()
+  const audioExample = word
+    ? new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audioExample}`)
+    : new Audio()
+
+  const userId = getUserId() ? getUserId() : 'Unknown'
 
   const handlerAudio = () => {
     audioWord.play()
@@ -33,25 +40,11 @@ const TextBookAside = () => {
       audioExample.play()
     }, 7000)
   }
-  // useEffect(() => {
-  //   const userId = getUserId()
 
-  //   const createWord = async (): Promise<IResponseCreateWord | void> => {
-  //     try {
-  //       const response = await axiosInstance.post(
-  //         `/users/${userId}/words/5e9f5ee35eb9e72bc21af6fe`,
-  //         {
-  //           difficulty: 'difficult',
-  //           optional: {},
-  //         },
-  //       )
-  //       console.log(response.data)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   createWord()
-  // }, [])
+  const handlerButtonCreate = () => {
+    createWord(userId, word as IWordsItem)
+  }
+
   return (
     <Box className={style.card__container}>
       <Card sx={{ maxWidth: 300 }} className={style.card}>
@@ -107,6 +100,7 @@ const TextBookAside = () => {
             height={35}
             borderColor={Color.primary}
             fontSize={18}
+            action={handlerButtonCreate}
           >
             Сложные слова
           </ProjectButton>

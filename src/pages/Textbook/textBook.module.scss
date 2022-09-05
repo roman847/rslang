@@ -23,6 +23,9 @@
   .nav__title {
     @include font22;
   }
+  .difficultWords__link {
+    text-decoration: none;
+  }
 }
 
 .nav__butnBlock {

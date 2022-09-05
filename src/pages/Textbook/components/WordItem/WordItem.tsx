@@ -1,17 +1,11 @@
 import React from 'react'
-import { Typography, Box } from '@mui/material'
-import { IWordsItem } from 'core/interfaces/dataModels'
+import { Typography, Box, Button } from '@mui/material'
+import { IWordItemProps } from 'core/interfaces/propsInterfaces'
+import { deleteUserWord } from 'services/usersWords'
+import { getUserId } from 'services'
 import style from './wordItem.module.scss'
 
-interface IWordItemProps {
-  bg: string
-  hover: string
-  item: IWordsItem
-  active?: boolean
-  onClick: () => void
-}
-
-const WordItem = ({ item, bg, hover, active, onClick }: IWordItemProps) => {
+const WordItem = ({ word, wordTranslate, bg, hover, active, onClick }: IWordItemProps) => {
   return (
     <Box
       onClick={onClick}
@@ -22,8 +16,8 @@ const WordItem = ({ item, bg, hover, active, onClick }: IWordItemProps) => {
           : { background: bg, ':hover': { background: hover } }
       }
     >
-      <Typography className={style.item__word}>{item.word}</Typography>
-      <Typography className={style.item__translate}>{item.wordTranslate}</Typography>
+      <Typography className={style.item__word}>{word}</Typography>
+      <Typography className={style.item__translate}>{wordTranslate}</Typography>
     </Box>
   )
 }

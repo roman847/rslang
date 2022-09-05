@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { IReducer } from 'redux/textBook/textBookSlice'
-import setPageReducer from './textBookSlice'
+import { IReducer } from 'redux/textBook/dictionary'
+import setPageReducer from './dictionary'
 
 export interface IStore {
   textBook: IReducer

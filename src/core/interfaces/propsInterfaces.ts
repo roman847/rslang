@@ -1,4 +1,6 @@
 import React from 'react'
+import { IWordsItem } from 'core/interfaces/dataModels'
+
 import {
   DevelopersNames,
   TeamGithub,
@@ -77,4 +79,16 @@ export interface ILinkToGameProp {
   title: string
   description: string
   route: string
+}
+
+export interface IWordItemProps {
+  wordTranslate: string
+  wordId?: string
+  word: string
+  bg: string
+  hover: string
+  item?: IWordsItem
+  active?: boolean
+  onClick?: () => void
+  isDifficult?: boolean
 }

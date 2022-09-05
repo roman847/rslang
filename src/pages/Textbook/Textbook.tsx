@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Link } from '@mui/material'
 import clsx from 'clsx'
 import { useSelector } from 'react-redux'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
+import { useNavigate } from 'react-router-dom'
+import { fetchWords, setFocusWord } from 'redux/textBook/dictionary'
 import {
   saveLocalStorage,
   identifyWordItemBg,
   identifyWordItemHover,
   getGroup,
   getPage,
+  getUserId,
 } from 'services/index'
-import { fetchWords, setFocusWord } from 'redux/textBook/textBookSlice'
 import ButtonCircleGroup from 'pages/Textbook/components/ButtonCircle/ButtonCircleGroup'
 import WordItem from 'pages/Textbook/components/WordItem/WordItem'
 import { IWordsItem } from 'core/interfaces/dataModels'
@@ -23,7 +25,6 @@ import LinkToGame from 'pages/Textbook/components/LinkToGame/LinkToGame'
 import { useAppDispatch } from 'app/hooks'
 import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
 import { IStore } from 'redux/textBook/store'
-
 import style from './textBook.module.scss'
 
 const Textbook = () => {
@@ -31,7 +32,15 @@ const Textbook = () => {
   const [activeItem, setActiveItem] = useState(0)
   const [group, setGroup] = useState(getGroup)
   const [page, setPage] = useState(getPage)
+  const [currentWords, setCurrentWords] = useState(words)
   const dispatch = useAppDispatch()
+
+  const navigate = useNavigate()
+  const difficultWordsHndler = () => {
+    if (getUserId()) {
+      navigate('/difficultwords')
+    }
+  }
 
   saveLocalStorage('group', group)
   saveLocalStorage('page', page)
@@ -44,6 +53,7 @@ const Textbook = () => {
 
   useEffect(() => {
     dispatch(setFocusWord(words[0]))
+    setCurrentWords(words)
   }, [words])
 
   useEffect(() => {
@@ -69,23 +79,27 @@ const Textbook = () => {
           <Box className={style.nav__butnBlock}>
             <ButtonCircleGroup handler={handlerButton} />
           </Box>
-          <ProjectButton
-            className='button'
-            variant={ButtonVariants.secondary}
-            width={300}
-            height={35}
-            borderColor={Color.primary}
-            fontSize={18}
-          >
-            Сложные слова
-          </ProjectButton>
+          <Link onClick={difficultWordsHndler} className={style.difficultWords__link}>
+            <ProjectButton
+              className='button'
+              variant={ButtonVariants.secondary}
+              width={300}
+              height={35}
+              borderColor={Color.primary}
+              fontSize={18}
+            >
+              Сложные слова
+            </ProjectButton>
+          </Link>
         </Box>
         <Box className={style.textBook__mainContent}>
           <Box className={style.container__words}>
             {words &&
-              words.map((item: IWordsItem, index: number) => {
+              currentWords.map((item: IWordsItem, index: number) => {
                 return (
                   <WordItem
+                    word={item.word}
+                    wordTranslate={item.wordTranslate}
                     bg={identifyWordItemBg(group)}
                     hover={identifyWordItemHover(group)}
                     key={index}
