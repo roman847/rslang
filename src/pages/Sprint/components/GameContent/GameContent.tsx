@@ -18,14 +18,8 @@ import styles from './styles'
 
 const GameContent = () => {
   const dispatch = useAppDispatch()
-  const {
-    storeWord,
-    storeWordTranslate,
-    storeWordIndex,
-    words,
-    score,
-    multiplier,
-  } = useAppSelector((state) => state.sprint)
+  const { storeWord, storeWordTranslate, storeWordIndex, words, score, multiplier } =
+    useAppSelector((state) => state.sprint)
   const [disabled, setDisabled] = useState(false)
 
   const getGameData = () => {
