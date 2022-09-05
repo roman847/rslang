@@ -1,5 +1,5 @@
 import pxToRem from 'core/functions/pxToRem'
-import { Color, Montserrat32, Montserrat36, Montserrat52 } from 'core/variables/constants'
+import { Montserrat32 } from 'core/variables/constants'
 
 const styles = {
   wrapper: {
@@ -33,7 +33,6 @@ const styles = {
     width: '100%',
   },
   buttons: {
-    border: '1px solid red',
     paddingTop: pxToRem(70),
     display: 'flex',
     justifyContent: 'space-around',

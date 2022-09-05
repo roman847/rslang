@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Link, Typography } from '@mui/material'
+import { Box, Link } from '@mui/material'
 import ProjectButton from 'components/ProjectButton'
 import { Color, ButtonVariants } from 'core/variables/constants'
 import { useAppSelector } from 'app/hooks'
