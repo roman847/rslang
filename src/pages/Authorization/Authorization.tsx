@@ -7,8 +7,7 @@ import { LogoSize, Pages, TypesInput, UserErrorMessage } from 'core/variables/co
 import ProjectButton from 'components/ProjectButton'
 import { signIn } from 'services/signIn'
 import isServerError from 'core/functions/isServerError'
-import { useAppDispatch } from 'app/hooks'
-import { setCurrentUserName } from 'features/general/generalSlice'
+import { saveUserID } from 'services'
 import styles from './styles'
 
 const Authorization = () => {
@@ -16,7 +15,6 @@ const Authorization = () => {
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === TypesInput.email) {
@@ -39,7 +37,7 @@ const Authorization = () => {
       } else if (isServerError(data)) {
         setErrorMessage(UserErrorMessage.unexpectedError)
       } else {
-        dispatch(setCurrentUserName(data.name))
+        saveUserID(data)
         navigate(Pages.main)
       }
     }

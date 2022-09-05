@@ -16,10 +16,6 @@ export const getToken = () => {
 
 export const getUserId = () => {
   return localStorageService.get(BrowserStorageItem.userId)
-
-  if (localStorage.getItem('user')) {
-    return JSON.parse(localStorage.getItem('user') as string).token
-  }
 }
 
 export const getId = () => {
@@ -36,3 +32,15 @@ export const axiosInstance = axios.create({
     Authorization: `Bearer ${getToken()}`,
   },
 })
+
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = getToken()
+    if (!config.headers) config.headers = {}
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`
+    }
+    return config
+  },
+  (error) => console.log(error),
+)

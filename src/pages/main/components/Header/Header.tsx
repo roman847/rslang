@@ -7,20 +7,29 @@ import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
 import './Header.scss'
 import Logo from 'components/Logo'
-import { useAppSelector } from 'app/hooks'
 import UserIcon from 'components/UserIcon'
 import pxToRem from 'core/functions/pxToRem'
+import { getUserId } from 'services'
+import { getUser } from 'services/users'
+import isServerError from 'core/functions/isServerError'
 
 const Header = () => {
   const navigate = useNavigate()
   const loginButtonHandler = () => {
     navigate('/auth')
   }
-  const { currentUserName } = useAppSelector((state) => state.general)
   const [currentComponent, setCurrentComponent] = useState<React.ReactNode>(<></>)
+  const [currentUser, setCurrentUser] = useState('')
 
   useEffect(() => {
-    if (!currentUserName) {
+    const userId = getUserId()
+    const getUserName = async () => {
+      const userData = await getUser(userId)
+      if (!isServerError(userData)) {
+        setCurrentUser(userData.name)
+      }
+    }
+    if (!userId) {
       setCurrentComponent(
         <ProjectButton
           className='button'
@@ -35,16 +44,17 @@ const Header = () => {
         </ProjectButton>,
       )
     } else {
+      getUserName().then()
       setCurrentComponent(
         <Box className='user-logo' sx={{ display: 'flex', alignItems: 'center' }}>
           <Typography sx={{ marginRight: pxToRem(8), ...Montserrat16, fontWeight: 600 }}>
-            {currentUserName}
+            {currentUser}
           </Typography>
           <UserIcon />
         </Box>,
       )
     }
-  }, [currentUserName])
+  }, [currentUser])
 
   return (
     <div className='wrapper'>
