@@ -17,25 +17,20 @@
       width: 15px;
       height: 15px;
     }
-
-    span:first-child {
-      font-weight: 600;
-      line-height: 24px;
-    }
-
-    span:first-child {
+    .footer__title {
+      @include fontSize16;
       font-weight: 600;
       line-height: 24px;
     }
 
     li {
       list-style-type: none;
-      font-family: 'Montserrat';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 25px;
-      color: $blackColor;
+      @include fontSize16;
+      transition: 0.5s;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+      }
     }
     a {
       text-decoration: none;
