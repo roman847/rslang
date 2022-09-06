@@ -23,6 +23,14 @@ export const getUserId = () => {
   return localStorageService.get(BrowserStorageItem.userId)
 }
 
+export const removeUserId = () => {
+  localStorageService.remove(BrowserStorageItem.userId)
+}
+
+export const removeToken = () => {
+  localStorageService.remove(BrowserStorageItem.userToken)
+}
+
 export const getId = () => {
   if (localStorage.getItem('user')) {
     return JSON.parse(localStorage.getItem('user') as string).userId
@@ -67,7 +75,7 @@ axiosInstance.interceptors.request.use(
 )
 
 export const identifyWordItemBg = (group: string) => {
-  let bg = ''
+  let bg: string
   switch (group) {
     case '0':
       bg = WordItemBg.A1
@@ -94,7 +102,7 @@ export const identifyWordItemBg = (group: string) => {
   return bg
 }
 export const identifyWordItemHover = (group: string) => {
-  let hover = ''
+  let hover: string
   switch (group) {
     case '0':
       hover = WordItemHover.A1
@@ -120,8 +128,8 @@ export const identifyWordItemHover = (group: string) => {
   }
   return hover
 }
-export const identtifyActiveButtonCircle = (id: number) => {
-  let hover = ''
+export const identifyActiveButtonCircle = (id: number) => {
+  let hover: string
   switch (id) {
     case 0:
       hover = WordItemHover.A1
