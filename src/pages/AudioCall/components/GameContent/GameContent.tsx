@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Box, Link, CardMedia, Typography } from '@mui/material'
 import ProjectButton from 'components/ProjectButton'
 import { Color, ButtonVariants } from 'core/variables/constants'
