@@ -1,12 +1,14 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
-import sprintReducer from 'features/sprint/sprintSlice'
 import textBookReducer from 'redux/textBook/dictionary'
 import counterReducer from 'features/counter/counterSlice'
+import sprintReducer from 'features/sprint/sprintSlice'
+import audioCallReducer from 'features/audioCall/audioCallSlice'
 import generalReducer from 'features/general/generalSlice'
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    audioCall: audioCallReducer,
     sprint: sprintReducer,
     textBook: textBookReducer,
     general: generalReducer,

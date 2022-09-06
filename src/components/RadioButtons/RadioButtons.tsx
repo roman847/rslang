@@ -6,7 +6,7 @@ import Radio from '@mui/material/Radio'
 import { Color, languageLevels } from 'core/variables/constants'
 import pxToRem from 'core/functions/pxToRem'
 import { useAppDispatch } from 'app/hooks'
-import { setLevel } from 'features/sprint/sprintSlice'
+import { setLevel } from 'features/audioCall/audioCallSlice'
 import styles from './styles'
 
 interface StyledFormControlLabelProps extends FormControlLabelProps {
