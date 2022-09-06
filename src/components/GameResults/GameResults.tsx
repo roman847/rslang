@@ -39,6 +39,8 @@ const GameResults = ({ gameType }: IGameResults) => {
 
   const navigate = useNavigate()
   const clickTextbookHandler = () => {
+    dispatch(prepareToContinue())
+    dispatch(setGamePhase(GamePhase.preparation))
     navigate(Pages.textbook)
   }
 
