@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { AppBar, Toolbar, Link, Box, Typography } from '@mui/material'
 import { useNavigate, NavLink, Link as RouterLink } from 'react-router-dom'
-import { Color, ButtonVariants, Montserrat16 } from 'core/variables/constants'
+import { Color, ButtonVariants, Montserrat16, Pages } from 'core/variables/constants'
 import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
 import './Header.scss'
@@ -12,21 +12,25 @@ import pxToRem from 'core/functions/pxToRem'
 import { getUserId } from 'services'
 import { getUser } from 'services/users'
 import isServerError from 'core/functions/isServerError'
+import ExitButton from 'components/ExitButton'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
+import { setCurrentUser } from 'features/general/generalSlice'
 
 const Header = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const loginButtonHandler = () => {
-    navigate('/auth')
+    navigate(Pages.auth)
   }
   const [currentComponent, setCurrentComponent] = useState<React.ReactNode>(<></>)
-  const [currentUser, setCurrentUser] = useState('')
+  const { currentUser } = useAppSelector((state) => state.general)
 
   useEffect(() => {
     const userId = getUserId()
     const getUserName = async () => {
       const userData = await getUser(userId)
       if (!isServerError(userData)) {
-        setCurrentUser(userData.name)
+        dispatch(setCurrentUser(userData.name))
       }
     }
     if (!userId) {
@@ -46,12 +50,14 @@ const Header = () => {
     } else {
       getUserName().then()
       setCurrentComponent(
-        <Box className='user-logo' sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography sx={{ marginRight: pxToRem(8), ...Montserrat16, fontWeight: 600 }}>
-            {currentUser}
-          </Typography>
-          <UserIcon />
-        </Box>,
+        <ExitButton>
+          <Box className='user-logo' sx={{ display: 'flex', alignItems: 'center' }}>
+            <Typography sx={{ marginRight: pxToRem(8), ...Montserrat16, fontWeight: 600 }}>
+              {currentUser}
+            </Typography>
+            <UserIcon />
+          </Box>
+        </ExitButton>,
       )
     }
   }, [currentUser])

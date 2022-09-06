@@ -3,7 +3,7 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { Box } from '@mui/material'
 import clsx from 'clsx'
-import { identtifyActiveButtonCircle } from 'services/index'
+import { identifyActiveButtonCircle } from 'services/index'
 
 import style from './buttonCircle.module.scss'
 
@@ -45,12 +45,12 @@ const ButtonCircle = ({ handler }: IButtonCircleProps) => {
               sx={
                 index.toString() === group
                   ? {
-                      backgroundColor: identtifyActiveButtonCircle(index),
-                      border: `1px solid ${identtifyActiveButtonCircle(index)}`,
+                      backgroundColor: identifyActiveButtonCircle(index),
+                      border: `1px solid ${identifyActiveButtonCircle(index)}`,
                     }
                   : {
-                      ':hover': { background: identtifyActiveButtonCircle(index) },
-                      border: `1px solid ${identtifyActiveButtonCircle(index)}`,
+                      ':hover': { background: identifyActiveButtonCircle(index) },
+                      border: `1px solid ${identifyActiveButtonCircle(index)}`,
                     }
               }
             >
