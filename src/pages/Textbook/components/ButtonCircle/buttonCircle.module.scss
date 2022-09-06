@@ -7,5 +7,6 @@
     width: 63px;
     height: 63px;
     border-radius: 50%;
+    @include fontSize28
   }
 }
