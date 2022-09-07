@@ -86,6 +86,15 @@ export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEleme
    * Describes color of button's background
    */
   buttonColor?: Color
+  /**
+   * Describes borderWidth button
+   */
+  borderWidth?: number | string
+  /**
+   * Describes borderWidth button
+   */
+  borderStyle?: string
+  color?: Color
 }
 
 /**

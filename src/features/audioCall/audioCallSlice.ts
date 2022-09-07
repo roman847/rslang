@@ -23,6 +23,12 @@ export interface IAudioCallState {
   borderColor3: Color
   borderColor4: Color
   borderColor5: Color
+  borderSize1: string
+  borderSize2: string
+  borderSize3: string
+  borderSize4: string
+  borderSize5: string
+  borderStyle: string
   storeWord: string
   storeWordTranslate: string
   storeWordIndex: number
@@ -40,6 +46,12 @@ const initialState: IAudioCallState = {
   borderColor3: Color.blackText,
   borderColor4: Color.blackText,
   borderColor5: Color.blackText,
+  borderSize1: '1px',
+  borderSize2: '1px',
+  borderSize3: '1px',
+  borderSize4: '1px',
+  borderSize5: '1px',
+  borderStyle: 'solid',
   storeWord: '',
   storeWordTranslate: '',
   storeWordIndex: -1,
@@ -72,6 +84,16 @@ export const audioCallSlice = createSlice({
     },
     updateStore: (state, action) => {
       const { word, wordTranslate, wordIndex } = action.payload
+      state.borderColor1 = Color.blackText
+      state.borderColor2 = Color.blackText
+      state.borderColor3 = Color.blackText
+      state.borderColor4 = Color.blackText
+      state.borderColor5 = Color.blackText
+      state.borderSize1 = '1px'
+      state.borderSize2 = '1px'
+      state.borderSize3 = '1px'
+      state.borderSize4 = '1px'
+      state.borderSize5 = '1px'
       state.storeWord = word
       state.storeWordTranslate = wordTranslate
       state.storeWordIndex = wordIndex
@@ -93,6 +115,21 @@ export const audioCallSlice = createSlice({
     },
     setBackgroundBorder5: (state, action) => {
       state.borderColor5 = action.payload
+    },
+    setSizeBorder1: (state, action) => {
+      state.borderSize1 = action.payload
+    },
+    setSizeBorder2: (state, action) => {
+      state.borderSize2 = action.payload
+    },
+    setSizeBorder3: (state, action) => {
+      state.borderSize3 = action.payload
+    },
+    setSizeBorder4: (state, action) => {
+      state.borderSize5 = action.payload
+    },
+    setSizeBorder5: (state, action) => {
+      state.borderSize5 = action.payload
     },
     addRightAnswer: (state, action: PayloadAction<IWordsItem>) => {
       if (!state.rightAnswers.find((item) => item.id === action.payload.id)) {
@@ -135,6 +172,11 @@ export const {
   setBackgroundBorder3,
   setBackgroundBorder4,
   setBackgroundBorder5,
+  setSizeBorder1,
+  setSizeBorder2,
+  setSizeBorder3,
+  setSizeBorder4,
+  setSizeBorder5,
   increaseScore,
   addRightAnswer,
   addWrongAnswer,

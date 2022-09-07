@@ -12,6 +12,11 @@ import {
   setBackgroundBorder3,
   setBackgroundBorder4,
   setBackgroundBorder5,
+  setSizeBorder1,
+  setSizeBorder2,
+  setSizeBorder3,
+  setSizeBorder4,
+  setSizeBorder5,
   increaseScore,
   addRightAnswer,
   addWrongAnswer,
@@ -33,6 +38,12 @@ const GameWindow = () => {
     borderColor3,
     borderColor4,
     borderColor5,
+    borderSize1,
+    borderSize2,
+    borderSize3,
+    borderSize4,
+    borderSize5,
+    borderStyle,
     wrongAnswers,
     rightAnswers,
   } = useAppSelector((state) => state.audioCall)
@@ -52,7 +63,6 @@ const GameWindow = () => {
     words[randomIndex2].wordTranslate,
     words[randomIndex3].wordTranslate,
   )
-  //const [currentComponent] = useState<React.ReactNode>()
   const shuffle = (array: string[]) => {
     array.sort(() => Math.random() - 0.5)
   }
@@ -88,13 +98,14 @@ const GameWindow = () => {
     dispatch(increaseScore())
     setTimeout(() => {
       dispatch(addRightAnswer(words[wordIndex]))
+      dispatch(updateStore(Color.blackText))
     }, 500)
-    //setCurrentComponent()
   }
 
   const incorrectAnswerHandler = () => {
     setTimeout(() => {
       dispatch(addWrongAnswer(words[wordIndex]))
+      dispatch(updateStore(Color.blackText))
     }, 500)
   }
   const [firstName, secondName, thidrname, fourthname, fivename] = array
@@ -102,45 +113,55 @@ const GameWindow = () => {
   const clickHandler1 = () => {
     if (firstName === words[wordIndex].wordTranslate) {
       dispatch(setBackgroundBorder1(Color.secondary))
+      dispatch(setSizeBorder1('4px'))
       correctAnswerHandler()
     } else {
       dispatch(setBackgroundBorder1(Color.error))
+      dispatch(setSizeBorder1('4px'))
       incorrectAnswerHandler()
     }
   }
   const clickHandler2 = () => {
     if (secondName === words[wordIndex].wordTranslate) {
       dispatch(setBackgroundBorder2(Color.secondary))
+      dispatch(setSizeBorder2('4px'))
       correctAnswerHandler()
     } else {
       dispatch(setBackgroundBorder2(Color.error))
+      dispatch(setSizeBorder2('4px'))
       incorrectAnswerHandler()
     }
   }
   const clickHandler3 = () => {
     if (thidrname === words[wordIndex].wordTranslate) {
       dispatch(setBackgroundBorder3(Color.secondary))
+      dispatch(setSizeBorder3('4px'))
       correctAnswerHandler()
     } else {
       dispatch(setBackgroundBorder3(Color.error))
+      dispatch(setSizeBorder3('4px'))
       incorrectAnswerHandler()
     }
   }
   const clickHandler4 = () => {
     if (fourthname === words[wordIndex].wordTranslate) {
       dispatch(setBackgroundBorder4(Color.secondary))
+      dispatch(setSizeBorder4('4px'))
       correctAnswerHandler()
     } else {
       dispatch(setBackgroundBorder4(Color.error))
+      dispatch(setSizeBorder4('4px'))
       incorrectAnswerHandler()
     }
   }
   const clickHandler5 = () => {
     if (fivename === words[wordIndex].wordTranslate) {
       dispatch(setBackgroundBorder5(Color.secondary))
+      dispatch(setSizeBorder5('4px'))
       correctAnswerHandler()
     } else {
       dispatch(setBackgroundBorder5(Color.error))
+      dispatch(setSizeBorder5('4px'))
       incorrectAnswerHandler()
     }
   }
@@ -169,6 +190,8 @@ const GameWindow = () => {
             height={50}
             hoverColor={Color.secondaryButtonHover}
             action={clickHandler1}
+            borderWidth={borderSize1}
+            borderStyle={borderStyle}
           >
             1. {array[0]}
           </ProjectButton>
@@ -179,6 +202,8 @@ const GameWindow = () => {
             borderColor={borderColor2}
             hoverColor={Color.secondaryButtonHover}
             action={clickHandler2}
+            borderWidth={borderSize2}
+            borderStyle={borderStyle}
           >
             2. {array[1]}
           </ProjectButton>
@@ -189,6 +214,8 @@ const GameWindow = () => {
             height={50}
             hoverColor={Color.secondaryButtonHover}
             action={clickHandler3}
+            borderWidth={borderSize3}
+            borderStyle={borderStyle}
           >
             3. {array[2]}
           </ProjectButton>
@@ -199,6 +226,8 @@ const GameWindow = () => {
             height={50}
             hoverColor={Color.secondaryButtonHover}
             action={clickHandler4}
+            borderWidth={borderSize4}
+            borderStyle={borderStyle}
           >
             4. {array[3]}
           </ProjectButton>
@@ -209,6 +238,8 @@ const GameWindow = () => {
             height={50}
             hoverColor={Color.secondaryButtonHover}
             action={clickHandler5}
+            borderWidth={borderSize5}
+            borderStyle={borderStyle}
           >
             5. {array[4]}
           </ProjectButton>
