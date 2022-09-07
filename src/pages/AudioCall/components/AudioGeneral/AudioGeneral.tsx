@@ -5,13 +5,12 @@ import Container from 'components/Container'
 import { useAppSelector } from 'app/hooks'
 import { GamePhase } from 'features/audioCall/audioCallSlice'
 import GameContent from 'pages/AudioCall/components/GameContent'
-import GameResults from 'components/GameResults'
+import GameResults from 'components/GameResultsAudio'
 import { GameType } from 'core/variables/constants'
 import styles from './styles'
 
 const AudioGeneral = () => {
-  const { gamePhase } = useAppSelector((state) => state.sprint)
-
+  const { gamePhase, score } = useAppSelector((state) => state.audioCall)
   const [currentComponent, setCurrentComponent] = useState(<></>)
   const [width, setWidth] = useState(630)
   const [height, setHeight] = useState(550)
@@ -19,8 +18,6 @@ const AudioGeneral = () => {
   useEffect(() => {
     if (gamePhase === GamePhase.inProcess) {
       setCurrentComponent(<GameContent />)
-      setWidth(770)
-      setHeight(530)
     } else {
       setCurrentComponent(<GameResults gameType={GameType.AudioCall} />)
       setWidth(630)
@@ -31,13 +28,22 @@ const AudioGeneral = () => {
   return (
     <Box>
       <Box component='header' sx={styles.header}>
-        <Typography sx={styles.title}>Аудиовызов</Typography>
-        <IconsBlock />
+        <Box>
+          <Typography sx={styles.title}>Аудиовызов</Typography>
+          <Typography sx={styles.title}>{score}/20</Typography>
+        </Box>
+        <Box>
+          <IconsBlock />
+        </Box>
       </Box>
       <Box component='main'>
-        <Container width={width} height={height}>
-          {currentComponent}
-        </Container>
+        {gamePhase === GamePhase.inProcess ? (
+          currentComponent
+        ) : (
+          <Container width={width} height={height}>
+            {currentComponent}
+          </Container>
+        )}
       </Box>
     </Box>
   )

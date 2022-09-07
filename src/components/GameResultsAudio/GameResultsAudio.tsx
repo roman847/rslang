@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import WordsList from 'components/WordsListAudio'
 import { ButtonVariants, Color, GameType, Pages } from 'core/variables/constants'
 import { useAppDispatch } from 'app/hooks'
-import { GamePhase, prepareToContinue, setGamePhase } from 'features/sprint/sprintSlice'
+import { GamePhase, prepareToContinue, setGamePhase } from 'features/audioCall/audioCallSlice'
 import ProjectButton from 'components/ProjectButton'
-import TotalScore from 'components/TotalScore'
-import WordsList from 'components/WordsList'
+import TotalScoreAudio from 'components/TotalScoreAudio'
 import { IGameResults } from 'core/interfaces/propsInterfaces'
 import styles from './styles'
 
-const GameResults = ({ gameType }: IGameResults) => {
+const GameResultsAudio = ({ gameType }: IGameResults) => {
   const dispatch = useAppDispatch()
   const [firstLinkActive, setFirstLinkActive] = useState(true)
   const [secondLinkActive, setSecondLinkActive] = useState(false)
@@ -27,11 +27,11 @@ const GameResults = ({ gameType }: IGameResults) => {
     setSecondLinkActive(true)
   }
 
-  const [currentComponent, setCurrentComponent] = useState(<TotalScore gameType={gameType} />)
+  const [currentComponent, setCurrentComponent] = useState(<TotalScoreAudio gameType={gameType} />)
 
   useEffect(() => {
     if (firstLinkActive) {
-      setCurrentComponent(<TotalScore gameType={gameType} />)
+      setCurrentComponent(<TotalScoreAudio gameType={gameType} />)
     } else {
       setCurrentComponent(<WordsList gameType={gameType} />)
     }
@@ -39,8 +39,6 @@ const GameResults = ({ gameType }: IGameResults) => {
 
   const navigate = useNavigate()
   const clickTextbookHandler = () => {
-    dispatch(prepareToContinue())
-    dispatch(setGamePhase(GamePhase.preparation))
     navigate(Pages.textbook)
   }
 
@@ -91,4 +89,4 @@ const GameResults = ({ gameType }: IGameResults) => {
   )
 }
 
-export default GameResults
+export default GameResultsAudio
