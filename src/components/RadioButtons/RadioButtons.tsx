@@ -7,6 +7,7 @@ import { Color, languageLevels } from 'core/variables/constants'
 import pxToRem from 'core/functions/pxToRem'
 import { useAppDispatch } from 'app/hooks'
 import { setLevel } from 'features/audioCall/audioCallSlice'
+import { setLevel as levelSetter } from 'features/sprint/sprintSlice'
 import styles from './styles'
 
 interface StyledFormControlLabelProps extends FormControlLabelProps {
@@ -48,6 +49,7 @@ const RadioButtons = () => {
   const dispatch = useAppDispatch()
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setLevel((event.target as HTMLInputElement).value))
+    dispatch(levelSetter((event.target as HTMLInputElement).value))
   }
   return (
     <RadioGroup
