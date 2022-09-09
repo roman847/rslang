@@ -7,7 +7,11 @@ import { IconPath, Pages } from 'core/variables/constants'
 import Icon from 'components/Icon'
 import styles from './styles'
 
-const Sidebar = () => {
+interface ISideBarProps {
+  className?: string
+}
+
+const Sidebar = (className: ISideBarProps) => {
   const [opened, setOpened] = React.useState(false)
 
   const toggleDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {

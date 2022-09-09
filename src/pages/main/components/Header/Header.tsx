@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useLayoutEffect } from 'react'
 import clsx from 'clsx'
 import { AppBar, Toolbar, Link, Box, Typography } from '@mui/material'
 import { useNavigate, NavLink, Link as RouterLink } from 'react-router-dom'
+import { useWindowSize, useAppDispatch, useAppSelector } from 'app/hooks'
 import { Color, ButtonVariants, Montserrat16, Pages } from 'core/variables/constants'
 import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
@@ -12,8 +13,9 @@ import pxToRem from 'core/functions/pxToRem'
 import { getUserId } from 'services'
 import { getUser } from 'services/users'
 import isServerError from 'core/functions/isServerError'
+import Sidebar from 'components/Sidebar/Sidebar'
 import ExitButton from 'components/ExitButton'
-import { useAppDispatch, useAppSelector } from 'app/hooks'
+
 import { setCurrentUser } from 'features/general/generalSlice'
 
 const Header = () => {
@@ -24,6 +26,8 @@ const Header = () => {
   }
   const [currentComponent, setCurrentComponent] = useState<React.ReactNode>(<></>)
   const { currentUser } = useAppSelector((state) => state.general)
+  const screenWidth = window.screen.width
+  const [width, height] = useWindowSize()
 
   useEffect(() => {
     const userId = getUserId()
@@ -66,9 +70,12 @@ const Header = () => {
     <div className='wrapper'>
       <AppBar className='header'>
         <Toolbar className={clsx('container', 'header__nav')}>
-          <Link component={RouterLink} to='/' sx={{ textDecoration: 'none' }}>
-            <Logo />
-          </Link>
+          {screenWidth <= 768 && <Sidebar />}
+          {screenWidth > 768 && (
+            <Link component={RouterLink} to='/' sx={{ textDecoration: 'none' }}>
+              <Logo />
+            </Link>
+          )}
           <Box className='nav__list'>
             <NavLink to='/' className={({ isActive }) => (isActive ? 'active' : '')}>
               Главная
