@@ -7,16 +7,11 @@ import getRandomIndex from 'core/functions/getRandomIndex'
 import VolumeIcon from 'pages/AudioCall/components/VolumeIcon'
 import {
   updateStore,
-  setBackgroundBorder1,
-  setBackgroundBorder2,
-  setBackgroundBorder3,
-  setBackgroundBorder4,
-  setBackgroundBorder5,
-  setSizeBorder1,
-  setSizeBorder2,
-  setSizeBorder3,
-  setSizeBorder4,
-  setSizeBorder5,
+  setBorder1,
+  setBorder2,
+  setBorder3,
+  setBorder4,
+  setBorder5,
   increaseScore,
   addRightAnswer,
   addWrongAnswer,
@@ -29,9 +24,9 @@ const GameWindow = () => {
   const dispatch = useAppDispatch()
 
   const {
-    storeWord,
-    storeWordTranslate,
-    storeWordIndex,
+    // storeWord,
+    // storeWordTranslate,
+    // storeWordIndex,
     words,
     borderColor1,
     borderColor2,
@@ -49,40 +44,41 @@ const GameWindow = () => {
   } = useAppSelector((state) => state.audioCall)
 
   const wordIndex = getRandomIndex(words.length)
-  const randomIndex = getRandomIndex(words.length)
   const randomIndex1 = getRandomIndex(words.length)
   const randomIndex2 = getRandomIndex(words.length)
   const randomIndex3 = getRandomIndex(words.length)
+  const randomIndex4 = getRandomIndex(words.length)
   const array = []
   const { word } = words[wordIndex]
   const { wordTranslate } = words[wordIndex]
   array.push(
     wordTranslate,
-    words[randomIndex].wordTranslate,
     words[randomIndex1].wordTranslate,
     words[randomIndex2].wordTranslate,
     words[randomIndex3].wordTranslate,
+    words[randomIndex4].wordTranslate,
   )
   const shuffle = (array: string[]) => {
     array.sort(() => Math.random() - 0.5)
   }
   shuffle(array)
+
   const play = () => {
     const click = new Audio(`${process.env.REACT_APP_BASE_URL}/${words[wordIndex].audio} `)
     click.play()
   }
 
-  useEffect(() => {
-    if (!storeWord && !storeWordTranslate && storeWordIndex === -1) {
-      dispatch(
-        updateStore({
-          word,
-          wordTranslate,
-          wordIndex,
-        }),
-      )
-    }
-  })
+  // useEffect(() => {
+  //   if (!storeWord && !storeWordTranslate && storeWordIndex === -1) {
+  //     dispatch(
+  //       updateStore({
+  //         word,
+  //         wordTranslate,
+  //         wordIndex,
+  //       }),
+  //     )
+  //   }
+  // })
 
   useEffect(() => {
     if (!rightAnswers.length) {
@@ -96,72 +92,88 @@ const GameWindow = () => {
 
   const correctAnswerHandler = () => {
     dispatch(increaseScore())
+    dispatch(addRightAnswer(words[wordIndex]))
     setTimeout(() => {
-      dispatch(addRightAnswer(words[wordIndex]))
-      dispatch(updateStore(Color.blackText))
-    }, 500)
+      dispatch(
+        updateStore({
+          borderColor1: Color.blackText,
+          borderColor2: Color.blackText,
+          borderColor3: Color.blackText,
+          borderColor4: Color.blackText,
+          borderColor5: Color.blackText,
+          borderSize1: '1px',
+          borderSize2: '1px',
+          borderSize3: '1px',
+          borderSize4: '1px',
+          borderSize5: '1px',
+        }),
+      )
+    }, 100)
   }
 
   const incorrectAnswerHandler = () => {
+    dispatch(addWrongAnswer(words[wordIndex]))
     setTimeout(() => {
-      dispatch(addWrongAnswer(words[wordIndex]))
-      dispatch(updateStore(Color.blackText))
-    }, 500)
+      dispatch(
+        updateStore({
+          borderColor1: Color.blackText,
+          borderColor2: Color.blackText,
+          borderColor3: Color.blackText,
+          borderColor4: Color.blackText,
+          borderColor5: Color.blackText,
+          borderSize1: '1px',
+          borderSize2: '1px',
+          borderSize3: '1px',
+          borderSize4: '1px',
+          borderSize5: '1px',
+        }),
+      )
+    }, 100)
   }
   const [firstName, secondName, thidrname, fourthname, fivename] = array
 
   const clickHandler1 = () => {
     if (firstName === words[wordIndex].wordTranslate) {
-      dispatch(setBackgroundBorder1(Color.secondary))
-      dispatch(setSizeBorder1('4px'))
+      dispatch(setBorder1({ borderColor1: Color.secondary, borderSize1: '4px' }))
       correctAnswerHandler()
     } else {
-      dispatch(setBackgroundBorder1(Color.error))
-      dispatch(setSizeBorder1('4px'))
+      dispatch(setBorder1({ borderColor1: Color.error, borderSize1: '4px' }))
       incorrectAnswerHandler()
     }
   }
   const clickHandler2 = () => {
     if (secondName === words[wordIndex].wordTranslate) {
-      dispatch(setBackgroundBorder2(Color.secondary))
-      dispatch(setSizeBorder2('4px'))
+      dispatch(setBorder2({ borderColor2: Color.secondary, borderSize2: '4px' }))
       correctAnswerHandler()
     } else {
-      dispatch(setBackgroundBorder2(Color.error))
-      dispatch(setSizeBorder2('4px'))
+      dispatch(setBorder2({ borderColor2: Color.error, borderSize2: '4px' }))
       incorrectAnswerHandler()
     }
   }
   const clickHandler3 = () => {
     if (thidrname === words[wordIndex].wordTranslate) {
-      dispatch(setBackgroundBorder3(Color.secondary))
-      dispatch(setSizeBorder3('4px'))
+      dispatch(setBorder3({ borderColor3: Color.secondary, borderSize3: '4px' }))
       correctAnswerHandler()
     } else {
-      dispatch(setBackgroundBorder3(Color.error))
-      dispatch(setSizeBorder3('4px'))
+      dispatch(setBorder3({ borderColor3: Color.error, borderSize3: '4px' }))
       incorrectAnswerHandler()
     }
   }
   const clickHandler4 = () => {
     if (fourthname === words[wordIndex].wordTranslate) {
-      dispatch(setBackgroundBorder4(Color.secondary))
-      dispatch(setSizeBorder4('4px'))
+      dispatch(setBorder4({ borderColor4: Color.secondary, borderSize4: '4px' }))
       correctAnswerHandler()
     } else {
-      dispatch(setBackgroundBorder4(Color.error))
-      dispatch(setSizeBorder4('4px'))
+      dispatch(setBorder4({ borderColor4: Color.error, borderSize4: '4px' }))
       incorrectAnswerHandler()
     }
   }
   const clickHandler5 = () => {
     if (fivename === words[wordIndex].wordTranslate) {
-      dispatch(setBackgroundBorder5(Color.secondary))
-      dispatch(setSizeBorder5('4px'))
+      dispatch(setBorder5({ borderColor5: Color.secondary, borderSize5: '4px' }))
       correctAnswerHandler()
     } else {
-      dispatch(setBackgroundBorder5(Color.error))
-      dispatch(setSizeBorder5('4px'))
+      dispatch(setBorder5({ borderColor5: Color.error, borderSize5: '4px' }))
       incorrectAnswerHandler()
     }
   }

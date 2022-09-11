@@ -19,7 +19,6 @@ const ProjectButton = ({
   borderWidth,
   borderStyle,
   buttonColor = Color.primary,
-  color,
 }: IButtonProps) => {
   const BasicButton = styled(Button)({
     height,
@@ -38,7 +37,6 @@ const ProjectButton = ({
     maxHeight: height,
     borderWidth: '1px',
     borderStyle: 'solid',
-    color,
   })
 
   const PrimaryButton = styled(BasicButton)({
@@ -50,7 +48,7 @@ const ProjectButton = ({
   })
 
   const SecondaryButton = styled(BasicButton)({
-    border: `${borderWidth} ${borderStyle}  ${borderColor}`,
+    border: `${borderWidth} ${borderStyle} ${borderColor}`,
     color: Color.blackText,
     fontWeight: 500,
     '&:hover, &:active': {
