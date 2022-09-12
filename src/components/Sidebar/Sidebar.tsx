@@ -7,10 +7,6 @@ import { IconPath, Pages } from 'core/variables/constants'
 import Icon from 'components/Icon'
 import styles from './styles'
 
-interface ISideBarProps {
-  className?: string
-}
-
 const Sidebar = () => {
   const [opened, setOpened] = React.useState(false)
 
