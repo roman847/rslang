@@ -2,7 +2,7 @@ import React, { useEffect, useState, useLayoutEffect } from 'react'
 import clsx from 'clsx'
 import { AppBar, Toolbar, Link, Box, Typography } from '@mui/material'
 import { useNavigate, NavLink, Link as RouterLink } from 'react-router-dom'
-import { useWindowSize, useAppDispatch, useAppSelector } from 'app/hooks'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { Color, ButtonVariants, Montserrat16, Pages } from 'core/variables/constants'
 import SelectElement from 'components/Select/Select'
 import ProjectButton from 'components/ProjectButton'
@@ -27,7 +27,6 @@ const Header = () => {
   const [currentComponent, setCurrentComponent] = useState<React.ReactNode>(<></>)
   const { currentUser } = useAppSelector((state) => state.general)
   const screenWidth = window.screen.width
-  const [width, height] = useWindowSize()
 
   useEffect(() => {
     const userId = getUserId()

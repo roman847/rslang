@@ -11,7 +11,7 @@ interface ISideBarProps {
   className?: string
 }
 
-const Sidebar = (className: ISideBarProps) => {
+const Sidebar = () => {
   const [opened, setOpened] = React.useState(false)
 
   const toggleDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {
