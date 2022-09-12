@@ -23,6 +23,12 @@ export interface IAudioCallState {
   borderColor3: Color
   borderColor4: Color
   borderColor5: Color
+  borderSize1: string
+  borderSize2: string
+  borderSize3: string
+  borderSize4: string
+  borderSize5: string
+  borderStyle: string
   storeWord: string
   storeWordTranslate: string
   storeWordIndex: number
@@ -40,6 +46,12 @@ const initialState: IAudioCallState = {
   borderColor3: Color.blackText,
   borderColor4: Color.blackText,
   borderColor5: Color.blackText,
+  borderSize1: '1px',
+  borderSize2: '1px',
+  borderSize3: '1px',
+  borderSize4: '1px',
+  borderSize5: '1px',
+  borderStyle: 'solid',
   storeWord: '',
   storeWordTranslate: '',
   storeWordIndex: -1,
@@ -71,28 +83,56 @@ export const audioCallSlice = createSlice({
       state.gamePhase = action.payload
     },
     updateStore: (state, action) => {
-      const { word, wordTranslate, wordIndex } = action.payload
-      state.storeWord = word
-      state.storeWordTranslate = wordTranslate
-      state.storeWordIndex = wordIndex
+      const {
+        borderColor1,
+        borderColor2,
+        borderColor3,
+        borderColor4,
+        borderColor5,
+        borderSize1,
+        borderSize2,
+        borderSize3,
+        borderSize4,
+        borderSize5,
+      } = action.payload
+      state.borderColor1 = borderColor1
+      state.borderColor2 = borderColor2
+      state.borderColor3 = borderColor3
+      state.borderColor4 = borderColor4
+      state.borderColor5 = borderColor5
+      state.borderSize1 = borderSize1
+      state.borderSize2 = borderSize2
+      state.borderSize3 = borderSize3
+      state.borderSize4 = borderSize4
+      state.borderSize5 = borderSize5
     },
     increaseScore: (state) => {
       state.score += 1
     },
-    setBackgroundBorder1: (state, action) => {
-      state.borderColor1 = action.payload
+    setBorder1: (state, action) => {
+      const { borderColor1, borderSize1 } = action.payload
+      state.borderColor1 = borderColor1
+      state.borderSize1 = borderSize1
     },
-    setBackgroundBorder2: (state, action) => {
-      state.borderColor2 = action.payload
+    setBorder2: (state, action) => {
+      const { borderColor2, borderSize2 } = action.payload
+      state.borderColor2 = borderColor2
+      state.borderSize2 = borderSize2
     },
-    setBackgroundBorder3: (state, action) => {
-      state.borderColor3 = action.payload
+    setBorder3: (state, action) => {
+      const { borderColor3, borderSize3 } = action.payload
+      state.borderColor3 = borderColor3
+      state.borderSize3 = borderSize3
     },
-    setBackgroundBorder4: (state, action) => {
-      state.borderColor4 = action.payload
+    setBorder4: (state, action) => {
+      const { borderColor4, borderSize4 } = action.payload
+      state.borderColor4 = borderColor4
+      state.borderSize4 = borderSize4
     },
-    setBackgroundBorder5: (state, action) => {
-      state.borderColor5 = action.payload
+    setBorder5: (state, action) => {
+      const { borderColor5, borderSize5 } = action.payload
+      state.borderColor5 = borderColor5
+      state.borderSize5 = borderSize5
     },
     addRightAnswer: (state, action: PayloadAction<IWordsItem>) => {
       if (!state.rightAnswers.find((item) => item.id === action.payload.id)) {
@@ -130,11 +170,11 @@ export const {
   setLevel,
   setGamePhase,
   updateStore,
-  setBackgroundBorder1,
-  setBackgroundBorder2,
-  setBackgroundBorder3,
-  setBackgroundBorder4,
-  setBackgroundBorder5,
+  setBorder1,
+  setBorder2,
+  setBorder3,
+  setBorder4,
+  setBorder5,
   increaseScore,
   addRightAnswer,
   addWrongAnswer,
