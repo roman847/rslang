@@ -8,6 +8,7 @@ const styles = {
   menuIcon: {
     marginRight: pxToRem(27),
     cursor: 'pointer',
+    color: 'black',
   },
   list: {
     width: pxToRem(335),
