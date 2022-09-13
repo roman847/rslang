@@ -63,8 +63,11 @@ const Textbook = () => {
 
   const handlerLearnedWord = () => {
     setIsLearned(!isLearned)
-    if (word) {
+    if (word && isLearned) {
       const arr = [currentWord as IWordsItem, ...allLearnedWord]
+      dispatch(setLearnedWords(arr))
+    } else if (word && !isLearned) {
+      const arr = allLearnedWord.filter((item) => item.id !== currentWord?.id)
       dispatch(setLearnedWords(arr))
     }
   }
