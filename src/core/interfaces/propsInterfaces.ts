@@ -185,6 +185,7 @@ export interface IWordItemProps {
   bg: string
   hover: string
   item?: IWordsItem
+  border?: string
   active?: boolean
   onClick?: () => void
   isDifficult?: boolean

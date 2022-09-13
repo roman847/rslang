@@ -1,11 +1,17 @@
+import { isGeneratorFunction } from 'util/types'
 import React, { useEffect, useState } from 'react'
 import { Box, Typography, Link } from '@mui/material'
 import clsx from 'clsx'
-import { useSelector } from 'react-redux'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import { useNavigate } from 'react-router-dom'
-import { fetchWords, setFocusWord, IStore, setLearnedWords } from 'features/textBook/dictionary'
+import {
+  fetchWords,
+  setFocusWord,
+  IStore,
+  setLearnedWords,
+  setDifficultWords,
+} from 'features/textBook/dictionary'
 import {
   saveLocalStorage,
   identifyWordItemBg,
@@ -14,8 +20,10 @@ import {
   getPage,
   getUserId,
   identifyLearnedWord,
+  identifyDifficultWord,
 } from 'services/index'
 import ButtonCircleGroup from 'pages/Textbook/components/ButtonCircle/ButtonCircleGroup'
+
 import { useAppSelector, useAppDispatch } from 'app/hooks'
 import WordItem from 'pages/Textbook/components/WordItem/WordItem'
 import { IWordsItem } from 'core/interfaces/dataModels'
@@ -24,15 +32,16 @@ import Footer from 'pages/main/components/Footer/Footer'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
 import { Color, ButtonVariants } from 'core/variables/constants'
 import LinkToGame from 'pages/Textbook/components/LinkToGame/LinkToGame'
-
 import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
-
 import style from './textBook.module.scss'
 
 const Textbook = () => {
   const words = useAppSelector((state: IStore) => state.textBook.words)
   const allLearnedWord: IWordsItem[] = useAppSelector(
     (state: IStore) => state.textBook.learnedWords,
+  )
+  const allDifficultWord: IWordsItem[] = useAppSelector(
+    (state: IStore) => state.textBook.difficultWords,
   )
   const currentWord = useAppSelector((state: IStore) => state.textBook.focusWord)
   const word = useAppSelector((state: IStore) => state.textBook.focusWord)
@@ -44,10 +53,10 @@ const Textbook = () => {
   const [group, setGroup] = useState(getGroup)
   const [page, setPage] = useState(getPage)
   const [currentWords, setCurrentWords] = useState(words)
-  const [isLearned, setIsLearned] = useState(false)
 
   const difficultWordsHandler = () => {
     if (getUserId()) {
+      setCurrentWords(allDifficultWord)
       navigate('/difficultwords')
     }
   }
@@ -62,19 +71,36 @@ const Textbook = () => {
   }
 
   const handlerLearnedWord = () => {
-    setIsLearned(!isLearned)
-    if (word && isLearned) {
-      const arr = [currentWord as IWordsItem, ...allLearnedWord]
-      dispatch(setLearnedWords(arr))
-    } else if (word && !isLearned) {
-      const arr = allLearnedWord.filter((item) => item.id !== currentWord?.id)
-      dispatch(setLearnedWords(arr))
+    if (!identifyDifficultWord(allDifficultWord, (word as IWordsItem).id)) {
+      if (!identifyLearnedWord(allLearnedWord, (word as IWordsItem).id)) {
+        const arr = [currentWord as IWordsItem, ...allLearnedWord]
+        dispatch(setLearnedWords(arr))
+      } else if (identifyLearnedWord(allLearnedWord, (word as IWordsItem).id)) {
+        const arr = allLearnedWord.filter((item) => item.id !== currentWord?.id)
+        dispatch(setLearnedWords(arr))
+      }
+    }
+  }
+
+  const handlerDifficultWord = () => {
+    if (!identifyLearnedWord(allLearnedWord, (word as IWordsItem).id)) {
+      if (!identifyDifficultWord(allDifficultWord, (word as IWordsItem).id)) {
+        const arr = [currentWord as IWordsItem, ...allDifficultWord]
+        dispatch(setDifficultWords(arr))
+      } else if (identifyDifficultWord(allDifficultWord, (word as IWordsItem).id)) {
+        const arr = allDifficultWord.filter((item) => item.id !== currentWord?.id)
+        dispatch(setDifficultWords(arr))
+      }
     }
   }
 
   useEffect(() => {
     localStorage.setItem('save-words', JSON.stringify(allLearnedWord))
   }, [allLearnedWord])
+
+  useEffect(() => {
+    localStorage.setItem('difficult-words', JSON.stringify(allDifficultWord))
+  }, [allDifficultWord])
 
   useEffect(() => {
     dispatch(setFocusWord(words[0]))
@@ -130,6 +156,11 @@ const Textbook = () => {
                         ? Color.secondary
                         : identifyWordItemBg(group)
                     }
+                    border={
+                      identifyDifficultWord(allDifficultWord, item.id)
+                        ? `4px solid ${Color.error}`
+                        : 'none'
+                    }
                     hover={identifyWordItemHover(group)}
                     key={index}
                     item={item}
@@ -139,7 +170,10 @@ const Textbook = () => {
                 )
               })}
           </Box>
-          <TextBookAside handleLearnedWord={handlerLearnedWord} />
+          <TextBookAside
+            handleLearnedWord={handlerLearnedWord}
+            handlerDifficultWord={handlerDifficultWord}
+          />
         </Box>
         <Stack spacing={2}>
           <Pagination

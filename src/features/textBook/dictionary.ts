@@ -49,7 +49,9 @@ const initialState: IDictionaryState = {
   learnedWords: localStorage.getItem('save-words')
     ? Array.from(JSON.parse(localStorage.getItem('save-words') as string))
     : [],
-  difficultWords: [],
+  difficultWords: localStorage.getItem('difficult-words')
+    ? Array.from(JSON.parse(localStorage.getItem('difficult-words') as string))
+    : [],
   status: null,
   error: null,
 }

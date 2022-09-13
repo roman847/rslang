@@ -73,7 +73,7 @@ axiosInstance.interceptors.request.use(
   (error) => console.log(error),
 )
 
-export const identifyLearnedWord = (arr: IWordsItem[], id: string): boolean => {
+export const identifyLearnedWord = (arr: IWordsItem[], id: string): boolean | void => {
   let isLearned = false
   arr.forEach((item) => {
     if (item.id === id) {
@@ -81,6 +81,16 @@ export const identifyLearnedWord = (arr: IWordsItem[], id: string): boolean => {
     }
   })
   return isLearned
+}
+
+export const identifyDifficultWord = (arr: IWordsItem[], id: string): boolean => {
+  let isDifficult = false
+  arr.forEach((item) => {
+    if (item.id === id) {
+      isDifficult = true
+    }
+  })
+  return isDifficult
 }
 
 export const identifyWordItemBg = (group: string) => {
