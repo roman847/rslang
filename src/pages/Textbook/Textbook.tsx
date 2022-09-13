@@ -1,4 +1,3 @@
-import { isGeneratorFunction } from 'util/types'
 import React, { useEffect, useState } from 'react'
 import { Box, Typography, Link } from '@mui/material'
 import clsx from 'clsx'
@@ -23,7 +22,6 @@ import {
   identifyDifficultWord,
 } from 'services/index'
 import ButtonCircleGroup from 'pages/Textbook/components/ButtonCircle/ButtonCircleGroup'
-
 import { useAppSelector, useAppDispatch } from 'app/hooks'
 import WordItem from 'pages/Textbook/components/WordItem/WordItem'
 import { IWordsItem } from 'core/interfaces/dataModels'

@@ -45,9 +45,18 @@
     color: $secondaryColor;
     margin-top: 10px;
   }
-  .word__description {
+  .text__description {
     @include fontSize16;
     font-weight: 400;
+  }
+  .container__description{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px 5px;
+  }
+  .description__word{
+    @include fontSize16;
+    font-weight:700;
   }
 }
 .container__transcription {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 
 import {
@@ -13,12 +13,9 @@ import {
 import { IWordsItem } from 'core/interfaces/dataModels'
 import { identifyLearnedWord, getUserId, identifyDifficultWord } from 'services/index'
 import { Color, ButtonVariants } from 'core/variables/constants'
-import { IStore, setLearnedWords } from 'features/textBook/dictionary'
+import { IStore } from 'features/textBook/dictionary'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
-
-import { createWord } from 'services/usersWords'
-
-import { useAppDispatch, useAppSelector } from 'app/hooks'
+import { useAppSelector } from 'app/hooks'
 import style from './textBookAside.module.scss'
 
 const TextBookAside = ({
@@ -44,8 +41,6 @@ const TextBookAside = ({
     ? new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audioExample}`)
     : new Audio()
 
-  const userId = getUserId() ? getUserId() : 'Unknown'
-
   const handlerAudio = () => {
     audioWord.play()
     setTimeout(() => {
@@ -55,10 +50,6 @@ const TextBookAside = ({
       audioExample.play()
     }, 7000)
   }
-
-  // const handlerButtonCreate = () => {
-  //   createWord(userId, word as IWordsItem)
-  // }
 
   const identifyCardStyle = () => {
     if (identifyLearnedWord(allLearnedWord, (word as IWordsItem).id)) {
@@ -104,16 +95,25 @@ const TextBookAside = ({
               </Box>
               <Typography className={style.title__word}>Значение</Typography>
               {word && (
-                <Typography className={style.word__description}>
+                <Typography className={style.text__description}>
                   {word.textMeaningTranslate}
                 </Typography>
               )}
+
               <Typography className={style.title__word}>Пример</Typography>
               {word && (
-                <Typography className={style.word__description}>{word.textExample}</Typography>
+                <Box className={style.container__description}>
+                  <Typography className={style.text__description}>
+                    {word.textExample.substring(0, word.textExample.indexOf('<'))}
+                  </Typography>
+                  <Typography className={style.description__word}>{word.word}</Typography>
+                  <Typography className={style.text__description}>
+                    {word.textExample.substring(word.textExample.indexOf('</b>') + 4)}
+                  </Typography>
+                </Box>
               )}
               {word && (
-                <Typography className={style.word__description}>
+                <Typography className={style.text__description}>
                   {word.textExampleTranslate}
                 </Typography>
               )}
