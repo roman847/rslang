@@ -1,10 +1,23 @@
 @import 'styles/main.scss';
 .card__container {
+  padding: 5px;
   .card {
     border: none;
     outline: none;
     box-shadow: none;
     background-color: $bgColor;
+  }
+  .card__learned {
+    border: none;
+    outline: none;
+    box-shadow: none;
+   outline: 2px solid #3E92A3;
+  }
+  .card__difficult {
+    border: none;
+    outline: none;
+    box-shadow: none;
+   outline: 2px solid #B71313;
   }
 }
 
@@ -32,9 +45,18 @@
     color: $secondaryColor;
     margin-top: 10px;
   }
-  .word__description {
+  .text__description {
     @include fontSize16;
     font-weight: 400;
+  }
+  .container__description{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px 5px;
+  }
+  .description__word{
+    @include fontSize16;
+    font-weight:700;
   }
 }
 .container__transcription {
@@ -50,4 +72,9 @@
     stroke: $blackColor;
     opacity: 0.5;
   }
+}
+.container__cardActions{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

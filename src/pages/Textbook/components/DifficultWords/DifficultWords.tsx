@@ -1,42 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Box } from '@mui/material'
 import clsx from 'clsx'
+import { IWordsItem } from 'core/interfaces/dataModels'
 import Header from 'pages/main/components/Header/Header'
-import { getUserId } from 'services/index'
-import { IWordItemDifficult } from 'core/interfaces/dataModels'
 import { WordItemHover, WordItemBg } from 'core/variables/constants'
-import { getUserWords } from 'services/usersWords'
 import WordItem from 'pages/Textbook/components/WordItem/WordItem'
 import Footer from 'pages/main/components/Footer/Footer'
+import { useAppSelector } from 'app/hooks'
+import { IStore } from 'features/textBook/dictionary'
+
 import style from './difficult.module.scss'
 
 const DifficultWords = () => {
-  const userId = getUserId()
-  const [words, setWords] = useState([] as IWordItemDifficult[])
-
-  const fnc = (resp: IWordItemDifficult[]) => {
-    setWords(resp)
-  }
-  const getWords = async () => {
-    const response = await getUserWords(userId)
-    await fnc(response)
-  }
-  useEffect(() => {
-    getWords()
-  }, [])
+  const allDifficultWord: IWordsItem[] = useAppSelector(
+    (state: IStore) => state.textBook.difficultWords,
+  )
 
   return (
     <Box className={style.container}>
       <Header />
-      {words.length > 0 && (
+      {allDifficultWord.length > 0 && (
         <Box className={clsx('container', style.container__main)}>
           <Box className={style.container__words}>
-            {words &&
-              words.map((item: IWordItemDifficult, index: number) => {
+            {allDifficultWord &&
+              allDifficultWord.map((item: IWordsItem, index: number) => {
                 return (
                   <WordItem
-                    word={item.optional.word}
-                    wordTranslate={item.optional.wordTranslate}
+                    word={item.word}
+                    wordTranslate={item.wordTranslate}
                     bg={WordItemBg.A1}
                     hover={WordItemHover.A1}
                     key={index}
