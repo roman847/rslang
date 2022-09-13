@@ -11,7 +11,7 @@ import {
   CardActions,
 } from '@mui/material'
 import { IWordsItem } from 'core/interfaces/dataModels'
-import { identifyLearnedWord, getUserId, identifyDifficultWord } from 'services/index'
+import { identifyLearnedWord, identifyDifficultWord } from 'services/index'
 import { Color, ButtonVariants } from 'core/variables/constants'
 import { IStore } from 'features/textBook/dictionary'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
