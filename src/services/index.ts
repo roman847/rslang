@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { BrowserStorageItem, WordItemBg, WordItemHover } from 'core/variables/constants'
-
-import { IUserInfo } from 'core/interfaces/dataModels'
+import { IWordsItem, IUserInfo } from 'core/interfaces/dataModels'
 
 import { localStorageService } from './localStorageHelper'
 
@@ -73,6 +72,16 @@ axiosInstance.interceptors.request.use(
   },
   (error) => console.log(error),
 )
+
+export const identifyLearnedWord = (arr: IWordsItem[], id: string): boolean => {
+  let isLearned = false
+  arr.forEach((item) => {
+    if (item.id === id) {
+      isLearned = true
+    }
+  })
+  return isLearned
+}
 
 export const identifyWordItemBg = (group: string) => {
   let bg: string

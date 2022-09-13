@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+
 import {
   Box,
   Typography,
@@ -10,15 +11,22 @@ import {
   CardActions,
 } from '@mui/material'
 import { IWordsItem } from 'core/interfaces/dataModels'
+import { identifyLearnedWord, getUserId } from 'services/index'
 import { Color, ButtonVariants } from 'core/variables/constants'
-import { IStore } from 'redux/textBook/store'
+import { IStore, setLearnedWords } from 'features/textBook/dictionary'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
-import { getUserId } from 'services'
+
 import { createWord } from 'services/usersWords'
+
+import { useAppDispatch, useAppSelector } from 'app/hooks'
 import style from './textBookAside.module.scss'
 
-const TextBookAside = () => {
+const TextBookAside = ({ handleLearnedWord }: { handleLearnedWord: () => void }) => {
+  const dispatch = useAppDispatch()
   const word = useSelector((state: IStore) => state.textBook.focusWord)
+  const currentWord = useAppSelector((state: IStore) => state.textBook.focusWord)
+  const allLearnedWord = useAppSelector((state: IStore) => state.textBook.learnedWords)
+
   const audioWord = word
     ? new Audio(`${process.env.REACT_APP_BASE_URL}/${word?.audio}`)
     : new Audio()
@@ -30,6 +38,13 @@ const TextBookAside = () => {
     : new Audio()
 
   const userId = getUserId() ? getUserId() : 'Unknown'
+
+  // const handlerLearnedWord = () => {
+  //   if (word) {
+  //     const arr = [currentWord as IWordsItem, ...allLearnedWord]
+  //     dispatch(setLearnedWords(arr))
+  //   }
+  // }
 
   const handlerAudio = () => {
     audioWord.play()
@@ -47,7 +62,12 @@ const TextBookAside = () => {
 
   return (
     <Box className={style.card__container}>
-      <Card sx={{ maxWidth: 300 }} className={style.card}>
+      <Card
+        sx={{ maxWidth: 300 }}
+        className={
+          word && identifyLearnedWord(allLearnedWord, word?.id) ? style.card__learned : style.card
+        }
+      >
         <CardActionArea>
           {word && (
             <CardMedia
@@ -92,7 +112,7 @@ const TextBookAside = () => {
             )}
           </CardContent>
         </CardActionArea>
-        <CardActions>
+        <CardActions className={style.container__cardActions}>
           <ProjectButton
             className='button'
             variant={ButtonVariants.secondary}
@@ -102,7 +122,18 @@ const TextBookAside = () => {
             fontSize={18}
             action={handlerButtonCreate}
           >
-            Сложные слова
+            Сложное слово
+          </ProjectButton>
+          <ProjectButton
+            className='button'
+            variant={ButtonVariants.secondary}
+            width={'100%'}
+            height={35}
+            borderColor={Color.secondary}
+            fontSize={18}
+            action={handleLearnedWord}
+          >
+            Выученное слово
           </ProjectButton>
         </CardActions>
       </Card>

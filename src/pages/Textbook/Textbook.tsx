@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import { useNavigate } from 'react-router-dom'
-import { fetchWords, setFocusWord } from 'redux/textBook/dictionary'
+import { fetchWords, setFocusWord, IStore, setLearnedWords } from 'features/textBook/dictionary'
 import {
   saveLocalStorage,
   identifyWordItemBg,
@@ -13,8 +13,10 @@ import {
   getGroup,
   getPage,
   getUserId,
+  identifyLearnedWord,
 } from 'services/index'
 import ButtonCircleGroup from 'pages/Textbook/components/ButtonCircle/ButtonCircleGroup'
+import { useAppSelector, useAppDispatch } from 'app/hooks'
 import WordItem from 'pages/Textbook/components/WordItem/WordItem'
 import { IWordsItem } from 'core/interfaces/dataModels'
 import Header from 'pages/main/components/Header/Header'
@@ -22,21 +24,29 @@ import Footer from 'pages/main/components/Footer/Footer'
 import ProjectButton from 'components/ProjectButton/ProjectButton'
 import { Color, ButtonVariants } from 'core/variables/constants'
 import LinkToGame from 'pages/Textbook/components/LinkToGame/LinkToGame'
-import { useAppDispatch } from 'app/hooks'
+
 import TextBookAside from 'pages/Textbook/components/textBookAside/TextBookAside'
-import { IStore } from 'redux/textBook/store'
+
 import style from './textBook.module.scss'
 
 const Textbook = () => {
-  const words = useSelector((state: IStore) => state.textBook.words)
+  const words = useAppSelector((state: IStore) => state.textBook.words)
+  const allLearnedWord: IWordsItem[] = useAppSelector(
+    (state: IStore) => state.textBook.learnedWords,
+  )
+  const currentWord = useAppSelector((state: IStore) => state.textBook.focusWord)
+  const word = useAppSelector((state: IStore) => state.textBook.focusWord)
+
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
   const [activeItem, setActiveItem] = useState(0)
   const [group, setGroup] = useState(getGroup)
   const [page, setPage] = useState(getPage)
   const [currentWords, setCurrentWords] = useState(words)
-  const dispatch = useAppDispatch()
+  const [isLearned, setIsLearned] = useState(false)
 
-  const navigate = useNavigate()
-  const difficultWordsHndler = () => {
+  const difficultWordsHandler = () => {
     if (getUserId()) {
       navigate('/difficultwords')
     }
@@ -50,6 +60,18 @@ const Textbook = () => {
     setGroup(difficult)
     setPage('0')
   }
+
+  const handlerLearnedWord = () => {
+    setIsLearned(!isLearned)
+    if (word) {
+      const arr = [currentWord as IWordsItem, ...allLearnedWord]
+      dispatch(setLearnedWords(arr))
+    }
+  }
+
+  useEffect(() => {
+    localStorage.setItem('save-words', JSON.stringify(allLearnedWord))
+  }, [allLearnedWord])
 
   useEffect(() => {
     dispatch(setFocusWord(words[0]))
@@ -79,7 +101,7 @@ const Textbook = () => {
           <Box className={style.nav__butnBlock}>
             <ButtonCircleGroup handler={handlerButton} />
           </Box>
-          <Link onClick={difficultWordsHndler} className={style.difficultWords__link}>
+          <Link onClick={difficultWordsHandler} className={style.difficultWords__link}>
             <ProjectButton
               className='button'
               variant={ButtonVariants.secondary}
@@ -100,7 +122,11 @@ const Textbook = () => {
                   <WordItem
                     word={item.word}
                     wordTranslate={item.wordTranslate}
-                    bg={identifyWordItemBg(group)}
+                    bg={
+                      identifyLearnedWord(allLearnedWord, item.id)
+                        ? Color.secondary
+                        : identifyWordItemBg(group)
+                    }
                     hover={identifyWordItemHover(group)}
                     key={index}
                     item={item}
@@ -110,7 +136,7 @@ const Textbook = () => {
                 )
               })}
           </Box>
-          <TextBookAside />
+          <TextBookAside handleLearnedWord={handlerLearnedWord} />
         </Box>
         <Stack spacing={2}>
           <Pagination

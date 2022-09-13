@@ -2,6 +2,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getWords } from 'services/words'
 import { IWordsItem } from 'core/interfaces/dataModels'
 
+export interface IStore {
+  textBook: IReducer
+}
+
 export interface IPage {
   number: string
 }
@@ -16,6 +20,7 @@ export interface IReducer {
   page: IPage
   group: IGroup
   words: IWordsItem[]
+  learnedWords: IWordsItem[]
   focusWord: IWordsItem | null
   difficultWords: IWordsItem[]
 }
@@ -40,8 +45,10 @@ const initialState: IDictionaryState = {
     number: '0',
   },
   focusWord: null,
-
   words: [],
+  learnedWords: localStorage.getItem('save-words')
+    ? Array.from(JSON.parse(localStorage.getItem('save-words') as string))
+    : [],
   difficultWords: [],
   status: null,
   error: null,
@@ -56,6 +63,9 @@ const texBookSlice = createSlice({
     },
     setDifficultWords(state, action) {
       state.difficultWords = action.payload
+    },
+    setLearnedWords(state, action) {
+      state.learnedWords = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -74,5 +84,5 @@ const texBookSlice = createSlice({
   },
 })
 
-export const { setFocusWord, setDifficultWords } = texBookSlice.actions
+export const { setFocusWord, setDifficultWords, setLearnedWords } = texBookSlice.actions
 export default texBookSlice.reducer

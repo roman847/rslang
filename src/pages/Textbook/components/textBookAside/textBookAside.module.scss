@@ -6,6 +6,13 @@
     box-shadow: none;
     background-color: $bgColor;
   }
+  .card__learned {
+    border: none;
+    outline: none;
+    box-shadow: none;
+   border: 2px solid #3E92A3
+
+  }
 }
 
 .wrapper__word {
@@ -50,4 +57,9 @@
     stroke: $blackColor;
     opacity: 0.5;
   }
+}
+.container__cardActions{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
