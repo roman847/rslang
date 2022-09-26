@@ -178,6 +178,44 @@ const GameWindow = () => {
     }
   }
 
+  const BUTTONS = [
+    {
+      action: clickHandler1,
+      borderWidth: borderSize1,
+      borderColor: borderColor1,
+      title: 1,
+      item: array[0],
+    },
+    {
+      action: clickHandler2,
+      borderWidth: borderSize2,
+      borderColor: borderColor2,
+      title: 2,
+      item: array[1],
+    },
+    {
+      action: clickHandler3,
+      borderWidth: borderSize3,
+      borderColor: borderColor3,
+      title: 3,
+      item: array[2],
+    },
+    {
+      action: clickHandler4,
+      borderWidth: borderSize4,
+      borderColor: borderColor4,
+      title: 4,
+      item: array[3],
+    },
+    {
+      action: clickHandler5,
+      borderWidth: borderSize5,
+      borderColor: borderColor5,
+      title: 5,
+      item: array[4],
+    },
+  ]
+
   return (
     <Box sx={styles.wrapper}>
       <Box sx={styles.container}>
@@ -195,66 +233,21 @@ const GameWindow = () => {
           <Typography sx={styles.word}>{word}</Typography>
         </Box>
         <Box sx={styles.buttons}>
-          <ProjectButton
-            variant={ButtonVariants.secondary}
-            borderColor={borderColor1}
-            width={200}
-            height={50}
-            hoverColor={Color.secondaryButtonHover}
-            action={clickHandler1}
-            borderWidth={borderSize1}
-            borderStyle={borderStyle}
-          >
-            1. {array[0]}
-          </ProjectButton>
-          <ProjectButton
-            variant={ButtonVariants.secondary}
-            width={200}
-            height={50}
-            borderColor={borderColor2}
-            hoverColor={Color.secondaryButtonHover}
-            action={clickHandler2}
-            borderWidth={borderSize2}
-            borderStyle={borderStyle}
-          >
-            2. {array[1]}
-          </ProjectButton>
-          <ProjectButton
-            variant={ButtonVariants.secondary}
-            borderColor={borderColor3}
-            width={200}
-            height={50}
-            hoverColor={Color.secondaryButtonHover}
-            action={clickHandler3}
-            borderWidth={borderSize3}
-            borderStyle={borderStyle}
-          >
-            3. {array[2]}
-          </ProjectButton>
-          <ProjectButton
-            variant={ButtonVariants.secondary}
-            borderColor={borderColor4}
-            width={200}
-            height={50}
-            hoverColor={Color.secondaryButtonHover}
-            action={clickHandler4}
-            borderWidth={borderSize4}
-            borderStyle={borderStyle}
-          >
-            4. {array[3]}
-          </ProjectButton>
-          <ProjectButton
-            variant={ButtonVariants.secondary}
-            borderColor={borderColor5}
-            width={200}
-            height={50}
-            hoverColor={Color.secondaryButtonHover}
-            action={clickHandler5}
-            borderWidth={borderSize5}
-            borderStyle={borderStyle}
-          >
-            5. {array[4]}
-          </ProjectButton>
+          {BUTTONS.map(({ title, borderColor, action, borderWidth, item }) => (
+            <ProjectButton
+              key={title}
+              variant={ButtonVariants.secondary}
+              width={200}
+              height={50}
+              hoverColor={Color.secondaryButtonHover}
+              borderStyle={borderStyle}
+              borderColor={borderColor}
+              action={action}
+              borderWidth={borderWidth}
+            >
+              {`${title}. ${item}`}
+            </ProjectButton>
+          ))}
         </Box>
         <Box sx={styles.button}>
           <ProjectButton width={230} height={50} buttonColor={Color.primary}>
