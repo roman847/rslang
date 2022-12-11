@@ -1,0 +1,50 @@
+@import '/src/styles/main.scss';
+
+.card {
+  width: 770px;
+  height: auto;
+
+  .card__container {
+    display: flex;
+    justify-content: left;
+    background-color: $bgColor;
+    gap: 0px 33px;
+    width: 100%;
+    box-shadow: 5px 4px 30px rgba(62, 146, 163, 0.15);
+    border-radius: 70px;
+    padding: 33px 35px;
+    box-sizing: border-box;
+    .card__avatar {
+      width: 164px;
+      height: 238px;
+      border-radius: 56px;
+    }
+    .card__text {
+      display: flex;
+      flex-direction: column;
+      gap: 5px 0px;
+      width: 490px;
+      padding: 0;
+      margin: 0;
+    }
+    .title__card {
+      @include fontSize28;
+      color: $secondaryColor;
+    }
+    .card__role {
+      @include font24;
+    }
+    .card__link {
+      @include fontSize16;
+      color: $linkGithubColor;
+      text-decoration: none;
+      transition: 0.7s;
+      &:hover {
+        opacity: 0.4;
+      }
+    }
+    .card__text {
+      @include fontSize16;
+    }
+  }
+}

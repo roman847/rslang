@@ -1,0 +1,80 @@
+@import 'styles/main.scss';
+.card__container {
+  padding: 5px;
+  .card {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background-color: $bgColor;
+  }
+  .card__learned {
+    border: none;
+    outline: none;
+    box-shadow: none;
+   outline: 2px solid #3E92A3;
+  }
+  .card__difficult {
+    border: none;
+    outline: none;
+    box-shadow: none;
+   outline: 2px solid #B71313;
+  }
+}
+
+.wrapper__word {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  .word {
+    @include fontSize28;
+    font-weight: 600;
+  }
+  .word__translation {
+    @include fontSize28;
+    font-weight: 400;
+  }
+}
+.container__cardText {
+  .word__transcription {
+    @include fontSize16;
+    color: $blackColor;
+  }
+  .title__word {
+    @include fontSize16;
+    font-weight: 600;
+    color: $secondaryColor;
+    margin-top: 10px;
+  }
+  .text__description {
+    @include fontSize16;
+    font-weight: 400;
+  }
+  .container__description{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px 5px;
+  }
+  .description__word{
+    @include fontSize16;
+    font-weight:700;
+  }
+}
+.container__transcription {
+  width: 100%;
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.audio__icon {
+  transition: 0.5s;
+  &:hover {
+    stroke: $blackColor;
+    opacity: 0.5;
+  }
+}
+.container__cardActions{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

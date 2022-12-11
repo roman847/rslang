@@ -1,0 +1,23 @@
+// Colors
+$bgColor: #faf8f5;
+$footerColor: #fad2c0;
+$secondaryColor: #3e92a3;
+$accentColor: #f06a33;
+$linkGithubColor: #f49b73;
+$errorColor: #b71313;
+$focusBtnColor: #b9410d;
+$blackColor: #1d1d1d;
+$nonActiveBtnColor: #f06a33;
+$colorGray: #ccc;
+
+// Mixins
+@mixin font18px {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #1d1d1d;
+  text-decoration: none;
+}

@@ -1,0 +1,26 @@
+@import '../../../../styles/abstracts/variables';
+@import '../../../../styles/abstracts/mixins';
+
+.item__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  text-align: justify;
+}
+.list__item {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+  .list__textContent {
+    display: block;
+    @include fontSize16;
+  }
+  .list__value {
+    @include fontSize16;
+    font-weight: 700;
+    padding: 0;
+    margin-top: auto;
+  }
+}

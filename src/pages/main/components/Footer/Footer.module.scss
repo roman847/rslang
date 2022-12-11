@@ -1,0 +1,40 @@
+@import 'styles/main.scss';
+
+.footer {
+  background-color: $footerColor;
+  width: 100%;
+  .containerFooter {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__menu,
+  &__team {
+    img {
+      width: 15px;
+      height: 15px;
+    }
+    .footer__title {
+      @include fontSize16;
+      font-weight: 600;
+      line-height: 24px;
+    }
+
+    li {
+      list-style-type: none;
+      @include fontSize16;
+      transition: 0.5s;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: #1d1d1d;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import '../../../../styles/abstracts/variables';
+@import '../../../../styles/abstracts/mixins';
+
+.container__content {
+  background-color: $bgColor;
+  text-align: center;
+}
+.radioButtons__block {
+  padding: 20px 0px 40px 0px;
+}

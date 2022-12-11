@@ -1,0 +1,12 @@
+.container__team {
+  padding-bottom: 130px;
+  .container__cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 50px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}

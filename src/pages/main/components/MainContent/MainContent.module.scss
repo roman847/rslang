@@ -1,0 +1,43 @@
+@import '/src/styles/main.scss';
+
+.wrapper {
+  padding: pxToRem(10) pxToRem(135) 0;
+  display: flex;
+  justify-content: space-between;
+  &__content {
+    padding: 297px 90px 0 0;
+  }
+  &__title {
+    width: 600px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 60px;
+    color: $blackColor;
+    span {
+      color: $secondaryColor;
+      font-style: italic;
+      font-weight: 500;
+    }
+  }
+  &__text {
+    width: 530px;
+    font-family: 'Montserrat';
+    padding: 25px 0 100px 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: $blackColor;
+  }
+  &__avatar {
+    margin-top: 100px;
+    flex: 0 0 514px;
+    border: 1px solid $nonActiveBtnColor;
+    border-radius: 235px;
+    img {
+      transform: translateX(25px) translateY(-25px);
+      max-width: 100%;
+      border-radius: 235px;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@import 'styles/main.scss';
+
+.container__buttonGroup {
+  display: flex;
+  gap: 20px;
+  .group__button {
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
+    @include fontSize28
+  }
+}

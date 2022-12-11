@@ -1,0 +1,46 @@
+@import 'styles/main.scss';
+
+.active {
+  border-bottom: 1px solid $nonActiveBtnColor;
+}
+
+.wrapper {
+  .header {
+    box-shadow: none;
+    .header__nav {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 9%;
+      padding-right: 9%;
+      gap: 20px;
+      background-color: $bgColor;
+      .nav__list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 671px;
+        @media (max-width:768px) {
+          display:none
+        }
+      }
+      .nav__list > * {
+        @include font18px;
+        position: relative;
+      }
+      .nav__list > :not(:last-child):after {
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $blackColor;
+        content: '';
+        transition: width 0.3s ease-out;
+      }
+      .nav__list > :not(:last-child):hover:after,
+      .nav__list > :not(:last-child):focus:after {
+        width: 100%;
+      }
+    }
+  }
+}

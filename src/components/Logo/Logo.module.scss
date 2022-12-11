@@ -1,0 +1,24 @@
+@import '../../styles/main';
+
+.logo {
+  span:first-child {
+    color: #f06a33;
+  }
+  span {
+    font-family: 'Mulish', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    letter-spacing: 0.07em;
+    color: $blackColor;
+  }
+}
+
+.logo_big {
+  @include Mulish36;
+  color: $blackColor;
+  span:first-child {
+    color: #f06a33;
+  }
+}

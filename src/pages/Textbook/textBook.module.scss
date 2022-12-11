@@ -1,0 +1,55 @@
+@import 'styles/main.scss';
+.container__page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $bgColor;
+}
+.container__textBook {
+  padding-top: 137px;
+  background-color: $bgColor;
+}
+.textBook__title {
+  @include fontSize46;
+  color: $secondaryColor;
+}
+.nav__words {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .nav__title {
+    @include font22;
+  }
+  .difficultWords__link {
+    text-decoration: none;
+  }
+}
+
+.nav__butnBlock {
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.container__words {
+  max-width: 850px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px 10px;
+}
+.textBook__mainContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 55px 0px 70px 0px;
+}
+.container__gamesLink {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
